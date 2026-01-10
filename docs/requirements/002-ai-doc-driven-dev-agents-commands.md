@@ -6,7 +6,7 @@
 - **标题**: AI文档驱动开发插件 - Agents和Commands扩展
 - **版本**: 1.0.0
 - **创建日期**: 2026-01-10
-- **状态**: 已实现
+- **状态**: 方案确认中
 - **依赖**: REQ-001 (AI文档驱动开发插件基础功能)
 
 ## 1. 需求概述
@@ -31,82 +31,88 @@
 
 ### 2.1 智能代理 (Agents)
 
-#### 2.1.1 文档工作流转换器 (doc-workflow-transformer)
+#### 2.1.1 AI流程初始化代理 (doc-flow-initializer)
 
-**功能描述**: 专门将项目改造为文档驱动开发模式的AI代理
-
-**核心能力**:
-
-- 项目当前状态全面分析
-- 文档驱动开发架构设计
-- 标准docs/目录结构创建
-- CLAUDE.md工作流集成
-- 必要文档模板生成
-
-**使用场景**:
-
-- 新项目文档驱动化改造
-- 现有项目工作流优化
-- 文档驱动开发标准建立
-
-#### 2.1.2 项目标准分析器 (project-standards-analyzer)
-
-**功能描述**: 专门分析项目结构并沉淀standards的AI代理
+**功能描述**: 为缺乏AI文档驱动开发流程的仓库建立完整基础设施的专业AI代理
 
 **核心能力**:
 
-- 深度项目代码结构分析
-- 编码模式和约定提取
-- 项目特定规范识别
-- 标准化文档生成
-- AI上下文信息整理
+- 项目类型和技术栈自动识别
+- CLAUDE.md文件创建或更新，集成AI协作规范
+- 智能docs/目录结构处理：
+  - 检测现有docs结构
+  - 分析与标准结构的差异
+  - 提供整理建议并征求用户确认
+  - 按用户选择进行结构调整或保持现状
+- 项目特定的文档模板生成
+- 文档驱动开发工作流程建立
 
 **使用场景**:
 
-- 项目编码标准提炼
-- 现有代码规范分析
-- 项目知识沉淀和传承
+- 新项目的AI文档驱动化初始化
+- 现有项目缺少AI协作文件时的补充
+- 已有docs但结构不标准时的智能整理
+- 建立标准化的文档驱动开发流程
+
+**特殊处理逻辑**:
+
+- **无docs目录**: 直接创建标准结构 (requirements, design, standards, analysis)
+- **有docs但结构不同**: 分析现有结构，提供整理方案，征求用户意见
+- **有docs且部分匹配**: 补充缺失的标准目录，保留现有内容
+
+#### 2.1.2 代码风格分析代理 (codebase-style-analyzer)
+
+**功能描述**: 深度分析仓库代码风格和通用模式，为AI后续开发提供一致性指导的专业AI代理
+
+**核心能力**:
+
+- 代码库全面扫描和模式识别
+- 命名约定、格式化规则、代码组织方式提取
+- 架构模式和设计模式识别
+- 重复使用的代码模式和最佳实践发现
+- 项目特定开发规范文档生成
+
+**使用场景**:
+
+- 为AI后续开发建立代码风格参考
+- 项目代码规范的自动化提取和文档化
+- 确保团队开发的一致性标准
 
 ### 2.2 用户命令 (Commands)
 
-#### 2.2.1 初始化文档驱动开发 (init-doc-driven-dev)
+#### 2.2.1 初始化AI文档驱动流程 (init-ai-doc-flow)
 
-**功能描述**: 快速设置文档驱动开发工作流
-
-**核心功能**:
-
-- 创建标准docs/目录结构
-- 初始化CLAUDE.md工作流
-- 项目类型检测和模板应用
-- 基础文档模板生成
-
-**快捷键**: `idd`
-
-#### 2.2.2 分析文档 (analyze-docs)
-
-**功能描述**: 全面分析项目文档状态
+**功能描述**: 调用doc-flow-initializer代理，智能为项目建立AI文档驱动开发基础设施
 
 **核心功能**:
 
-- 文档完整性检查
-- 质量评估报告
-- 缺陷识别和优先级排序
-- 改进建议生成
+- 自动识别项目类型和技术栈
+- 创建或更新CLAUDE.md文件
+- 智能处理docs/目录结构：
+  - 检测现有docs并分析结构差异
+  - 提供整理建议并征求用户确认
+  - 按用户需求调整或保持现有结构
+- 生成项目特定文档模板
 
-**快捷键**: `ad`
+**交互特性**:
+- 发现现有docs结构与标准不符时，会暂停并询问用户处理方式
+- 提供多种选项：保持现状、整理为标准结构、或混合方案
+- 确保不会意外覆盖用户重要的现有文档
 
-#### 2.2.3 提取模式 (extract-patterns)
+**快捷键**: `iadf`
 
-**功能描述**: 从代码库提取编码模式和约定
+#### 2.2.2 分析代码风格 (analyze-codebase-style)
+
+**功能描述**: 调用codebase-style-analyzer代理，深度分析项目代码风格和通用模式
 
 **核心功能**:
 
-- 命名约定提取
-- 架构模式识别
-- API设计模式分析
-- 项目特定约定文档化
+- 扫描代码库识别模式
+- 提取命名约定和代码风格
+- 识别架构模式和最佳实践
+- 生成项目开发规范文档
 
-**快捷键**: `ep`
+**快捷键**: `acs`
 
 ## 3. 技术规范
 
@@ -115,12 +121,11 @@
 ```text
 plugins/ai-doc-driven-dev/
 ├── agents/
-│   ├── doc-workflow-transformer.md
-│   └── project-standards-analyzer.md
+│   ├── doc-flow-initializer.md
+│   └── codebase-style-analyzer.md
 ├── commands/
-│   ├── init-doc-driven-dev.md
-│   ├── analyze-docs.md
-│   └── extract-patterns.md
+│   ├── init-ai-doc-flow.md
+│   └── analyze-codebase-style.md
 └── .claude-plugin/
     └── plugin.json (更新contributes部分)
 ```
@@ -180,29 +185,24 @@ shortcut: "xx"
     "skills": [...],
     "agents": [
       {
-        "name": "doc-workflow-transformer",
-        "description": "Expert agent for transforming projects into documentation-driven development workflows"
+        "name": "doc-flow-initializer",
+        "description": "Expert agent for initializing AI documentation-driven development infrastructure"
       },
       {
-        "name": "project-standards-analyzer",
-        "description": "Expert agent for analyzing project structure and extracting development standards"
+        "name": "codebase-style-analyzer",
+        "description": "Expert agent for analyzing codebase style and extracting development patterns"
       }
     ],
     "commands": [
       {
-        "name": "init-doc-driven-dev",
-        "description": "Initialize documentation-driven development workflow",
-        "shortcut": "idd"
+        "name": "init-ai-doc-flow",
+        "description": "Initialize AI documentation-driven development workflow",
+        "shortcut": "iadf"
       },
       {
-        "name": "analyze-docs",
-        "description": "Analyze project documentation completeness and quality",
-        "shortcut": "ad"
-      },
-      {
-        "name": "extract-patterns",
-        "description": "Extract coding patterns and conventions from codebase",
-        "shortcut": "ep"
+        "name": "analyze-codebase-style",
+        "description": "Analyze codebase style and extract development patterns",
+        "shortcut": "acs"
       }
     ]
   }
@@ -213,19 +213,19 @@ shortcut: "xx"
 
 ### 4.1 Agent实现要点
 
-#### 4.1.1 doc-workflow-transformer
+#### 4.1.1 doc-flow-initializer
 
-- **工具权限**: Read, Glob, Grep, LSP
-- **专业领域**: 文档驱动开发工作流设计、项目架构转换
-- **核心算法**: 项目状态分析、文档结构设计、工作流集成
-- **输出格式**: 完整的文档驱动开发架构和配置文件
+- **工具权限**: Read, Write, Edit, Glob, Grep
+- **专业领域**: AI文档驱动开发基础设施建立、项目初始化
+- **核心算法**: 项目类型识别、CLAUDE.md生成、docs结构创建
+- **输出格式**: CLAUDE.md文件、标准docs目录结构、项目文档模板
 
-#### 4.1.2 project-standards-analyzer
+#### 4.1.2 codebase-style-analyzer
 
-- **工具权限**: Read, Glob, Grep, LSP
-- **专业领域**: 代码结构分析、编码规范提取、项目标准沉淀
-- **核心算法**: 模式识别、约定提取、标准归纳、知识整理
-- **输出格式**: 标准化的项目规范文档和AI上下文信息
+- **工具权限**: Read, Write, Glob, Grep, LSP
+- **专业领域**: 代码风格分析、模式提取、开发规范生成
+- **核心算法**: 代码扫描、模式识别、风格归纳、规范文档生成
+- **输出格式**: 代码风格指南、架构模式文档、开发规范更新
 
 ### 4.2 Command实现要点
 
@@ -247,10 +247,10 @@ shortcut: "xx"
 
 ### 5.1 功能验收
 
-- [x] 创建2个专业化Agent，具备明确的专业领域定义
-- [x] 创建3个用户友好的Command，支持快捷键操作
-- [x] 更新plugin.json manifest，正确声明所有组件
-- [x] 所有组件遵循标准化的前置元数据格式
+- [ ] 创建2个专业化Agent，具备明确的专业领域定义
+- [ ] 创建2个用户友好的Command，支持快捷键操作
+- [ ] 更新plugin.json manifest，正确声明所有组件
+- [ ] 所有组件遵循标准化的前置元数据格式
 
 ### 5.2 质量验收
 
@@ -295,6 +295,6 @@ shortcut: "xx"
 
 ---
 
-**文档状态**: ✅ 已完成实现
+**文档状态**: 🔄 方案确认中
 **最后更新**: 2026-01-10
-**实现版本**: ai-doc-driven-dev v1.0.0
+**目标版本**: ai-doc-driven-dev v1.1.0

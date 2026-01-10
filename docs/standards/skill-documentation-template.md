@@ -1,181 +1,181 @@
-# Claude Code 技能文档标准模板
+# Claude Code Skill Documentation Template
 
-## 模板结构
+## Template Structure
 
-### 1. Frontmatter（前置元数据）
+### 1. Frontmatter (Metadata)
 
 ```yaml
 ---
 name: skill-name
 description: |
-  简洁的技能描述，说明核心功能。
-  使用触发关键词："当用户需要...", "用于...", "构建..."等
+  Concise skill description explaining core functionality.
+  Use trigger keywords: "when users need to...", "for...", "to build..."
 allowed-tools: ["Read", "Write", "Edit", "Grep", "Glob", "Bash"]
 license: MIT
 ---
 ```
 
-### 2. Overview（概述）
+### 2. Overview
 
-**目的**：用1-2段话概括技能的核心价值和能力
+**Purpose**: Summarize the skill's core value and capabilities in 1-2 paragraphs
 
-**模板**：
+**Template**:
 ```markdown
 ## Overview
 
-This skill empowers Claude to [核心能力描述]. It leverages [关键技术/方法] to [具体功能], enabling [最终价值/结果].
+This skill empowers Claude to [core capability description]. It leverages [key technology/method] to [specific function], enabling [final value/result].
 ```
 
-### 3. How It Works（工作原理）
+### 3. How It Works
 
-**目的**：详细说明技能的执行步骤和内部机制
+**Purpose**: Detail the skill's execution steps and internal mechanisms
 
-**模板**：
+**Template**:
 ```markdown
 ## How It Works
 
-1. **[步骤1名称]**: [具体描述]
-2. **[步骤2名称]**: [具体描述]
-3. **[步骤3名称]**: [具体描述]
-4. **[步骤N名称]**: [具体描述]
+1. **[Step 1 Name]**: [Specific description]
+2. **[Step 2 Name]**: [Specific description]
+3. **[Step 3 Name]**: [Specific description]
+4. **[Step N Name]**: [Specific description]
 ```
 
-### 4. When to Use This Skill（使用场景）
+### 4. When to Use This Skill
 
-**目的**：明确技能的激活条件和适用场景
+**Purpose**: Define activation conditions and applicable scenarios
 
-**模板**：
+**Template**:
 ```markdown
 ## When to Use This Skill
 
 This skill activates when you need to:
-- [使用场景1]
-- [使用场景2]
-- [使用场景3]
-- [使用场景N]
+- [Use case 1]
+- [Use case 2]
+- [Use case 3]
+- [Use case N]
 ```
 
-### 5. Examples（示例）
+### 5. Examples
 
-**目的**：通过具体示例展示技能的实际应用
+**Purpose**: Demonstrate practical application through concrete examples
 
-**模板**：
+**Template**:
 ```markdown
 ## Examples
 
-### Example 1: [示例标题]
+### Example 1: [Example Title]
 
-User request: "[具体的用户请求]"
-
-The skill will:
-1. [技能执行的具体步骤1]
-2. [技能执行的具体步骤2]
-3. [技能执行的具体步骤3]
-
-### Example 2: [示例标题]
-
-User request: "[具体的用户请求]"
+User request: "[Specific user request]"
 
 The skill will:
-1. [技能执行的具体步骤1]
-2. [技能执行的具体步骤2]
-3. [技能执行的具体步骤3]
+1. [Skill execution step 1]
+2. [Skill execution step 2]
+3. [Skill execution step 3]
+
+### Example 2: [Example Title]
+
+User request: "[Specific user request]"
+
+The skill will:
+1. [Skill execution step 1]
+2. [Skill execution step 2]
+3. [Skill execution step 3]
 ```
 
-### 6. Best Practices（最佳实践）- 可选
+### 6. Best Practices (Optional)
 
-**模板**：
+**Template**:
 ```markdown
 ## Best Practices
 
-- **[实践要点1]**: [具体建议]
-- **[实践要点2]**: [具体建议]
-- **[实践要点3]**: [具体建议]
+- **[Practice Point 1]**: [Specific recommendation]
+- **[Practice Point 2]**: [Specific recommendation]
+- **[Practice Point 3]**: [Specific recommendation]
 ```
 
-### 7. Integration（集成说明）- 可选
+### 7. Integration (Optional)
 
-**模板**：
+**Template**:
 ```markdown
 ## Integration
 
-This skill integrates seamlessly with [相关技术/插件], allowing you to [集成价值]. It leverages [技术栈] for [技术优势].
+This skill integrates seamlessly with [related technology/plugins], allowing you to [integration value]. It leverages [tech stack] for [technical advantages].
 ```
 
-## 完整示例模板
+## Complete Example Template
 
 ```markdown
 ---
 name: example-skill
 description: |
-  简洁的技能描述，说明核心功能。
-  触发条件："当用户需要...", "用于..."
+  Concise skill description explaining core functionality.
+  Trigger conditions: "when users need to...", "for..."
 allowed-tools: ["Read", "Write", "Edit"]
 license: MIT
 ---
 
 ## Overview
 
-This skill empowers Claude to [核心能力]. It leverages [技术方法] to [具体功能], enabling [最终价值].
+This skill empowers Claude to [core capability]. It leverages [technical method] to [specific function], enabling [final value].
 
 ## How It Works
 
-1. **[步骤1]**: [描述]
-2. **[步骤2]**: [描述]
-3. **[步骤3]**: [描述]
+1. **[Step 1]**: [Description]
+2. **[Step 2]**: [Description]
+3. **[Step 3]**: [Description]
 
 ## When to Use This Skill
 
 This skill activates when you need to:
-- [场景1]
-- [场景2]
-- [场景3]
+- [Scenario 1]
+- [Scenario 2]
+- [Scenario 3]
 
 ## Examples
 
-### Example 1: [标题]
+### Example 1: [Title]
 
-User request: "[用户请求]"
-
-The skill will:
-1. [执行步骤1]
-2. [执行步骤2]
-3. [执行步骤3]
-
-### Example 2: [标题]
-
-User request: "[用户请求]"
+User request: "[User request]"
 
 The skill will:
-1. [执行步骤1]
-2. [执行步骤2]
-3. [执行步骤3]
+1. [Execution step 1]
+2. [Execution step 2]
+3. [Execution step 3]
+
+### Example 2: [Title]
+
+User request: "[User request]"
+
+The skill will:
+1. [Execution step 1]
+2. [Execution step 2]
+3. [Execution step 3]
 
 ## Best Practices
 
-- **[要点1]**: [建议]
-- **[要点2]**: [建议]
+- **[Point 1]**: [Recommendation]
+- **[Point 2]**: [Recommendation]
 
 ## Integration
 
-This skill integrates with [相关技术], enabling [集成价值].
+This skill integrates with [related technology], enabling [integration value].
 ```
 
-## 关键要求总结
+## Key Requirements Summary
 
-### ✅ 必须包含的部分
-1. **Frontmatter** - 技能元数据
-2. **Overview** - 核心价值概述
-3. **How It Works** - 工作原理
-4. **When to Use This Skill** - 使用场景
-5. **Examples** - 具体示例（至少2个）
+### ✅ Required Sections
+1. **Frontmatter** - Skill metadata
+2. **Overview** - Core value summary
+3. **How It Works** - Working principles
+4. **When to Use This Skill** - Use cases
+5. **Examples** - Concrete examples (at least 2)
 
-### 🔄 可选的部分
-1. **Best Practices** - 最佳实践建议
-2. **Integration** - 集成说明
+### 🔄 Optional Sections
+1. **Best Practices** - Best practice recommendations
+2. **Integration** - Integration explanations
 
-### 📝 写作要求
-- **简洁明了**：每个部分都要言简意赅
-- **具体可操作**：示例要具体，步骤要清晰
-- **用户导向**：从用户使用角度组织内容
-- **一致性**：所有技能文档遵循相同结构
+### 📝 Writing Requirements
+- **Concise and Clear**: Each section should be brief and to the point
+- **Specific and Actionable**: Examples should be concrete, steps should be clear
+- **User-Oriented**: Organize content from the user's perspective
+- **Consistency**: All skill documentation follows the same structure

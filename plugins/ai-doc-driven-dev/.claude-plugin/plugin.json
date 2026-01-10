@@ -38,12 +38,12 @@
     ],
     "agents": [
       {
-        "name": "doc-workflow-transformer",
-        "description": "Expert agent for transforming projects into documentation-driven development workflows"
+        "name": "doc-flow-initializer",
+        "description": "Expert agent for initializing AI documentation-driven development infrastructure"
       },
       {
-        "name": "project-standards-analyzer",
-        "description": "Expert agent for analyzing project structure and extracting development standards"
+        "name": "codebase-style-analyzer",
+        "description": "Expert agent for analyzing codebase style and extracting development patterns"
       }
     ],
     "commands": [

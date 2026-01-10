@@ -1,60 +1,85 @@
-# 技术方案 002: AI文档驱动开发插件 - Agents和Commands扩展技术设计
+# 技术方案 002: AI文档驱动开发插件 - 核心Agents技术设计
 
 ## 文档信息
 
 - **编号**: TECH-002
-- **标题**: Agents和Commands扩展技术方案
-- **版本**: 1.0.0
+- **标题**: 核心Agents技术方案
+- **版本**: 2.0.0
 - **创建日期**: 2026-01-10
-- **状态**: 已实现
+- **更新日期**: 2026-01-10
+- **状态**: 设计中
 - **依赖**: TECH-001 (基础插件架构), REQ-002 (功能需求)
 
-## 1. 技术架构概述
+## 1. 需求背景
 
-### 1.1 扩展设计思路
+### 1.1 核心问题
 
-**核心理念**: 在现有Skills基础上，添加专业化AI代理和用户友好命令接口，形成完整的三层架构体系。
+许多代码仓库缺乏系统化的AI文档驱动开发流程，导致：
+- 缺少CLAUDE.md等AI协作文件
+- 没有标准的docs文档结构，或现有docs结构与标准不符
+- AI无法了解项目的代码风格和通用模式
+- 后续AI开发时缺乏一致性指导
 
-**技术路线**:
+### 1.2 解决方案
 
-```text
-Skills (核心逻辑) → Agents (专业AI助手) → Commands (用户接口) → 完整插件生态
-```
+设计两个核心Agent解决上述问题：
 
-### 1.2 架构扩展设计
+1. **doc-flow-initializer** - 智能建立AI文档驱动开发基础设施，处理现有docs结构冲突
+2. **codebase-style-analyzer** - 分析并提取仓库的代码风格和通用模式
+
+## 2. 技术架构
+
+### 2.1 插件结构设计
 
 ```text
 ai-doc-driven-dev/
 ├── .claude-plugin/
-│   └── plugin.json                # 更新：添加agents和commands配置
+│   └── plugin.json                # 添加两个核心agents配置
 ├── skills/                        # 现有：4个核心技能
 │   ├── claude-md-enforcer/
 │   ├── doc-detector/
 │   ├── pattern-extractor/
 │   └── doc-generator/
-├── agents/                        # 新增：专业AI代理
-│   ├── documentation-analyst.md
-│   └── standards-architect.md
-├── commands/                      # 新增：用户命令
-│   ├── init-doc-driven-dev.md
-│   ├── analyze-docs.md
-│   └── extract-patterns.md
+├── agents/                        # 新增：两个核心AI代理
+│   ├── doc-flow-initializer.md   # 文档流程初始化Agent
+│   └── codebase-style-analyzer.md # 代码风格分析Agent
 ├── knowledge/                     # 现有：知识库
 └── README.md                      # 现有：双语文档
 ```
 
-## 2. Agents技术设计
+### 2.2 工作流程设计
 
-### 2.1 Agent架构模式
+```text
+仓库初始化流程:
+1. 用户调用 doc-flow-initializer agent
+2. Agent分析项目类型和现有结构
+3. 首先执行 /init 流程创建基础CLAUDE.md
+4. 在基础CLAUDE.md上增强文档驱动开发流程内容
+5. 检测现有docs目录情况：
+   - 无docs → 直接创建标准结构
+   - 有docs但结构不同 → 分析差异，征求用户意见
+   - 有docs且部分匹配 → 补充缺失目录
+6. 根据用户选择处理docs结构
+7. 生成项目特定的文档模板
 
-#### 2.1.1 设计原则
+代码风格分析流程:
+1. 用户调用 codebase-style-analyzer agent
+2. Agent扫描代码库识别模式
+3. 提取命名约定、架构模式、代码风格
+4. 生成风格指南文档
+5. 更新CLAUDE.md中的开发规范
+```
 
-- **专业化分工**: 每个Agent专注特定领域，具备深度专业知识
-- **工具权限控制**: 明确定义每个Agent可使用的工具集合
-- **系统提示优化**: 详细的系统提示确保Agent行为的一致性和专业性
-- **输出标准化**: 统一的输出格式便于后续处理和集成
+## 3. 核心Agents设计
 
-#### 2.1.2 Agent通用架构
+### 3.1 Agent设计原则
+
+- **实用导向**: 专注解决实际开发中的痛点问题
+- **自动化**: 减少手动配置，智能识别项目特征
+- **标准化**: 建立一致的文档和代码风格标准
+- **可扩展**: 支持不同类型项目的个性化需求
+
+### 3.2 Agent通用架构
 
 ```yaml
 ---
@@ -63,59 +88,97 @@ description: |
   简洁的功能描述
 system_prompt: |
   详细的系统提示，包括：
-  - 专业领域定义
-  - 核心能力说明
-  - 工作原则和方法
-  - 输出格式要求
-  - 使用场景指导
-allowed-tools: ["Read", "Glob", "Grep", "LSP"]
+  - 专业领域定义和核心职责
+  - 分析方法和工作流程
+  - 输出格式和质量标准
+  - 与用户交互的方式
+allowed-tools: ["Read", "Write", "Edit", "Glob", "Grep", "LSP"]
 license: MIT
 ---
-
-# Agent Name
-
-## Purpose
-Agent的核心目的和价值
-
-## Capabilities
-具体能力列表
-
-## Use Cases
-典型使用场景
 ```
 
-### 2.2 具体Agent设计
+### 3.3 Agent 1: doc-flow-initializer (文档流程初始化Agent)
 
-#### 2.2.1 documentation-analyst
+#### 3.3.1 核心职责
 
-**技术特性**:
+为缺乏AI文档驱动开发流程的仓库建立完整的基础设施，包括：
 
-- **专业领域**: 文档质量分析和评估
-- **核心算法**: 基于规则的文档完整性评分系统
-- **分析维度**: 结构完整性、内容质量、标准合规性、可维护性
-- **输出格式**: 结构化JSON报告 + 可读性markdown摘要
+- **CLAUDE.md创建/更新**: 建立AI协作的核心文件
+- **docs目录结构**: 创建标准的文档组织结构
+- **项目类型识别**: 自动识别前端/后端/全栈等项目类型
+- **模板应用**: 根据项目特点应用相应的文档模板
+
+#### 3.3.2 技术实现
 
 **工具使用策略**:
 
 ```text
-Read → 文档内容获取
-Glob → 文档文件发现
-Grep → 关键信息搜索
-LSP → 代码文档关联分析
+Glob → 项目结构分析，识别技术栈特征
+Read → 读取package.json、README等关键文件
+Write → 创建CLAUDE.md和docs结构
+Edit → 更新现有文档文件
+Grep → 搜索项目中的关键配置信息
 ```
 
-**核心算法流程**:
+**核心工作流程**:
 
 ```text
-1. 文档发现 (Glob) → 获取所有文档文件列表
-2. 内容分析 (Read) → 逐一分析文档内容和结构
-3. 关键词检查 (Grep) → 验证必要信息的存在性
-4. 代码关联 (LSP) → 检查文档与代码的一致性
-5. 评分计算 → 基于预定义规则计算质量分数
-6. 报告生成 → 生成详细的分析报告
+1. 项目分析阶段:
+   - 扫描根目录文件 (package.json, requirements.txt, pom.xml等)
+   - 识别技术栈类型 (React, Vue, Node.js, Python等)
+   - 分析现有文档结构
+
+2. CLAUDE.md基础建立:
+   - 首先调用现有的 /init 流程
+   - 确保基础CLAUDE.md文件存在
+   - 在基础内容上增强文档驱动开发流程
+
+3. 文档驱动流程增强:
+   - 添加AI协作规范和开发工作流
+   - 集成文档优先开发原则
+   - 建立代码变更前文档更新的要求
+
+4. docs目录智能处理:
+   - 检测现有docs结构
+   - 如有冲突，分析差异并征求用户意见
+   - 根据用户选择创建/整理标准目录结构
+   - 生成项目特定的文档模板
+
+5. 初始化验证:
+   - 检查创建的文件和目录
+   - 验证文档结构的完整性
+   - 提供后续使用指导
 ```
 
-#### 2.2.2 standards-architect
+#### 3.3.3 输出标准
+
+**CLAUDE.md增强内容结构**:
+```markdown
+# Project Overview (基于/init生成的基础内容)
+# Development Workflow (增强：文档驱动开发流程)
+  ## Documentation-First Development Process
+  ## Code Change Requirements
+# AI Collaboration Guidelines (增强：AI协作规范)
+  ## AI Development Context
+  ## Documentation Standards for AI
+# Documentation Standards (新增：文档标准)
+  ## docs/ Directory Structure
+  ## Documentation Templates
+# Code Style Requirements (将由codebase-style-analyzer填充)
+```
+
+**docs目录结构**:
+```text
+docs/
+├── requirements/     # 需求文档
+├── design/          # 设计文档
+├── standards/       # 开发标准
+└── analysis/        # 分析报告
+```
+
+### 3.4 Agent 2: codebase-style-analyzer (代码风格分析Agent)
+
+#### 3.4.1 核心职责
 
 **技术特性**:
 
