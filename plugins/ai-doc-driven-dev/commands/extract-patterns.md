@@ -1,8 +1,8 @@
 ---
-name: extract-patterns
 description: Extract coding patterns and conventions from existing codebase
 category: analysis
 shortcut: "ep"
+model: inherit
 ---
 
 # Extract Patterns

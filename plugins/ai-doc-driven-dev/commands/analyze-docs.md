@@ -1,8 +1,8 @@
 ---
-name: analyze-docs
 description: Comprehensive analysis of project documentation completeness and quality
 category: analysis
 shortcut: "ad"
+model: inherit
 ---
 
 # Analyze Documentation

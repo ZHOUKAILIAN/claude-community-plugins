@@ -1,8 +1,7 @@
 {
   "name": "ai-doc-driven-dev",
-  "displayName": "AI Documentation-Driven Development",
-  "version": "1.0.0",
   "description": "Transform projects into documentation-driven development workflows with AI assistance. Automatically detects, generates, and maintains project documentation standards.",
+  "version": "1.0.0-alpha.0",
   "author": {
     "name": "Claude Code Plugin Marketplace",
     "email": "noreply@anthropic.com"
@@ -16,53 +15,5 @@
     "claude-md",
     "requirements",
     "technical-design"
-  ],
-  "contributes": {
-    "skills": [
-      {
-        "name": "claude-md-enforcer",
-        "description": "Enforce documentation-driven development workflow in CLAUDE.md"
-      },
-      {
-        "name": "doc-detector",
-        "description": "Detect and analyze project documentation completeness"
-      },
-      {
-        "name": "pattern-extractor",
-        "description": "Extract project-specific coding patterns and conventions"
-      },
-      {
-        "name": "doc-generator",
-        "description": "Generate standardized project documentation"
-      }
-    ],
-    "agents": [
-      {
-        "name": "doc-flow-initializer",
-        "description": "Expert agent for initializing AI documentation-driven development infrastructure"
-      },
-      {
-        "name": "codebase-style-analyzer",
-        "description": "Expert agent for analyzing codebase style and extracting development patterns"
-      }
-    ],
-    "commands": [
-      {
-        "name": "init-doc-driven-dev",
-        "description": "Initialize documentation-driven development workflow",
-        "shortcut": "idd"
-      },
-      {
-        "name": "analyze-docs",
-        "description": "Analyze project documentation completeness and quality",
-        "shortcut": "ad"
-      },
-      {
-        "name": "extract-patterns",
-        "description": "Extract coding patterns and conventions from codebase",
-        "shortcut": "ep"
-      }
-    ]
-  },
-  "license": "MIT"
+  ]
 }

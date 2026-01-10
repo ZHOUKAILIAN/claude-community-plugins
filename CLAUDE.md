@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a **Claude Code Plugin Marketplace** - a centralized repository designed to discover, install, manage, and publish Claude Code Plugins.
 
 **Key Concept**:
+
 - The repository itself IS the marketplace
 - Each plugin in `plugins/` is an independent Claude Code Plugin offering specific functionality
 
@@ -33,6 +34,7 @@ claude-code-plugins/
 ```
 
 **Directory Purposes**:
+
 - **`plugins/`**: The marketplace inventory - each subdirectory is a complete, independent Claude Code Plugin
 - **`docs/requirements/`**: Project requirements and technical design documents
 - **`docs/standards/`**: Development standards, templates, and coding conventions
@@ -46,7 +48,7 @@ Each plugin in `plugins/{name}/` follows this standardized structure:
 ```
 plugins/{name}/
 ├── .claude-plugin/
-│   └── plugin.json                # Metadata: name, version, author, keywords, contributes
+│   └── plugin.json                # Metadata: name, version, author, keywords
 ├── .mcp.json                      # MCP server configuration (optional)
 ├── commands/                      # Command definitions (*.md with frontmatter)
 ├── skills/                        # Skill definitions (*/SKILL.md with frontmatter)
@@ -76,35 +78,30 @@ license: MIT
 ```json
 {
   "name": "plugin-name",
-  "displayName": "Display Name",
   "version": "1.0.0",
   "description": "Description",
   "author": {
     "name": "...",
     "email": "..."
   },
-  "keywords": ["keyword1", "keyword2"],
-  "contributes": {
-    "commands": [{ "name": "..." }],
-    "skills": [{ "name": "..." }],
-    "agents": [{ "name": "..." }]
-  }
+  "keywords": ["keyword1", "keyword2"]
 }
 ```
 
 ## File Naming Conventions
 
-| Type | Convention | Example |
-|------|-------------|---------|
-| Plugin directory | kebab-case | `ai-doc-driven-dev/` |
-| Markdown docs | kebab-case.md | `directory-structure.md` |
-| Command files | kebab-case.md | `plugin-a-action.md` |
-| Skill directories | kebab-case/ | `claude-md-enforcer/` |
-| Skill files | SKILL.md | `SKILL.md` |
+| Type              | Convention    | Example                  |
+| ----------------- | ------------- | ------------------------ |
+| Plugin directory  | kebab-case    | `ai-doc-driven-dev/`     |
+| Markdown docs     | kebab-case.md | `directory-structure.md` |
+| Command files     | kebab-case.md | `plugin-a-action.md`     |
+| Skill directories | kebab-case/   | `claude-md-enforcer/`    |
+| Skill files       | SKILL.md      | `SKILL.md`               |
 
 ## Documentation Standards
 
 ### README Requirements
+
 - **Bilingual Support**: All plugin documentation MUST be available in both English and Chinese
 - **Structure**: Use separate files - `README.md` (English) and `README-zh.md` (Chinese)
 - **Consistency**: Both language versions should contain equivalent information
@@ -112,6 +109,7 @@ license: MIT
 - **Maintenance**: When updating README content, both language versions must be updated simultaneously
 
 **File Structure:**
+
 ```
 plugin-name/
 ├── README.md           # English version
@@ -120,6 +118,7 @@ plugin-name/
 ```
 
 **Language Switching Template:**
+
 ```markdown
 ---
 
@@ -130,24 +129,30 @@ plugin-name/
 
 ## Marketplace Core Capabilities
 
-| Capability | Purpose | Implementation |
-|------------|-----------|----------------|
-| Plugin Discovery | Search/browse available plugins | `docs/design/workflow.md` |
-| Plugin Installation | Install from marketplace | `scripts/scaffold.sh` |
-| Plugin Management | List, update, uninstall | `scripts/` collection |
-| Plugin Publishing | Publish new plugins | `scripts/publish.sh` |
+| Capability          | Purpose                         | Implementation            |
+| ------------------- | ------------------------------- | ------------------------- |
+| Plugin Discovery    | Search/browse available plugins | `docs/design/workflow.md` |
+| Plugin Installation | Install from marketplace        | `scripts/scaffold.sh`     |
+| Plugin Management   | List, update, uninstall         | `scripts/` collection     |
+| Plugin Publishing   | Publish new plugins             | `scripts/publish.sh`      |
 
 ## Current Implementation Status
 
 **Implemented**:
+
 - Project structure and documentation design
 - One example plugin: `ai-doc-driven-dev` (AI Documentation-Driven Development Plugin)
   - Provides: Documentation-driven development workflow enforcement, project analysis, pattern extraction
+  - Features: Complete agents and commands system with 2 core agents and 3 commands
+  - Agents: doc-flow-initializer (文档流程初始化), codebase-style-analyzer (代码风格分析)
+  - Commands: init-doc-driven-dev, analyze-docs, extract-patterns
+  - Skills: claude-md-enforcer, doc-detector, pattern-extractor, doc-generator
   - Allowed tools: Read, Write, Edit, Glob, Grep, Bash, LSP
 - Core design documentation and standards
 - Bilingual README requirements and templates
 
 **Planned but Not Yet Implemented**:
+
 - `.gitignore` file
 - Additional design docs: `architecture.md`, `workflow.md`, `capability-list.md`, `interaction-protocol.md`
 - Requirement documents
@@ -159,6 +164,7 @@ plugin-name/
 ## Design Alignment
 
 The project explicitly aligns with **customplugin/plugins** reference implementation:
+
 - ✅ Plugin metadata structure (`.claude-plugin/plugin.json`)
 - ✅ MCP configuration (`.mcp.json`)
 - ✅ Command definitions (`commands/*.md`)
@@ -182,24 +188,28 @@ The project explicitly aligns with **customplugin/plugins** reference implementa
 **CRITICAL**: All future development MUST follow this AI-driven documentation workflow:
 
 ### Development Workflow
+
 1. **User Request**: User provides requirements or feature requests
 2. **AI Documentation**: AI creates comprehensive requirement and technical specification documents in `docs/requirements/`
 3. **User Review & Alignment**: User reviews and approves the documentation
 4. **AI Implementation**: Only after approval, AI implements changes to `plugins/` based on the approved documentation
 
 ### Key Principles
+
 - ❌ **PROHIBITED**: Direct modification of `plugins/` content without prior documentation and alignment
 - ✅ **REQUIRED**: User → AI writes docs → User approval → AI implements via docs
 - ✅ **REQUIRED**: All requirements and technical specifications must be documented before implementation
 - 📋 **DOCUMENTATION-DRIVEN**: AI must reference and follow approved documentation when making any plugin changes
 
 ### Documentation Structure
+
 - Requirements and technical specifications should be combined in single documents
 - All specification documents stored in `docs/requirements/`
 - Each document should include both functional requirements and technical implementation details
 - Development standards and templates stored in `docs/standards/`
 
 ### Skill Development Standards
+
 - All skill documentation MUST follow the template in `docs/standards/skill-documentation-template.md`
 - Required sections: Overview, How It Works, When to Use This Skill, Examples
 - Optional sections: Best Practices, Integration

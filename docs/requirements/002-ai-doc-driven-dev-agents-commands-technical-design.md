@@ -1,30 +1,31 @@
-# 技术方案 002: AI文档驱动开发插件 - 核心Agents技术设计
+# 技术方案 002: AI 文档驱动开发插件 - 核心 Agents 技术设计
 
 ## 文档信息
 
 - **编号**: TECH-002
-- **标题**: 核心Agents技术方案
+- **标题**: 核心 Agents 技术方案
 - **版本**: 2.0.0
 - **创建日期**: 2026-01-10
 - **更新日期**: 2026-01-10
-- **状态**: 设计中
+- **状态**: 已完成
 - **依赖**: TECH-001 (基础插件架构), REQ-002 (功能需求)
 
 ## 1. 需求背景
 
 ### 1.1 核心问题
 
-许多代码仓库缺乏系统化的AI文档驱动开发流程，导致：
-- 缺少CLAUDE.md等AI协作文件
-- 没有标准的docs文档结构，或现有docs结构与标准不符
-- AI无法了解项目的代码风格和通用模式
-- 后续AI开发时缺乏一致性指导
+许多代码仓库缺乏系统化的 AI 文档驱动开发流程，导致：
+
+- 缺少 CLAUDE.md 等 AI 协作文件
+- 没有标准的 docs 文档结构，或现有 docs 结构与标准不符
+- AI 无法了解项目的代码风格和通用模式
+- 后续 AI 开发时缺乏一致性指导
 
 ### 1.2 解决方案
 
-设计两个核心Agent解决上述问题：
+设计两个核心 Agent 解决上述问题：
 
-1. **doc-flow-initializer** - 智能建立AI文档驱动开发基础设施，处理现有docs结构冲突
+1. **doc-flow-initializer** - 智能建立 AI 文档驱动开发基础设施，处理现有 docs 结构冲突
 2. **codebase-style-analyzer** - 分析并提取仓库的代码风格和通用模式
 
 ## 2. 技术架构
@@ -70,16 +71,16 @@ ai-doc-driven-dev/
 5. 更新CLAUDE.md中的开发规范
 ```
 
-## 3. 核心Agents设计
+## 3. 核心 Agents 设计
 
-### 3.1 Agent设计原则
+### 3.1 Agent 设计原则
 
 - **实用导向**: 专注解决实际开发中的痛点问题
 - **自动化**: 减少手动配置，智能识别项目特征
 - **标准化**: 建立一致的文档和代码风格标准
 - **可扩展**: 支持不同类型项目的个性化需求
 
-### 3.2 Agent通用架构
+### 3.2 Agent 通用架构
 
 ```yaml
 ---
@@ -97,14 +98,14 @@ license: MIT
 ---
 ```
 
-### 3.3 Agent 1: doc-flow-initializer (文档流程初始化Agent)
+### 3.3 Agent 1: doc-flow-initializer (文档流程初始化 Agent)
 
 #### 3.3.1 核心职责
 
-为缺乏AI文档驱动开发流程的仓库建立完整的基础设施，包括：
+为缺乏 AI 文档驱动开发流程的仓库建立完整的基础设施，包括：
 
-- **CLAUDE.md创建/更新**: 建立AI协作的核心文件
-- **docs目录结构**: 创建标准的文档组织结构
+- **CLAUDE.md 创建/更新**: 建立 AI 协作的核心文件
+- **docs 目录结构**: 创建标准的文档组织结构
 - **项目类型识别**: 自动识别前端/后端/全栈等项目类型
 - **模板应用**: 根据项目特点应用相应的文档模板
 
@@ -152,22 +153,34 @@ Grep → 搜索项目中的关键配置信息
 
 #### 3.3.3 输出标准
 
-**CLAUDE.md增强内容结构**:
+**CLAUDE.md 增强内容结构**:
+
 ```markdown
-# Project Overview (基于/init生成的基础内容)
+# Project Overview (基于/init 生成的基础内容)
+
 # Development Workflow (增强：文档驱动开发流程)
-  ## Documentation-First Development Process
-  ## Code Change Requirements
-# AI Collaboration Guidelines (增强：AI协作规范)
-  ## AI Development Context
-  ## Documentation Standards for AI
+
+## Documentation-First Development Process
+
+## Code Change Requirements
+
+# AI Collaboration Guidelines (增强：AI 协作规范)
+
+## AI Development Context
+
+## Documentation Standards for AI
+
 # Documentation Standards (新增：文档标准)
-  ## docs/ Directory Structure
-  ## Documentation Templates
-# Code Style Requirements (将由codebase-style-analyzer填充)
+
+## docs/ Directory Structure
+
+## Documentation Templates
+
+# Code Style Requirements (将由 codebase-style-analyzer 填充)
 ```
 
-**docs目录结构**:
+**docs 目录结构**:
+
 ```text
 docs/
 ├── requirements/     # 需求文档
@@ -176,7 +189,7 @@ docs/
 └── analysis/        # 分析报告
 ```
 
-### 3.4 Agent 2: codebase-style-analyzer (代码风格分析Agent)
+### 3.4 Agent 2: codebase-style-analyzer (代码风格分析 Agent)
 
 #### 3.4.1 核心职责
 
@@ -207,20 +220,20 @@ LSP → 语义分析和定义跳转
 6. 文档生成 → 创建可执行的标准文档
 ```
 
-## 3. Commands技术设计
+## 3. Commands 技术设计
 
-### 3.1 Command架构模式
+### 3.1 Command 架构模式
 
 #### 3.1.1 设计原则
 
 - **用户友好**: 简洁的命令语法和清晰的参数设计
-- **功能聚合**: 每个Command封装完整的业务流程
+- **功能聚合**: 每个 Command 封装完整的业务流程
 - **错误处理**: 完善的错误处理和用户反馈机制
 - **进度反馈**: 实时的操作进度和状态信息
 
-#### 3.1.2 Command通用架构
+#### 3.1.2 Command 通用架构
 
-```yaml
+````yaml
 ---
 name: command-name
 description: 简洁的命令描述
@@ -236,20 +249,25 @@ shortcut: "xx"
 ## Usage
 ```bash
 claude command-name [options]
-```
+````
 
 ## Options
+
 参数说明
 
 ## Examples
+
 使用示例
 
 ## Output
+
 输出格式说明
 
 ## Related Commands
+
 相关命令链接
-```
+
+````
 
 ### 3.2 具体Command设计
 
@@ -264,7 +282,7 @@ claude command-name [options]
 3. CLAUDE.md更新 → 集成文档驱动工作流
 4. 模板应用 → 根据项目类型应用相应模板
 5. 初始文档生成 → 创建基础文档文件
-```
+````
 
 **参数设计**:
 
@@ -323,62 +341,14 @@ claude extract-patterns [options]
 
 ## 4. 集成设计
 
-### 4.1 Plugin Manifest更新
+### 4.1 Plugin Manifest 更新
 
-#### 4.1.1 contributes扩展
+#### 4.1.1 contributes 扩展
 
 ```json
 {
   "name": "ai-doc-driven-dev",
-  "displayName": "AI Documentation-Driven Development",
-  "version": "1.0.0",
-  "contributes": {
-    "skills": [
-      {
-        "name": "claude-md-enforcer",
-        "description": "Enforce documentation-driven development workflow in CLAUDE.md"
-      },
-      {
-        "name": "doc-detector",
-        "description": "Detect and analyze project documentation completeness"
-      },
-      {
-        "name": "pattern-extractor",
-        "description": "Extract project-specific coding patterns and conventions"
-      },
-      {
-        "name": "doc-generator",
-        "description": "Generate standardized project documentation"
-      }
-    ],
-    "agents": [
-      {
-        "name": "documentation-analyst",
-        "description": "Expert agent for comprehensive documentation analysis and quality assessment"
-      },
-      {
-        "name": "standards-architect",
-        "description": "Expert agent for establishing and maintaining development standards"
-      }
-    ],
-    "commands": [
-      {
-        "name": "init-doc-driven-dev",
-        "description": "Initialize documentation-driven development workflow",
-        "shortcut": "idd"
-      },
-      {
-        "name": "analyze-docs",
-        "description": "Analyze project documentation completeness and quality",
-        "shortcut": "ad"
-      },
-      {
-        "name": "extract-patterns",
-        "description": "Extract coding patterns and conventions from codebase",
-        "shortcut": "ep"
-      }
-    ]
-  }
+  "version": "1.0.0"
 }
 ```
 
@@ -416,14 +386,14 @@ Output (格式化结果返回)
 
 ### 5.1 性能优化
 
-#### 5.1.1 Agent性能优化
+#### 5.1.1 Agent 性能优化
 
 - **缓存策略**: 对重复分析的项目文件进行缓存
 - **增量分析**: 仅分析变更的文件和内容
 - **并行处理**: 对独立的分析任务进行并行执行
 - **资源限制**: 设置合理的内存和时间限制
 
-#### 5.1.2 Command性能优化
+#### 5.1.2 Command 性能优化
 
 - **参数验证**: 早期参数验证避免无效操作
 - **进度反馈**: 实时进度显示提升用户体验
@@ -461,7 +431,7 @@ standards-architect:
 
 ### 6.1 单元测试
 
-#### 6.1.1 Agent测试
+#### 6.1.1 Agent 测试
 
 ```text
 测试维度:
@@ -471,7 +441,7 @@ standards-architect:
 - 错误处理完整性
 ```
 
-#### 6.1.2 Command测试
+#### 6.1.2 Command 测试
 
 ```text
 测试维度:

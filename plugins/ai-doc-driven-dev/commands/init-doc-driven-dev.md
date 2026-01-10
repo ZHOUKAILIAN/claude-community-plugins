@@ -1,8 +1,8 @@
 ---
-name: init-doc-driven-dev
 description: Initialize documentation-driven development workflow in the current project
 category: setup
 shortcut: "idd"
+model: inherit
 ---
 
 # Initialize Documentation-Driven Development

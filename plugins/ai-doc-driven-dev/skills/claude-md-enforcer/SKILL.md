@@ -1,15 +1,18 @@
 ---
 name: claude-md-enforcer
 description: |
-  Enforce documentation-driven development workflow in CLAUDE.md files.
+  Enforce documentation-driven development workflow in CLAUDE.md files with MANDATORY docs-first process.
   Use when you need to "setup doc-driven development", "enforce documentation workflow", or "initialize project standards".
+  CRITICAL: Ensures CLAUDE.md explicitly prohibits direct code implementation without prior documentation.
 allowed-tools: ["Read", "Write", "Edit", "Glob"]
 license: MIT
 ---
 
 ## Overview
 
-This skill empowers Claude to enforce documentation-driven development workflows in any project. It automatically detects existing CLAUDE.md files and ensures they contain mandatory documentation-first development processes, creating a consistent development standard across all projects using Claude Code CLI.
+This skill empowers Claude to enforce MANDATORY documentation-driven development workflows in any project. It automatically detects existing CLAUDE.md files and ensures they contain STRICT documentation-first development processes with EXPLICIT prohibitions against direct code implementation, creating a consistent development standard across all projects using Claude Code CLI.
+
+**KEY ENFORCEMENT**: The skill MUST insert clear language that **PROHIBITS** any code implementation without prior requirements documentation and technical design approval.
 
 ## How It Works
 
@@ -18,6 +21,8 @@ This skill empowers Claude to enforce documentation-driven development workflows
 3. **Template Injection**: Inserts or updates documentation-driven development standards
 4. **Standards Synchronization**: Ensures CLAUDE.md reflects current project standards from docs/standards/
 5. **Workflow Enforcement**: Establishes mandatory "docs-first, code-second" development process
+6. **Prohibition Insertion**: Adds explicit prohibitions against direct code implementation
+7. **Approval Gate Setup**: Creates mandatory documentation review and approval gates
 
 ## When to Use This Skill
 
@@ -60,13 +65,29 @@ The skill will:
 3. Update relevant sections to reflect new standards
 4. Maintain consistency between project standards and CLAUDE.md directives
 
+### Example 4: Enforcement Enhancement
+
+User request: "Make sure CLAUDE.md strongly enforces documentation-first development"
+
+The skill will:
+1. Insert explicit PROHIBITION statements against direct code implementation
+2. Add mandatory approval gates for all development phases
+3. Include clear consequences for workflow violations
+4. Emphasize that ALL development MUST start with documentation
+5. Add templates and examples for required documentation types
+
 ## Best Practices
 
 - **Preserve Existing Content**: Always read existing CLAUDE.md before making changes to preserve project-specific information
-- **Clear Enforcement**: Use strong, unambiguous language to enforce documentation-first workflow
+- **MANDATORY ENFORCEMENT**: Use strong, unambiguous language with explicit PROHIBITIONS against direct code implementation
 - **Standards Alignment**: Regularly sync CLAUDE.md with evolving project standards
 - **Team Communication**: Ensure all team members understand the mandatory documentation workflow
+- **Approval Gates**: Insert clear approval requirements for all development phases
+- **Violation Consequences**: Include warnings about development process violations
+- **Documentation Templates**: Reference required documentation templates and formats
 
 ## Integration
 
 This skill integrates seamlessly with other documentation tools and project management systems. It leverages standard file operations for maximum compatibility and can be combined with other Claude Code skills for comprehensive project setup and maintenance.
+
+**CRITICAL INTEGRATION**: This skill should be used FIRST in any project setup to establish the mandatory documentation-driven development foundation before any code implementation begins.

@@ -85,19 +85,13 @@ plugins/plugin-a/.claude-plugin/
 ```json
 {
   "name": "plugin-a",
-  "displayName": "Plugin A",
   "version": "1.0.0",
   "description": "Plugin description",
   "author": {
     "name": "author-name",
     "email": "author@example.com"
   },
-  "keywords": ["keyword1", "keyword2"],
-  "contributes": {
-    "commands": [{ "name": "plugin-a" }, { "name": "plugin-a:action" }],
-    "skills": [{ "name": "plugin-a" }],
-    "agents": [{ "name": "plugin-a-helper" }]
-  }
+  "keywords": ["keyword1", "keyword2"]
 }
 ```
 

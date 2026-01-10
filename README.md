@@ -47,13 +47,16 @@ The **Claude Code Plugin Marketplace** is both a repository and a distribution p
 
 2. **Install a Plugin**
    ```bash
-   # Copy the plugin to your Claude Code plugins directory
-   cp -r plugins/ai-doc-driven-dev ~/.claude-code/plugins/
+   # Add this marketplace repository
+   /plugin add marketplace git@github.com:ZHOUKAILIAN/claude-community-plugins.git
+
+   # Install the specific plugin you want
+   /plugin add ai-doc-driven-dev
    ```
 
 3. **Use the Plugin**
-   - Restart Claude Code
-   - The plugin's skills and commands will be available automatically
+   - The plugin will be automatically loaded
+   - All skills and commands will be available immediately
 
 ### For Plugin Developers
 
@@ -86,6 +89,300 @@ The **Claude Code Plugin Marketplace** is both a repository and a distribution p
    # Submit your plugin for review
    ./scripts/publish.sh my-awesome-plugin
    ```
+
+## 📖 Usage Tutorial
+
+### AI Documentation-Driven Development Plugin
+
+This comprehensive tutorial shows you how to use the AI Documentation-Driven Development plugin to transform your project into a documentation-first development workflow.
+
+#### 🚀 Quick Start
+
+**Step 1: Install the Plugin**
+```bash
+# Add the marketplace repository
+/plugin add marketplace git@github.com:ZHOUKAILIAN/claude-community-plugins.git
+
+# Install the AI Documentation-Driven Development plugin
+/plugin add ai-doc-driven-dev
+
+# The plugin will be automatically loaded
+```
+
+**Step 2: Initialize Documentation-Driven Development**
+```bash
+# Navigate to your project root
+cd your-project
+
+# Initialize complete documentation workflow
+claude init-doc-driven-dev
+```
+
+This command will:
+- ✅ Create or update `CLAUDE.md` with documentation-first workflow
+- ✅ Establish standard `docs/` directory structure
+- ✅ Analyze your project type (frontend/backend/fullstack)
+- ✅ Generate project-specific documentation templates
+
+#### 🎯 Core Commands
+
+##### 1. **Initialize Documentation Workflow** (`init-doc-driven-dev`)
+
+**Basic Usage:**
+```bash
+# Standard initialization
+claude init-doc-driven-dev
+
+# With specific project template
+claude init-doc-driven-dev --template frontend
+
+# Force overwrite existing files
+claude init-doc-driven-dev --force
+
+# Analyze only, don't create files
+claude init-doc-driven-dev --analyze-only
+```
+
+**What it creates:**
+```
+your-project/
+├── CLAUDE.md                    # Enhanced with doc-driven workflow
+├── docs/
+│   ├── requirements/
+│   │   └── project-requirements.md
+│   ├── design/
+│   │   └── technical-design.md
+│   ├── standards/
+│   │   ├── coding-standards.md
+│   │   └── project-conventions.md
+│   └── analysis/
+│       └── project-analysis.md
+└── [your existing files]
+```
+
+##### 2. **Analyze Documentation** (`analyze-docs`)
+
+**Basic Usage:**
+```bash
+# Quick documentation analysis
+claude analyze-docs
+
+# Detailed analysis with report
+claude analyze-docs --detailed --save analysis-report.md
+
+# Focus on specific areas
+claude analyze-docs --focus requirements
+claude analyze-docs --focus design
+claude analyze-docs --focus standards
+
+# Export in different formats
+claude analyze-docs --format json --save docs-analysis.json
+claude analyze-docs --format html --save report.html
+```
+
+**What it analyzes:**
+- 📋 **Requirements**: Functional/non-functional requirements completeness
+- 🏗️ **Technical Design**: Architecture, API, database documentation
+- 📏 **Standards**: Coding standards, conventions, workflows
+- 🔍 **Code Documentation**: Inline comments, API docs, configuration
+
+##### 3. **Extract Coding Patterns** (`extract-patterns`)
+
+**Basic Usage:**
+```bash
+# Extract all patterns
+claude extract-patterns
+
+# Project-specific extraction
+claude extract-patterns --type frontend
+claude extract-patterns --type backend
+claude extract-patterns --type fullstack
+
+# Selective pattern extraction
+claude extract-patterns --include naming,api,architecture
+claude extract-patterns --exclude testing,database
+
+# Export patterns
+claude extract-patterns --format json --output patterns.json
+```
+
+**Pattern Types:**
+- `naming` - Variable, function, class, file naming conventions
+- `architecture` - Code organization and structural patterns
+- `api` - API design and endpoint conventions
+- `error-handling` - Exception handling patterns
+- `styling` - Code formatting and style patterns
+- `testing` - Test organization and naming patterns
+- `database` - Database naming and query patterns
+
+#### 🎨 Project-Specific Features
+
+##### Frontend Projects (React, Vue, Angular)
+```bash
+# Initialize with frontend template
+claude init-doc-driven-dev --template frontend
+
+# Extract frontend-specific patterns
+claude extract-patterns --type frontend --include naming,api,styling
+```
+
+**Frontend patterns include:**
+- Component organization and naming
+- State management patterns (Redux, Context, Zustand)
+- Styling approaches (CSS-in-JS, modules, traditional)
+- API integration patterns
+- TypeScript interface conventions
+
+##### Backend Projects (Node.js, Python, Java)
+```bash
+# Initialize with backend template
+claude init-doc-driven-dev --template backend
+
+# Extract backend-specific patterns
+claude extract-patterns --type backend --include api,database,error-handling
+```
+
+**Backend patterns include:**
+- API endpoint organization and naming
+- Data model and entity patterns
+- Authentication and security patterns
+- Database access and ORM usage
+- Response format conventions
+
+##### Full-Stack Projects
+```bash
+# Initialize with full-stack template
+claude init-doc-driven-dev --template fullstack
+
+# Comprehensive pattern extraction
+claude extract-patterns --type fullstack
+```
+
+#### 🔄 Typical Workflow
+
+**For New Projects:**
+```bash
+# 1. Initialize documentation structure
+claude init-doc-driven-dev
+
+# 2. Start developing with documentation-first approach
+# (Write requirements and design docs first)
+
+# 3. Extract patterns as code grows
+claude extract-patterns
+
+# 4. Regularly analyze documentation quality
+claude analyze-docs --detailed
+```
+
+**For Existing Projects:**
+```bash
+# 1. Analyze current documentation state
+claude analyze-docs --detailed --save current-state.md
+
+# 2. Extract existing patterns
+claude extract-patterns --output existing-patterns.md
+
+# 3. Initialize documentation structure
+claude init-doc-driven-dev --force
+
+# 4. Integrate extracted patterns into new structure
+# (Manual step - review and merge patterns)
+
+# 5. Establish ongoing documentation workflow
+```
+
+#### 💡 Best Practices
+
+**1. Start with Analysis**
+```bash
+# Always understand current state first
+claude analyze-docs --detailed
+claude extract-patterns --format json --output current-patterns.json
+```
+
+**2. Use Project-Specific Templates**
+```bash
+# Choose appropriate template for better defaults
+claude init-doc-driven-dev --template frontend    # For React/Vue/Angular
+claude init-doc-driven-dev --template backend     # For APIs/servers
+claude init-doc-driven-dev --template fullstack   # For complete applications
+```
+
+**3. Regular Documentation Maintenance**
+```bash
+# Weekly documentation health check
+claude analyze-docs --focus all --save weekly-check.md
+
+# Monthly pattern updates
+claude extract-patterns --output updated-patterns.md
+```
+
+**4. Integration with Development Workflow**
+- Update documentation BEFORE writing code
+- Use extracted patterns for code reviews
+- Reference standards during development
+- Run analysis before major releases
+
+#### 🛠️ Advanced Usage
+
+**Custom Analysis Focus:**
+```bash
+# Deep dive into specific areas
+claude analyze-docs --focus requirements --detailed
+claude analyze-docs --focus design --format html --save design-analysis.html
+```
+
+**Selective Pattern Extraction:**
+```bash
+# Only naming and API patterns
+claude extract-patterns --include naming,api --output core-patterns.md
+
+# Everything except testing patterns
+claude extract-patterns --exclude testing --format yaml
+```
+
+**Batch Operations:**
+```bash
+# Complete project setup in one go
+claude init-doc-driven-dev --template frontend && \
+claude extract-patterns --type frontend && \
+claude analyze-docs --detailed --save initial-analysis.md
+```
+
+#### 🔍 Troubleshooting
+
+**Common Issues:**
+
+1. **"Project not in Git repository"**
+   ```bash
+   # Initialize Git first
+   git init
+   claude init-doc-driven-dev
+   ```
+
+2. **"Existing docs/ conflicts"**
+   ```bash
+   # Backup existing docs and force initialization
+   mv docs docs-backup
+   claude init-doc-driven-dev --force
+   # Then manually merge important content
+   ```
+
+3. **"No patterns found"**
+   ```bash
+   # Ensure you're in project root with source code
+   claude extract-patterns --type frontend --include naming
+   ```
+
+4. **"Analysis shows 0% completeness"**
+   ```bash
+   # Start with initialization first
+   claude init-doc-driven-dev
+   claude analyze-docs
+   ```
+
+This tutorial covers the complete workflow for implementing documentation-driven development in your projects. For more advanced features and customization options, refer to the individual command documentation.
 
 ## 📚 Documentation
 
@@ -139,8 +436,8 @@ This project is licensed under the MIT License - see individual plugin licenses 
 
 ## 🌐 Community
 
-- **Issues**: [GitHub Issues](https://github.com/your-username/claude-code-plugins/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-username/claude-code-plugins/discussions)
+- **Issues**: [GitHub Issues](https://github.com/ZHOUKAILIAN/claude-community-plugins/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/ZHOUKAILIAN/claude-community-plugins/discussions)
 - **Contributing**: See [CONTRIBUTING.md](CONTRIBUTING.md) *(Coming Soon)*
 
 ---
