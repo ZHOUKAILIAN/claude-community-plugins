@@ -1,0 +1,63 @@
+{
+  "framework_detection": {
+    "express": {
+      "indicators": ["package.json contains express", "app.js or server.js", "routes directory"],
+      "patterns": {
+        "route_definition": "router.method(path, handler)",
+        "middleware_usage": "app.use() pattern",
+        "error_handling": "next(error) pattern"
+      }
+    },
+    "spring": {
+      "indicators": ["pom.xml or build.gradle", "spring annotations", "controller classes"],
+      "patterns": {
+        "controller_naming": "@RestController annotation",
+        "service_layer": "@Service annotation",
+        "data_access": "@Repository pattern"
+      }
+    },
+    "django": {
+      "indicators": ["requirements.txt contains django", "models.py", "views.py"],
+      "patterns": {
+        "model_definition": "class Model(models.Model)",
+        "view_pattern": "function or class-based views",
+        "url_routing": "urlpatterns list"
+      }
+    },
+    "fastapi": {
+      "indicators": ["requirements.txt contains fastapi", "main.py", "routers directory"],
+      "patterns": {
+        "route_definition": "@app.method decorator",
+        "dependency_injection": "Depends() usage",
+        "response_models": "response_model parameter"
+      }
+    }
+  },
+  "common_patterns": {
+    "database": ["postgresql", "mysql", "mongodb", "sqlite"],
+    "orm": ["sequelize", "typeorm", "prisma", "hibernate", "django-orm"],
+    "authentication": ["jwt", "passport", "oauth", "session"],
+    "validation": ["joi", "yup", "pydantic", "bean-validation"],
+    "testing": ["jest", "mocha", "pytest", "junit"]
+  },
+  "api_patterns": {
+    "rest": {
+      "endpoints": "/api/resource pattern",
+      "methods": ["GET", "POST", "PUT", "DELETE"],
+      "response_format": "JSON with status codes"
+    },
+    "graphql": {
+      "schema": "type definitions",
+      "resolvers": "resolver functions",
+      "queries": "query and mutation types"
+    }
+  },
+  "naming_conventions": {
+    "files": "snake_case or kebab-case",
+    "classes": "PascalCase",
+    "functions": "camelCase or snake_case",
+    "constants": "UPPER_SNAKE_CASE",
+    "database_tables": "snake_case",
+    "api_endpoints": "kebab-case"
+  }
+}

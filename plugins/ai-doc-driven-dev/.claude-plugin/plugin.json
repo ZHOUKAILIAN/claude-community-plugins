@@ -1,0 +1,68 @@
+{
+  "name": "ai-doc-driven-dev",
+  "displayName": "AI Documentation-Driven Development",
+  "version": "1.0.0",
+  "description": "Transform projects into documentation-driven development workflows with AI assistance. Automatically detects, generates, and maintains project documentation standards.",
+  "author": {
+    "name": "Claude Code Plugin Marketplace",
+    "email": "noreply@anthropic.com"
+  },
+  "keywords": [
+    "documentation",
+    "doc-driven",
+    "development-workflow",
+    "project-standards",
+    "ai-assisted",
+    "claude-md",
+    "requirements",
+    "technical-design"
+  ],
+  "contributes": {
+    "skills": [
+      {
+        "name": "claude-md-enforcer",
+        "description": "Enforce documentation-driven development workflow in CLAUDE.md"
+      },
+      {
+        "name": "doc-detector",
+        "description": "Detect and analyze project documentation completeness"
+      },
+      {
+        "name": "pattern-extractor",
+        "description": "Extract project-specific coding patterns and conventions"
+      },
+      {
+        "name": "doc-generator",
+        "description": "Generate standardized project documentation"
+      }
+    ],
+    "agents": [
+      {
+        "name": "doc-workflow-transformer",
+        "description": "Expert agent for transforming projects into documentation-driven development workflows"
+      },
+      {
+        "name": "project-standards-analyzer",
+        "description": "Expert agent for analyzing project structure and extracting development standards"
+      }
+    ],
+    "commands": [
+      {
+        "name": "init-doc-driven-dev",
+        "description": "Initialize documentation-driven development workflow",
+        "shortcut": "idd"
+      },
+      {
+        "name": "analyze-docs",
+        "description": "Analyze project documentation completeness and quality",
+        "shortcut": "ad"
+      },
+      {
+        "name": "extract-patterns",
+        "description": "Extract coding patterns and conventions from codebase",
+        "shortcut": "ep"
+      }
+    ]
+  },
+  "license": "MIT"
+}

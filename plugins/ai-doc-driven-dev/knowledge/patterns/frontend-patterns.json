@@ -1,0 +1,41 @@
+{
+  "framework_detection": {
+    "react": {
+      "indicators": ["package.json contains react", "jsx/tsx files", "components directory"],
+      "patterns": {
+        "component_naming": "PascalCase for components",
+        "file_structure": "component per file",
+        "props_interface": "interface ending with Props"
+      }
+    },
+    "vue": {
+      "indicators": ["package.json contains vue", "vue files", "components directory"],
+      "patterns": {
+        "component_naming": "PascalCase for components",
+        "file_structure": "single file components",
+        "props_interface": "defineProps usage"
+      }
+    },
+    "angular": {
+      "indicators": ["package.json contains @angular", "ts files", "modules directory"],
+      "patterns": {
+        "component_naming": "kebab-case selectors",
+        "file_structure": "component.ts pattern",
+        "service_injection": "constructor injection"
+      }
+    }
+  },
+  "common_patterns": {
+    "api_calls": ["axios", "fetch", "http client"],
+    "state_management": ["redux", "zustand", "context", "pinia"],
+    "styling": ["styled-components", "css modules", "tailwind", "scss"],
+    "testing": ["jest", "vitest", "cypress", "testing-library"]
+  },
+  "naming_conventions": {
+    "components": "PascalCase",
+    "files": "kebab-case or camelCase",
+    "directories": "kebab-case",
+    "constants": "UPPER_SNAKE_CASE",
+    "functions": "camelCase"
+  }
+}
