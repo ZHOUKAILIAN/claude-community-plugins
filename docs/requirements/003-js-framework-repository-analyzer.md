@@ -81,9 +81,6 @@ plugins/js-framework-analyzer/
 │   ├── analyze-mf-isolation.md
 │   ├── analyze-ai-platform.md
 │   └── analyze-reactivity.md
-├── knowledge/
-│   ├── analysis-patterns.md
-│   └── framework-knowledge.md
 ├── README.md
 └── README-zh.md
 ```

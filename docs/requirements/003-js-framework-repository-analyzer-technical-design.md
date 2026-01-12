@@ -44,10 +44,6 @@ js-framework-analyzer/
 │   ├── analyze-mf-isolation.md  # 分析微前端隔离机制
 │   ├── analyze-ai-platform.md   # 分析AI平台架构
 │   └── analyze-reactivity.md    # 分析响应式系统
-├── knowledge/                   # 知识库和分析模式
-│   ├── analysis-patterns.md     # 通用分析模式
-│   ├── isolation-strategies.md # 隔离策略参考
-│   └── reactivity-patterns.md   # 响应式模式参考
 ├── README.md                    # 英文文档
 └── README-zh.md                 # 中文文档
 ```
