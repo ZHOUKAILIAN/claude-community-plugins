@@ -16,6 +16,7 @@ The **Claude Code Plugin Marketplace** is both a repository and a distribution p
 | Plugin | Features | Description |
 |--------|----------|-------------|
 | **AI Documentation-Driven Development** | CLAUDE.md Enforcement, Documentation Analysis, Pattern Extraction, Smart Documentation Generation | Establishes documentation-first development workflows and maintains project documentation standards |
+| **JS Framework Analyzer** | Microfrontend Isolation Analysis ✅, AI Platform Architecture Analysis 🚧, Reactivity System Analysis ✅ | Analyzes JavaScript framework source code to understand core implementation mechanisms with bilingual reports and PlantUML diagrams |
 
 ## 📦 Plugin Details
 
@@ -31,6 +32,37 @@ The **Claude Code Plugin Marketplace** is both a repository and a distribution p
 - **📝 Smart Generation**: Creates standardized documentation based on project analysis and templates
 
 **Skills Included**: claude-md-enforcer, doc-detector, pattern-extractor, doc-generator
+
+### JS Framework Analyzer
+**Location**: `plugins/js-framework-analyzer/`
+
+**Purpose**: Analyze JavaScript framework source code to understand core implementation mechanisms through exploratory code analysis
+
+**Key Capabilities**:
+- **🔍 Microfrontend Isolation Analysis**: Deep analysis of JS and CSS isolation mechanisms in microfrontend frameworks (qiankun, wujie, single-spa, emp) ✅
+- **🏗️ AI Platform Architecture Analysis**: Comprehensive analysis of AI application platform architecture and core functionality (Coze, Dify, FastGPT) *TODO*
+- **⚡ Reactivity System Analysis**: Detailed analysis of frontend framework reactivity systems (Vue, React, SolidJS, Svelte) ✅
+- **🌐 Bilingual Reports**: All analysis reports generated in both English and Chinese with equivalent content ✅
+- **📊 PlantUML Diagrams**: Visual structure diagrams showing report organization and component relationships ✅
+
+**Skills Included**:
+- ✅ microfrontend-isolation-analyzer
+- 🚧 ai-platform-analyzer *(Coming Soon)*
+- ✅ reactivity-system-analyzer
+- ✅ structure-explainer
+
+**Report Features**:
+- Comprehensive analysis of core implementation mechanisms
+- Key code snippets with detailed annotations
+- Trade-offs and design decisions analysis
+- Summary & insights with best practices recommendations
+- PlantUML structure diagrams for visual understanding
+- Bilingual output (English/Chinese) with consistent content
+
+**Implementation Status**:
+- ✅ Microfrontend Isolation Analysis: Fully implemented and documented
+- 🚧 AI Platform Architecture Analysis: Design completed, implementation in progress
+- ✅ Reactivity System Analysis: Fully implemented and documented
 
 *More plugins coming soon...*
 
@@ -444,4 +476,4 @@ This project is licensed under the MIT License - see individual plugin licenses 
 
 **[中文版本](README-zh.md) | [English Version](README.md)**
 
-*Last Updated: 2026-01-10*
+*Last Updated: 2026-01-13*

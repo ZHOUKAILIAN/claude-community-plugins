@@ -9,6 +9,11 @@
       "name": "ai-doc-driven-dev",
       "source": "./plugins/ai-doc-driven-dev",
       "description": "Transform projects into documentation-driven development workflows with AI assistance. Automatically detects, generates, and maintains project documentation standards, ensuring consistent and maintainable development practices."
+    },
+    {
+      "name": "js-framework-analyzer",
+      "source": "./plugins/js-framework-analyzer",
+      "description": "Analyze JavaScript framework source code repositories to understand core implementation mechanisms including microfrontend isolation, AI platform architecture, and reactivity systems."
     }
   ]
 }

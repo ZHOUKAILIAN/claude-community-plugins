@@ -50,7 +50,37 @@ js-framework-analyzer/
 
 ## 2. 核心技能详细设计
 
-### 2.1 microfrontend-isolation-analyzer (微前端隔离机制分析技能)
+### 2.1 报告语言支持策略
+
+**核心要求**：所有分析报告必须同时提供英文和中文两个版本，确保双语文档的完整性和一致性。
+
+**实现策略**：
+
+1. **默认行为**：所有分析命令默认生成中英文双语报告
+2. **可选控制**：通过 `--language` 参数控制输出语言
+   - `--language both` (默认)：生成英文和中文两个文件
+   - `--language en`：仅生成英文报告
+   - `--language zh`：仅生成中文报告
+3. **文件命名规范**：
+   - 英文版：`{report-name}-en.md`
+   - 中文版：`{report-name}-zh.md`
+4. **内容一致性**：中英文报告内容必须完全对应，信息等价
+
+**报告语言模板**：
+
+```typescript
+interface ReportLanguageConfig {
+  language: 'both' | 'en' | 'zh';
+  default: 'both';
+}
+
+interface BilingualReport {
+  englishReport: string;
+  chineseReport: string;
+}
+```
+
+### 2.2 microfrontend-isolation-analyzer (微前端隔离机制分析技能)
 
 **功能职责**：
 - 分析微前端框架的JS隔离实现机制
@@ -104,7 +134,7 @@ interface MicrofrontendIsolationAnalysisResult {
 3. **处理逻辑分析**：分析样式加载、转换、隔离的处理逻辑
 4. **机制总结**：用自然语言描述发现的CSS隔离策略
 
-### 2.2 ai-platform-analyzer (AI平台架构分析技能)
+### 2.2 ai-platform-analyzer (AI Platform Architecture Analyzer) **[NOT AVAILABLE]**
 
 **功能职责**：
 - 分析AI应用平台的整体架构设计
@@ -242,6 +272,10 @@ parameters:
     type: string
     required: false
     description: Analysis focus: 'js', 'css', or 'both' (default: 'both')
+  - name: language
+    type: string
+    required: false
+    description: Report language: 'en', 'zh', or 'both' (default: 'both')
 ---
 ```
 
@@ -249,7 +283,7 @@ parameters:
 - `/analyze-mf-isolation`
 - `/analyze-mf-isolation --focus js`
 
-### 3.2 analyze-ai-platform 命令
+### 3.2 analyze-ai-platform 命令 **[TODO: 待实现]**
 
 **命令定义**：
 ```markdown
@@ -263,6 +297,10 @@ parameters:
     type: string
     required: false
     description: Analysis depth: 'overview', 'modules', or 'detailed' (default: 'modules')
+  - name: language
+    type: string
+    required: false
+    description: Report language: 'en', 'zh', or 'both' (default: 'both')
 ---
 ```
 
@@ -284,6 +322,10 @@ parameters:
     type: string
     required: false
     description: Analysis focus: 'tracking', 'update', or 'full' (default: 'full')
+  - name: language
+    type: string
+    required: false
+    description: Report language: 'en', 'zh', or 'both' (default: 'both')
 ---
 ```
 
@@ -435,26 +477,26 @@ skinparam backgroundColor #FEFEFE
 title JS Framework Analysis Report Structure
 
 package "微前端隔离机制分析报告" {
-  [框架信息] as mf_info
-  [JS隔离实现\n- 核心文件\n- 实现机制\n- 关键代码片段] as mf_js
-  [CSS隔离实现\n- 核心文件\n- 实现机制\n- 关键代码片段] as mf_css
-  [总结] as mf_summary
+  [框架信息\n- 名称\n- 版本\n- 技术栈\n- 目录概览] as mf_info
+  [JS隔离实现\n- 核心文件\n- 实现机制\n- 关键代码片段\n- 权衡与设计决策] as mf_js
+  [CSS隔离实现\n- 核心文件\n- 实现机制\n- 关键代码片段\n- 权衡与设计决策] as mf_css
+  [总结与洞察\n- 总体评估\n- 对比要点\n- 最佳实践] as mf_summary
 }
 
 package "响应式系统分析报告" {
-  [框架信息] as rx_info
-  [响应式实现\n- 核心文件\n- 实现机制\n- 关键代码片段] as rx_reactive
+  [框架信息\n- 名称\n- 版本\n- 技术栈\n- 目录概览] as rx_info
+  [响应式实现\n- 核心文件\n- 实现机制\n- 关键代码片段\n- 权衡与设计决策] as rx_reactive
   [组件更新机制\n- 依赖追踪\n- 更新触发\n- 批量更新] as rx_update
-  [总结] as rx_summary
+  [总结与洞察\n- 总体评估\n- 对比要点\n- 最佳实践] as rx_summary
 }
 
 package "AI平台架构分析报告" {
-  [平台信息] as ai_info
+  [平台信息\n- 名称\n- 版本\n- 技术栈\n- 目录概览] as ai_info
   [核心架构\n- 前端架构\n- 后端架构\n- AI集成\n- 部署架构] as ai_arch
-  [核心功能模块] as ai_modules
-  [数据流] as ai_flow
-  [API结构] as ai_api
-  [总结] as ai_summary
+  [核心模块\n- 模块名称\n- 实现位置\n- 依赖关系] as ai_modules
+  [数据流\n- 请求流\n- 数据处理\n- 响应流] as ai_flow
+  [API结构\n- 端点模式\n- 认证方式\n- 数据格式] as ai_api
+  [总结与洞察\n- 总体评估\n- 设计模式\n- 最佳实践] as ai_summary
 }
 
 mf_info --> mf_js
@@ -476,14 +518,67 @@ ai_api --> ai_summary
 
 ### 7.2 微前端隔离机制分析报告模板
 
+**英文版模板** (`isolation-report-en.md`)：
+
+```markdown
+# Microfrontend Framework Isolation Analysis
+
+## Framework Information
+- Framework: {name}
+- Version: {version}
+- Tech Stack: {techStack}
+
+## JavaScript Isolation
+
+### Core Files
+{jsIsolationFiles}
+
+### Implementation Mechanism
+{jsIsolationMechanism}
+
+### Key Code Snippets
+{jsIsolationCode}
+
+### Trade-offs & Design Decisions
+{jsTradeoffs}
+
+## CSS Isolation
+
+### Core Files
+{cssIsolationFiles}
+
+### Implementation Mechanism
+{cssIsolationMechanism}
+
+### Key Code Snippets
+{cssIsolationCode}
+
+### Trade-offs & Design Decisions
+{cssTradeoffs}
+
+## Summary & Insights
+
+### Overall Assessment
+{overallAssessment}
+
+### Comparison Points
+{comparisonPoints}
+
+### Best Practices
+{bestPractices}
+```
+
+**中文版模板** (`isolation-report-zh.md`)：
+
 ```markdown
 # 微前端框架隔离机制分析
 
 ## 框架信息
 - 框架名称：{name}
 - 版本：{version}
+- 技术栈：{techStack}
 
-## JS隔离实现
+## JavaScript 隔离实现
 
 ### 核心文件
 {jsIsolationFiles}
@@ -494,7 +589,10 @@ ai_api --> ai_summary
 ### 关键代码片段
 {jsIsolationCode}
 
-## CSS隔离实现
+### 权衡与设计决策
+{jsTradeoffs}
+
+## CSS 隔离实现
 
 ### 核心文件
 {cssIsolationFiles}
@@ -505,11 +603,71 @@ ai_api --> ai_summary
 ### 关键代码片段
 {cssIsolationCode}
 
-## 总结
-{summary}
+### 权衡与设计决策
+{cssTradeoffs}
+
+## 总结与洞察
+
+### 总体评估
+{overallAssessment}
+
+### 对比要点
+{comparisonPoints}
+
+### 最佳实践
+{bestPractices}
 ```
 
 ### 7.3 响应式系统分析报告模板
+
+**英文版模板** (`reactivity-report-en.md`)：
+
+```markdown
+# Frontend Framework Reactivity System Analysis
+
+## Framework Information
+- Framework: {name}
+- Version: {version}
+- Tech Stack: {techStack}
+
+## Reactivity Implementation
+
+### Core Files
+{reactivityFiles}
+
+### Implementation Mechanism
+{reactivityMechanism}
+
+### Key Code Snippets
+{reactivityCode}
+
+### Trade-offs & Design Decisions
+{reactivityTradeoffs}
+
+## Component Update Mechanism
+
+### Dependency Tracking
+{trackingMechanism}
+
+### Update Triggering
+{updateMechanism}
+
+### Batch Updates
+{batchUpdateInfo}
+
+## Summary & Insights
+
+### Overall Assessment
+{overallAssessment}
+
+### Comparison Points
+{comparisonPoints}
+
+### Best Practices
+{bestPractices}
+```
+
+**中文版模板** (`reactivity-report-zh.md`)：
 
 ```markdown
 # 前端框架响应式系统分析
@@ -517,6 +675,7 @@ ai_api --> ai_summary
 ## 框架信息
 - 框架名称：{name}
 - 版本：{version}
+- 技术栈：{techStack}
 
 ## 响应式实现
 
@@ -529,6 +688,9 @@ ai_api --> ai_summary
 ### 关键代码片段
 {reactivityCode}
 
+### 权衡与设计决策
+{reactivityTradeoffs}
+
 ## 组件更新机制
 
 ### 依赖追踪
@@ -540,17 +702,83 @@ ai_api --> ai_summary
 ### 批量更新
 {batchUpdateInfo}
 
-## 总结
-{summary}
+## 总结与洞察
+
+### 总体评估
+{overallAssessment}
+
+### 对比要点
+{comparisonPoints}
+
+### 最佳实践
+{bestPractices}
 ```
 
-### 7.4 AI平台架构分析报告模板
+### 7.4 AI平台架构分析报告模板 **[TODO: 待实现]**
+
+**英文版模板** (`architecture-report-en.md`)：
+
+```markdown
+# AI Application Platform Architecture Analysis
+
+## Platform Information
+- Platform: {name}
+- Version: {version}
+- Tech Stack: {techStack}
+
+## Core Architecture
+
+### Frontend Architecture
+{frontendArchitecture}
+
+### Backend Architecture
+{backendArchitecture}
+
+### AI Integration
+{aiIntegration}
+
+### Deployment Architecture
+{deploymentArchitecture}
+
+## Core Modules
+
+{coreModules}
+
+## Data Flow
+
+{dataFlow}
+
+## API Structure
+
+### Endpoint Patterns
+{endpointPatterns}
+
+### Authentication & Authorization
+{authMethod}
+
+### Data Format
+{dataFormat}
+
+## Summary & Insights
+
+### Overall Assessment
+{overallAssessment}
+
+### Design Patterns
+{designPatterns}
+
+### Best Practices
+{bestPractices}
+```
+
+**中文版模板** (`architecture-report-zh.md`)：
 
 ```markdown
 # AI应用平台架构分析
 
 ## 平台信息
 - 平台名称：{name}
+- 版本：{version}
 - 技术栈：{techStack}
 
 ## 核心架构
@@ -567,7 +795,7 @@ ai_api --> ai_summary
 ### 部署架构
 {deploymentArchitecture}
 
-## 核心功能模块
+## 核心模块
 
 {coreModules}
 
@@ -577,17 +805,57 @@ ai_api --> ai_summary
 
 ## API结构
 
-{apiStructure}
+### 端点模式
+{endpointPatterns}
 
-## 总结
-{summary}
+### 认证与授权
+{authMethod}
+
+### 数据格式
+{dataFormat}
+
+## 总结与洞察
+
+### 总体评估
+{overallAssessment}
+
+### 设计模式
+{designPatterns}
+
+### 最佳实践
+{bestPractices}
 ```
 
 ### 7.5 报告输出位置
 
-- 默认输出到项目根目录：`{project-root}/js-framework-analysis-report.md`
-- 支持自定义输出路径
-- 支持输出到控制台
+**文件命名规范**：
+
+- 默认输出到项目根目录
+- 英文版：`{project-root}/{report-name}-en.md`
+- 中文版：`{project-root}/{report-name}-zh.md`
+- JSON格式（如选择）：`{project-root}/{report-name}.json`
+
+**输出位置示例**：
+
+```bash
+# 微前端隔离分析
+isolation-report-en.md
+isolation-report-zh.md
+
+# 响应式系统分析
+reactivity-report-en.md
+reactivity-report-zh.md
+
+# AI平台架构分析
+architecture-report-en.md
+architecture-report-zh.md
+```
+
+**输出控制**：
+
+- 支持 `--save` 参数指定自定义路径
+- 支持输出到控制台（仅显示内容，不保存文件）
+- 通过 `--language` 参数控制生成的语言版本
 
 ---
 
