@@ -14,14 +14,34 @@ status: disabled
 
 This skill specializes in analyzing AI application platform source code to discover and explain the overall architecture and core functionality implementations. It explores the codebase systematically to identify modules, understand their interactions, and document the platform's design without making assumptions about specific implementations.
 
+**MANDATORY OUTPUT FORMAT**: This skill MUST generate reports that strictly follow the predefined structure with ALL sections included:
+- Overall Structure (with PlantUML diagram)
+- Platform Information
+- Core Architecture
+- Core Modules
+- Data Flow
+- API Structure
+- Summary & Insights
+
+Reports that omit any of these sections are considered incomplete and unacceptable.
+
 ## How It Works
 
 1. **Platform Detection**: Identifies AI platforms through package.json, directory structure, and configuration files
 2. **Architecture Exploration**: Scans directory structure to identify major modules and their purposes
 3. **Core Module Analysis**: Analyzes key modules to understand their implementation and responsibilities
 4. **Interaction Mapping**: Documents how different modules interact with each other
-5. **Architecture Documentation**: Summarizes discovered architecture in clear Chinese
+5. **Architecture Documentation**: Summarizes discovered architecture in clear language
 6. **Bilingual Report Generation**: Generates comprehensive analysis reports in both English and Chinese with PlantUML structure diagrams
+
+**CRITICAL REQUIREMENT**: The generated reports MUST strictly follow the predefined format structure including:
+- **Overall Structure** section with PlantUML diagram
+- **Platform Information** section
+- **Core Architecture** section with frontend, backend, AI integration, and deployment architecture
+- **Core Modules** section with module names, locations, descriptions, and dependencies
+- **Data Flow** section with request flow, data processing, and response flow
+- **API Structure** section with endpoint patterns, authentication, and data format
+- **Summary & Insights** section with overall assessment, design patterns, and best practices
 
 ## When to Use This Skill
 
@@ -104,11 +124,19 @@ api --> summary
 - **Systematic Exploration**: Start with directory structure, then dive into specific modules
 - **Module-First Approach**: Identify modules before analyzing their implementation
 - **Interaction Focus**: Pay attention to how modules communicate and interact
+- **STRICT FORMAT ADHERENCE**: Always generate reports that include ALL required sections:
+  1. **Overall Structure** with PlantUML diagram (MANDATORY)
+  2. **Platform Information** section
+  3. **Core Architecture** section
+  4. **Core Modules** section
+  5. **Data Flow** section
+  6. **API Structure** section
+  7. **Summary & Insights** section
 - **Bilingual Documentation**: Generate reports in both English and Chinese with equivalent content
 - **PlantUML Diagrams**: Include PlantUML structure diagrams to visualize report organization
 - **Clear Documentation**: Use clear Chinese and English descriptions for architectural concepts
 - **Tech Stack Awareness**: Identify and document the technology stack used
-- **Summary & Insights**: Always include assessment, design patterns, and best practices in reports
+- **Complete Analysis**: Never skip sections or provide partial reports - all sections must be present
 
 ## Integration
 

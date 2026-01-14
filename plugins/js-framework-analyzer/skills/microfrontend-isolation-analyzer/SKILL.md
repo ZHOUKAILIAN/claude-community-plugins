@@ -12,14 +12,30 @@ status: enabled
 
 This skill specializes in analyzing microfrontend framework source code to discover and explain how JavaScript and CSS isolation are implemented. It explores the codebase to identify core files, understand isolation strategies, and document the actual implementation mechanisms without making assumptions.
 
+**MANDATORY OUTPUT FORMAT**: This skill MUST generate reports that strictly follow the predefined structure with ALL sections included:
+- Overall Structure (with PlantUML diagram)
+- Framework Information
+- JavaScript Isolation
+- CSS Isolation
+- Summary & Insights
+
+Reports that omit any of these sections are considered incomplete and unacceptable.
+
 ## How It Works
 
 1. **Repository Detection**: Identifies microfrontend frameworks through package.json, directory structure, and key files
 2. **Isolation Keyword Search**: Searches for isolation-related keywords (sandbox, shadow, scope, isolate, etc.)
 3. **Core File Identification**: Locates files containing isolation implementation logic
 4. **Code Relationship Analysis**: Maps dependencies and call relationships between core files
-5. **Mechanism Documentation**: Summarizes discovered implementation mechanisms in clear Chinese
+5. **Mechanism Documentation**: Summarizes discovered implementation mechanisms in clear language
 6. **Bilingual Report Generation**: Generates comprehensive analysis reports in both English and Chinese with PlantUML structure diagrams
+
+**CRITICAL REQUIREMENT**: The generated reports MUST strictly follow the predefined format structure including:
+- **Overall Structure** section with PlantUML diagram
+- **Framework Information** section
+- **JavaScript Isolation** section with core files, mechanisms, code snippets, and trade-offs
+- **CSS Isolation** section with core files, mechanisms, code snippets, and trade-offs
+- **Summary & Insights** section with overall assessment, comparison points, and best practices
 
 ## When to Use This Skill
 
@@ -96,11 +112,17 @@ css --> summary
 - **Exploratory Approach**: Don't assume implementation methods; discover them through code exploration
 - **Keyword-Based Search**: Use diverse keywords to find isolation-related code
 - **Code Tracing**: Follow function calls and imports to understand the complete flow
+- **STRICT FORMAT ADHERENCE**: Always generate reports that include ALL required sections:
+  1. **Overall Structure** with PlantUML diagram (MANDATORY)
+  2. **Framework Information** section
+  3. **JavaScript Isolation** section
+  4. **CSS Isolation** section
+  5. **Summary & Insights** section
 - **Bilingual Documentation**: Generate reports in both English and Chinese with equivalent content
 - **PlantUML Diagrams**: Include PlantUML structure diagrams to visualize report organization
 - **Clear Documentation**: Use clear Chinese and English descriptions for technical concepts
 - **Code Examples**: Include relevant code snippets to illustrate mechanisms
-- **Summary & Insights**: Always include assessment, comparison points, and best practices in reports
+- **Complete Analysis**: Never skip sections or provide partial reports - all sections must be present
 
 ## Integration
 

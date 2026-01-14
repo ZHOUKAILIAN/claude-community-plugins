@@ -12,14 +12,30 @@ status: enabled
 
 This skill specializes in analyzing frontend framework source code to discover and explain how the reactivity system is implemented. It explores the codebase to identify core files, understand the reactive programming model, and document the actual implementation mechanism without making assumptions about specific approaches.
 
+**MANDATORY OUTPUT FORMAT**: This skill MUST generate reports that strictly follow the predefined structure with ALL sections included:
+- Overall Structure (with PlantUML diagram)
+- Framework Information
+- Reactivity Implementation
+- Component Update Mechanism
+- Summary & Insights
+
+Reports that omit any of these sections are considered incomplete and unacceptable.
+
 ## How It Works
 
 1. **Framework Detection**: Identifies frontend frameworks through package.json, directory structure, and key files
 2. **Reactivity Keyword Search**: Searches for reactivity-related keywords (reactive, effect, watch, proxy, observable, etc.)
 3. **Core File Identification**: Locates files containing reactivity implementation logic
 4. **Code Relationship Analysis**: Maps dependencies and call relationships between core files
-5. **Mechanism Documentation**: Summarizes discovered reactivity implementation in clear Chinese
+5. **Mechanism Documentation**: Summarizes discovered reactivity implementation in clear language
 6. **Bilingual Report Generation**: Generates comprehensive analysis reports in both English and Chinese with PlantUML structure diagrams
+
+**CRITICAL REQUIREMENT**: The generated reports MUST strictly follow the predefined format structure including:
+- **Overall Structure** section with PlantUML diagram
+- **Framework Information** section
+- **Reactivity Implementation** section with core files, mechanisms, code snippets, and trade-offs
+- **Component Update Mechanism** section with dependency tracking, update triggering, and batch updates
+- **Summary & Insights** section with overall assessment, comparison points, and best practices
 
 ## When to Use This Skill
 
@@ -95,11 +111,17 @@ update --> summary
 - **Exploratory Approach**: Don't assume implementation methods; discover them through code exploration
 - **Keyword-Based Search**: Use diverse keywords to find reactivity-related code
 - **Code Tracing**: Follow function calls and imports to understand the complete flow
+- **STRICT FORMAT ADHERENCE**: Always generate reports that include ALL required sections:
+  1. **Overall Structure** with PlantUML diagram (MANDATORY)
+  2. **Framework Information** section
+  3. **Reactivity Implementation** section
+  4. **Component Update Mechanism** section
+  5. **Summary & Insights** section
 - **Bilingual Documentation**: Generate reports in both English and Chinese with equivalent content
 - **PlantUML Diagrams**: Include PlantUML structure diagrams to visualize report organization
 - **Clear Documentation**: Use clear Chinese and English descriptions for technical concepts
 - **Code Examples**: Include relevant code snippets to illustrate mechanisms
-- **Summary & Insights**: Always include assessment, comparison points, and best practices in reports
+- **Complete Analysis**: Never skip sections or provide partial reports - all sections must be present
 
 ## Integration
 

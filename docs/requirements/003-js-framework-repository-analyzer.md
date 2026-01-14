@@ -30,6 +30,25 @@
 - 识别样式管理相关的核心文件和代码
 - 分析CSS隔离策略的实现细节（不预设具体方案）
 
+##### DOM 元素拦截分析
+- **根级DOM元素拦截**：分析对 `html`、`body`、`head` 元素访问的拦截机制
+- **document对象拦截**：分析对 `document.querySelector`、`document.getElementById`、`document.createElement` 等方法的拦截
+- **DOM操作隔离**：分析如何确保子应用的DOM操作范围限制和隔离
+- **DOM事件拦截**：分析对全局事件监听的拦截和代理机制
+
+##### API 拦截分析
+- **浏览器原生API拦截**：分析对 `location`、`history`、`navigator` 等浏览器API的拦截
+- **存储API拦截**：分析对 `localStorage`、`sessionStorage`、`indexedDB` 等存储API的拦截
+- **全局对象拦截**：分析对 `window`、`global`、`globalThis` 等全局对象的访问控制
+- **网络请求拦截**：分析对 `fetch`、`XMLHttpRequest` 等网络请求API的拦截和代理
+- **定时器API拦截**：分析对 `setTimeout`、`setInterval` 等定时器API的拦截
+
+##### 拦截策略深度分析
+- **拦截实现技术**：分析使用的技术手段（Proxy、Object.defineProperty、函数重写、原型链修改等）
+- **拦截范围控制**：分析哪些API被拦截、哪些被放行的策略和原因
+- **拦截时机管理**：分析拦截发生的时机（应用加载前、运行时、卸载时等）
+- **拦截恢复机制**：分析应用卸载时如何恢复被拦截的API
+
 ---
 
 ### 2. AI应用平台源码（AI Platform Source）
@@ -108,6 +127,7 @@ plugins/js-framework-analyzer/
 ## 框架信息
 - 框架名称：{name}
 - 版本：{version}
+- 技术栈：{techStack}
 
 ## JS隔离实现
 ### 核心文件
@@ -128,6 +148,66 @@ plugins/js-framework-analyzer/
 
 ### 关键代码片段
 {cssIsolationCode}
+
+## DOM 元素拦截实现
+### 核心文件
+{domInterceptionFiles}
+
+### 拦截机制
+#### 根级DOM元素拦截
+{htmlBodyHeadInterception}
+
+#### document对象拦截
+{documentInterception}
+
+#### DOM操作隔离
+{domOperationIsolation}
+
+### 关键代码片段
+{domInterceptionCode}
+
+## API 拦截实现
+### 核心文件
+{apiInterceptionFiles}
+
+### 拦截机制
+#### 浏览器原生API拦截
+{browserApiInterception}
+
+#### 存储API拦截
+{storageApiInterception}
+
+#### 全局对象拦截
+{globalObjectInterception}
+
+#### 网络请求拦截
+{networkApiInterception}
+
+### 关键代码片段
+{apiInterceptionCode}
+
+## 拦截策略深度分析
+### 拦截实现技术
+{interceptionTechniques}
+
+### 拦截范围控制
+{interceptionScope}
+
+### 拦截时机管理
+{interceptionTiming}
+
+### 拦截恢复机制
+{interceptionRecovery}
+
+## 总结与洞察
+### 总体评估
+{overallAssessment}
+
+### 隔离机制对比
+{isolationComparison}
+
+### 最佳实践建议
+{bestPractices}
 ```
 
 #### 响应式系统分析报告

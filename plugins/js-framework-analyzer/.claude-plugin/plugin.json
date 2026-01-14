@@ -1,7 +1,7 @@
 {
   "name": "js-framework-analyzer",
   "description": "Analyze JavaScript framework source code repositories to understand core implementation mechanisms including microfrontend isolation, AI platform architecture, and reactivity systems.",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "author": {
     "name": "Claude Code Plugin Marketplace",
     "email": "noreply@anthropic.com"

@@ -95,6 +95,7 @@ interface MicrofrontendIsolationAnalysisResult {
   frameworkInfo: {
     name: string;
     version: string;
+    techStack: string[];
   };
   jsIsolation: {
     coreFiles: string[];           // 核心隔离文件路径
@@ -116,6 +117,37 @@ interface MicrofrontendIsolationAnalysisResult {
       explanation: string;
     }[];
   };
+  domInterception: {
+    coreFiles: string[];           // DOM拦截核心文件路径
+    htmlBodyHeadInterception: string; // html、body、head元素拦截机制
+    documentInterception: string;   // document对象拦截机制
+    domOperationIsolation: string; // DOM操作隔离机制
+    keyCodeSnippets: {
+      file: string;
+      lineRange: string;
+      code: string;
+      explanation: string;
+    }[];
+  };
+  apiInterception: {
+    coreFiles: string[];           // API拦截核心文件路径
+    browserApiInterception: string; // 浏览器原生API拦截
+    storageApiInterception: string;  // 存储API拦截
+    globalObjectInterception: string; // 全局对象拦截
+    networkApiInterception: string;  // 网络请求拦截
+    keyCodeSnippets: {
+      file: string;
+      lineRange: string;
+      code: string;
+      explanation: string;
+    }[];
+  };
+  interceptionStrategy: {
+    techniques: string;            // 拦截实现技术
+    scope: string;                // 拦截范围控制
+    timing: string;               // 拦截时机管理
+    recovery: string;             // 拦截恢复机制
+  };
 }
 ```
 
@@ -133,6 +165,27 @@ interface MicrofrontendIsolationAnalysisResult {
 2. **关键词搜索**：搜索与样式隔离相关的通用关键词
 3. **处理逻辑分析**：分析样式加载、转换、隔离的处理逻辑
 4. **机制总结**：用自然语言描述发现的CSS隔离策略
+
+**DOM拦截分析流程**：
+1. **DOM拦截文件搜索**：搜索与DOM操作拦截相关的文件
+2. **根级元素拦截分析**：分析对html、body、head元素访问的拦截实现
+3. **document对象拦截分析**：分析对document相关方法的拦截和代理
+4. **DOM操作隔离分析**：分析DOM操作范围限制和隔离策略
+5. **机制总结**：用自然语言描述发现的DOM拦截策略
+
+**API拦截分析流程**：
+1. **API拦截文件搜索**：搜索与API拦截相关的文件
+2. **浏览器API拦截分析**：分析对location、history等浏览器API的拦截
+3. **存储API拦截分析**：分析对localStorage、sessionStorage等存储API的拦截
+4. **全局对象拦截分析**：分析对window、global等全局对象的拦截
+5. **网络请求拦截分析**：分析对fetch、XMLHttpRequest等网络API的拦截
+6. **机制总结**：用自然语言描述发现的API拦截策略
+
+**拦截策略深度分析流程**：
+1. **拦截技术识别**：分析使用的拦截技术（Proxy、Object.defineProperty等）
+2. **拦截范围分析**：分析拦截的API范围和放行策略
+3. **拦截时机分析**：分析拦截发生的时机和生命周期管理
+4. **恢复机制分析**：分析应用卸载时的拦截恢复机制
 
 ### 2.2 ai-platform-analyzer (AI Platform Architecture Analyzer) **[NOT AVAILABLE]**
 
@@ -405,6 +458,9 @@ interface AnalyzerContext {
 |---------|-----------|
 | JS隔离 | sandbox, isolation, proxy, window, global, snapshot, hijack, intercept |
 | CSS隔离 | style, css, shadow, scoped, prefix, namespace, stylesheet |
+| DOM拦截 | document, querySelector, getElementById, createElement, html, body, head, dom, element |
+| API拦截 | location, history, localStorage, sessionStorage, fetch, XMLHttpRequest, addEventListener |
+| 拦截策略 | proxy, defineProperty, override, hijack, intercept, patch, restore, recover |
 
 **AI平台分析关键词**：
 
@@ -480,7 +536,10 @@ package "微前端隔离机制分析报告" {
   [框架信息\n- 名称\n- 版本\n- 技术栈\n- 目录概览] as mf_info
   [JS隔离实现\n- 核心文件\n- 实现机制\n- 关键代码片段\n- 权衡与设计决策] as mf_js
   [CSS隔离实现\n- 核心文件\n- 实现机制\n- 关键代码片段\n- 权衡与设计决策] as mf_css
-  [总结与洞察\n- 总体评估\n- 对比要点\n- 最佳实践] as mf_summary
+  [DOM元素拦截实现\n- 核心文件\n- 根级DOM元素拦截\n- document对象拦截\n- DOM操作隔离\n- 关键代码片段] as mf_dom
+  [API拦截实现\n- 核心文件\n- 浏览器API拦截\n- 存储API拦截\n- 全局对象拦截\n- 网络请求拦截] as mf_api
+  [拦截策略深度分析\n- 实现技术\n- 拦截范围控制\n- 拦截时机管理\n- 拦截恢复机制] as mf_strategy
+  [总结与洞察\n- 总体评估\n- 隔离机制对比\n- 最佳实践] as mf_summary
 }
 
 package "响应式系统分析报告" {
@@ -500,8 +559,14 @@ package "AI平台架构分析报告" {
 }
 
 mf_info --> mf_js
-mf_js --> mf_css
-mf_css --> mf_summary
+mf_info --> mf_css
+mf_info --> mf_dom
+mf_info --> mf_api
+mf_js --> mf_strategy
+mf_css --> mf_strategy
+mf_dom --> mf_strategy
+mf_api --> mf_strategy
+mf_strategy --> mf_summary
 
 rx_info --> rx_reactive
 rx_reactive --> rx_update
@@ -556,13 +621,74 @@ ai_api --> ai_summary
 ### Trade-offs & Design Decisions
 {cssTradeoffs}
 
+## DOM Element Interception
+
+### Core Files
+{domInterceptionFiles}
+
+### Interception Mechanisms
+
+#### Root-level DOM Element Interception
+{htmlBodyHeadInterception}
+
+#### Document Object Interception
+{documentInterception}
+
+#### DOM Operation Isolation
+{domOperationIsolation}
+
+### Key Code Snippets
+{domInterceptionCode}
+
+### Trade-offs & Design Decisions
+{domTradeoffs}
+
+## API Interception
+
+### Core Files
+{apiInterceptionFiles}
+
+### Interception Mechanisms
+
+#### Browser Native API Interception
+{browserApiInterception}
+
+#### Storage API Interception
+{storageApiInterception}
+
+#### Global Object Interception
+{globalObjectInterception}
+
+#### Network Request Interception
+{networkApiInterception}
+
+### Key Code Snippets
+{apiInterceptionCode}
+
+### Trade-offs & Design Decisions
+{apiTradeoffs}
+
+## Interception Strategy Deep Analysis
+
+### Implementation Techniques
+{interceptionTechniques}
+
+### Interception Scope Control
+{interceptionScope}
+
+### Interception Timing Management
+{interceptionTiming}
+
+### Interception Recovery Mechanism
+{interceptionRecovery}
+
 ## Summary & Insights
 
 ### Overall Assessment
 {overallAssessment}
 
-### Comparison Points
-{comparisonPoints}
+### Isolation Mechanism Comparison
+{isolationComparison}
 
 ### Best Practices
 {bestPractices}
@@ -606,13 +732,74 @@ ai_api --> ai_summary
 ### 权衡与设计决策
 {cssTradeoffs}
 
+## DOM 元素拦截实现
+
+### 核心文件
+{domInterceptionFiles}
+
+### 拦截机制
+
+#### 根级DOM元素拦截
+{htmlBodyHeadInterception}
+
+#### document对象拦截
+{documentInterception}
+
+#### DOM操作隔离
+{domOperationIsolation}
+
+### 关键代码片段
+{domInterceptionCode}
+
+### 权衡与设计决策
+{domTradeoffs}
+
+## API 拦截实现
+
+### 核心文件
+{apiInterceptionFiles}
+
+### 拦截机制
+
+#### 浏览器原生API拦截
+{browserApiInterception}
+
+#### 存储API拦截
+{storageApiInterception}
+
+#### 全局对象拦截
+{globalObjectInterception}
+
+#### 网络请求拦截
+{networkApiInterception}
+
+### 关键代码片段
+{apiInterceptionCode}
+
+### 权衡与设计决策
+{apiTradeoffs}
+
+## 拦截策略深度分析
+
+### 实现技术
+{interceptionTechniques}
+
+### 拦截范围控制
+{interceptionScope}
+
+### 拦截时机管理
+{interceptionTiming}
+
+### 拦截恢复机制
+{interceptionRecovery}
+
 ## 总结与洞察
 
 ### 总体评估
 {overallAssessment}
 
-### 对比要点
-{comparisonPoints}
+### 隔离机制对比
+{isolationComparison}
 
 ### 最佳实践
 {bestPractices}
