@@ -1,10 +1,10 @@
 {
   "name": "ai-doc-driven-dev",
   "description": "Transform projects into documentation-driven development workflows with AI assistance. Automatically detects, generates, and maintains project documentation standards.",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "author": {
-    "name": "Claude Code Plugin Marketplace",
-    "email": "noreply@anthropic.com"
+    "name": "zhoukailian",
+    "email": "2415699291@qq.com"
   },
   "keywords": [
     "documentation",

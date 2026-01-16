@@ -14,6 +14,11 @@
       "name": "js-framework-analyzer",
       "source": "./plugins/js-framework-analyzer",
       "description": "Analyze JavaScript framework source code repositories to understand core implementation mechanisms including microfrontend isolation, AI platform architecture, and reactivity systems."
+    },
+    {
+      "name": "git-ops-helper",
+      "source": "./plugins/git-ops-helper",
+      "description": "Git operations helper with commit summaries, pre-commit code checks, commit message drafting, and expert guidance for conflict resolution and rebase workflows."
     }
   ]
 }
