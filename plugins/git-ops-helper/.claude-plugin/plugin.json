@@ -1,0 +1,10 @@
+{
+  "name": "git-ops-helper",
+  "description": "Git operations helper with commit summaries, pre-commit code checks, commit message drafting, and expert guidance for conflict resolution and rebase workflows.",
+  "version": "0.0.1",
+  "author": {
+    "name": "zhoukailian",
+    "email": "2415699291@qq.com"
+  },
+  "keywords": ["git", "commit", "rebase", "conflict-resolution", "workflow"]
+}
