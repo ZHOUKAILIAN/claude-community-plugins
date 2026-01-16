@@ -16,6 +16,7 @@ The **Claude Code Plugin Marketplace** is both a repository and a distribution p
 | Plugin | Features | Description |
 |--------|----------|-------------|
 | **AI Documentation-Driven Development** | CLAUDE.md Enforcement, Documentation Analysis, Pattern Extraction, Smart Documentation Generation | Establishes documentation-first development workflows and maintains project documentation standards |
+| **Git Ops Helper** | Commit Summaries, Message Drafting, Conflict Resolution, Rebase Workflows | Provides safe, repeatable Git workflows with clear commands, change summaries, and expert guidance |
 | **JS Framework Analyzer** | Microfrontend Isolation Analysis ✅, AI Platform Architecture Analysis 🚧, Reactivity System Analysis ✅ | Analyzes JavaScript framework source code to understand core implementation mechanisms with bilingual reports and PlantUML diagrams |
 
 ## 📦 Plugin Details
@@ -32,6 +33,27 @@ The **Claude Code Plugin Marketplace** is both a repository and a distribution p
 - **📝 Smart Generation**: Creates standardized documentation based on project analysis and templates
 
 **Skills Included**: claude-md-enforcer, doc-detector, pattern-extractor, doc-generator
+
+### Git Ops Helper
+**Location**: `plugins/git-ops-helper/`
+
+**Purpose**: Provide safe, repeatable Git workflows with clear commands, change summaries, and expert guidance
+
+**Key Capabilities**:
+- **📝 Commit Summaries**: Automatically summarize git changes with clear descriptions
+- **✉️ Message Drafting**: Draft commit messages following standard conventions
+- **🔀 Conflict Resolution**: Expert guidance for resolving merge conflicts
+- **🔄 Rebase Workflows**: Safe guidance for rebase, cherry-pick, and merge operations
+- **🛡️ Safety Rules**: Never runs Git commands without explicit user confirmation
+
+**Skills Included**: git-ops-helper
+
+**Commands Included**: summarize-commit
+
+**Safety Features**:
+- Always shows exact command before asking for confirmation
+- Offers to create new branch before committing on main/master
+- Provides clear warnings for risky operations like reset --hard
 
 ### JS Framework Analyzer
 **Location**: `plugins/js-framework-analyzer/`
@@ -476,4 +498,4 @@ This project is licensed under the MIT License - see individual plugin licenses 
 
 **[中文版本](README-zh.md) | [English Version](README.md)**
 
-*Last Updated: 2026-01-13*
+*Last Updated: 2026-01-16*
