@@ -47,6 +47,42 @@ AI文档驱动开发插件帮助团队建立和维护文档优先的开发工作
 - 建立全面的文档结构
 - 基于提取的模式生成项目特定标准
 
+## 命令
+
+### enforce-doc-workflow
+
+为代码变更请求启用文档优先工作流程强制执行。
+
+**用法:**
+```bash
+claude enforce-doc-workflow [--scan=yes|no]
+```
+
+**功能特性:**
+- **交互式扫描提示**: 在进入强制模式前询问是否扫描仓库
+- **灵活扫描**: 根据需要选择扫描或跳过
+  - 扫描: 检查文档完整性(如果文档有变更,推荐使用)
+  - 跳过: 更快启动(如果文档未变更,可使用)
+- **参数支持**: 使用 `--scan=yes` 自动扫描或 `--scan=no` 跳过提示
+
+**功能说明:**
+1. 可选择扫描 `docs/requirements/`、`docs/standards/` 和 `CLAUDE.md`
+2. 进入强制模式拦截代码变更请求
+3. 确保所有代码变更都有适当的文档支持
+4. 引导您创建缺失的需求和技术设计文档
+
+**示例工作流程:**
+```bash
+# 交互模式(默认) - 询问是否扫描
+claude enforce-doc-workflow
+
+# 自动扫描模式 - 跳过提示并扫描
+claude enforce-doc-workflow --scan=yes
+
+# 跳过扫描模式 - 跳过提示和扫描
+claude enforce-doc-workflow --scan=no
+```
+
 ## 开始使用
 
 1. **安装插件**: 将此插件添加到您的Claude Code环境
