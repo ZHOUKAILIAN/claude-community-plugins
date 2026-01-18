@@ -16,10 +16,14 @@ This skill empowers Claude to enforce MANDATORY documentation-driven development
 
 ## How It Works
 
+**Note**: This skill can work with or without a full repository scan. When users skip the scan in `enforce-doc-workflow` command, this skill focuses only on CLAUDE.md enforcement without comprehensive project analysis.
+
+Workflow steps:
+
 1. **CLAUDE.md Detection**: Scans the project root for existing CLAUDE.md files
 2. **Content Analysis**: Analyzes current content to identify missing documentation workflow sections
 3. **Template Injection**: Inserts or updates documentation-driven development standards
-4. **Standards Synchronization**: Ensures CLAUDE.md reflects current project standards from docs/standards/
+4. **Standards Synchronization**: (Optional, if full scan was performed) Ensures CLAUDE.md reflects current project standards from docs/standards/
 5. **Workflow Enforcement**: Establishes mandatory "docs-first, code-second" development process
 6. **Prohibition Insertion**: Adds explicit prohibitions against direct code implementation
 7. **Approval Gate Setup**: Creates mandatory documentation review and approval gates

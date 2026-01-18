@@ -47,6 +47,42 @@ Generates standardized project documentation using intelligent templates and pro
 - Establish comprehensive documentation structure
 - Generate project-specific standards based on extracted patterns
 
+## Commands
+
+### enforce-doc-workflow
+
+Enable documentation-first workflow enforcement for code change requests.
+
+**Usage:**
+```bash
+claude enforce-doc-workflow [--scan=yes|no]
+```
+
+**Features:**
+- **Interactive Scan Prompt**: Asks whether to scan repository before entering enforcement mode
+- **Flexible Scanning**: Choose to scan or skip based on your needs
+  - Scan: Check documentation completeness (recommended if docs changed)
+  - Skip: Faster startup (use if docs unchanged)
+- **Parameter Support**: Use `--scan=yes` to auto-scan or `--scan=no` to skip prompt
+
+**What it does:**
+1. Optionally scans `docs/requirements/`, `docs/standards/`, and `CLAUDE.md`
+2. Enters enforcement mode to intercept code change requests
+3. Ensures all code changes are preceded by proper documentation
+4. Guides you to create missing requirement and technical design documents
+
+**Example workflow:**
+```bash
+# Interactive mode (default) - asks whether to scan
+claude enforce-doc-workflow
+
+# Auto-scan mode - skips prompt and scans
+claude enforce-doc-workflow --scan=yes
+
+# Skip scan mode - skips prompt and scan
+claude enforce-doc-workflow --scan=no
+```
+
 ## Getting Started
 
 1. **Install the Plugin**: Add this plugin to your Claude Code environment

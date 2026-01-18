@@ -13,6 +13,10 @@ This skill empowers Claude to comprehensively analyze project documentation stru
 
 ## How It Works
 
+**Note**: This skill's scanning can be skipped based on user choice. When the `enforce-doc-workflow` command is invoked, users are asked whether to perform a scan. If skipped, this skill is not invoked, and the workflow proceeds without scan results.
+
+When scanning is performed:
+
 1. **Directory Scanning**: Systematically scans docs/ directory structure for existing documentation
 2. **Core Document Detection**: Identifies presence of essential documents (requirements, technical designs)
 3. **Project Type Analysis**: Determines project type (frontend/backend/fullstack) to tailor recommendations

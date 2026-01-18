@@ -203,10 +203,38 @@ The project explicitly aligns with **customplugin/plugins** reference implementa
 
 ### Documentation Structure
 
-- Requirements and technical specifications should be combined in single documents
+**CRITICAL - Document Naming and Numbering**:
+- ✅ **REQUIRED**: All requirement documents MUST follow the numbering convention: `NNN-feature-name.md` and `NNN-feature-name-technical-design.md`
+- ✅ **REQUIRED**: Document numbers MUST be sequential (001, 002, 003, etc.)
+- ✅ **REQUIRED**: AI MUST scan `docs/requirements/` directory to determine the next available number before creating new documents
+- ❌ **PROHIBITED**: Creating documents without proper numbering or reusing existing numbers
+- ✅ **REQUIRED**: Use templates from `docs/standards/requirements-template.md` and `docs/standards/technical-design-template.md`
+
+**Document Organization**:
+- Requirements and technical specifications should be in separate paired documents:
+  - `NNN-feature-name.md` (requirements document)
+  - `NNN-feature-name-technical-design.md` (technical design document)
 - All specification documents stored in `docs/requirements/`
 - Each document should include both functional requirements and technical implementation details
 - Development standards and templates stored in `docs/standards/`
+
+**Example Document Naming**:
+```
+docs/requirements/
+├── 001-ai-doc-driven-dev-base-features.md
+├── 001-ai-doc-driven-dev-technical-design.md
+├── 002-ai-doc-driven-dev-agents-commands.md
+├── 002-ai-doc-driven-dev-agents-commands-technical-design.md
+├── 003-js-framework-repository-analyzer.md
+├── 003-js-framework-repository-analyzer-technical-design.md
+└── ... (next would be 004-xxx.md)
+```
+
+**AI Workflow for Creating New Documents**:
+1. **Scan existing documents**: Use `ls docs/requirements/` or `Glob` to list all existing requirement documents
+2. **Determine next number**: Find the highest number (e.g., 005) and increment by 1 (e.g., 006)
+3. **Create paired documents**: Create both requirement and technical design documents with the same number
+4. **Follow templates**: Use the standard templates for consistent structure
 
 ### Skill Development Standards
 
