@@ -36,9 +36,9 @@ claude-code-plugins/
 **Directory Purposes**:
 
 - **`plugins/`**: The marketplace inventory - each subdirectory is a complete, independent Claude Code Plugin
-- **`docs/requirements/`**: Project requirements and technical design documents
+- **`docs/requirements/`**: Project requirement documents (functional requirements)
+- **`docs/design/`**: Technical design documents and architectural documentation
 - **`docs/standards/`**: Development standards, templates, and coding conventions
-- **`docs/design/`**: Marketplace architectural and design documentation
 - **`README.md`**: Main entry point explaining marketplace concept and capabilities
 
 ## Plugin Structure Pattern
@@ -190,7 +190,9 @@ The project explicitly aligns with **customplugin/plugins** reference implementa
 ### Development Workflow
 
 1. **User Request**: User provides requirements or feature requests
-2. **AI Documentation**: AI creates comprehensive requirement and technical specification documents in `docs/requirements/`
+2. **AI Documentation**: AI creates comprehensive documentation:
+   - Requirement document in `docs/requirements/`
+   - Technical design document in `docs/design/`
 3. **User Review & Alignment**: User reviews and approves the documentation
 4. **AI Implementation**: Only after approval, AI implements changes to `plugins/` based on the approved documentation
 
@@ -204,36 +206,46 @@ The project explicitly aligns with **customplugin/plugins** reference implementa
 ### Documentation Structure
 
 **CRITICAL - Document Naming and Numbering**:
-- ✅ **REQUIRED**: All requirement documents MUST follow the numbering convention: `NNN-feature-name.md` and `NNN-feature-name-technical-design.md`
+- ✅ **REQUIRED**: All documents MUST follow the numbering convention: `NNN-feature-name.md`
 - ✅ **REQUIRED**: Document numbers MUST be sequential (001, 002, 003, etc.)
 - ✅ **REQUIRED**: AI MUST scan `docs/requirements/` directory to determine the next available number before creating new documents
 - ❌ **PROHIBITED**: Creating documents without proper numbering or reusing existing numbers
 - ✅ **REQUIRED**: Use templates from `docs/standards/requirements-template.md` and `docs/standards/technical-design-template.md`
 
 **Document Organization**:
-- Requirements and technical specifications should be in separate paired documents:
-  - `NNN-feature-name.md` (requirements document)
-  - `NNN-feature-name-technical-design.md` (technical design document)
-- All specification documents stored in `docs/requirements/`
-- Each document should include both functional requirements and technical implementation details
-- Development standards and templates stored in `docs/standards/`
+- **Requirement documents** (functional requirements):
+  - Location: `docs/requirements/NNN-feature-name.md`
+  - Focus: What needs to be built, user stories, acceptance criteria
+- **Technical design documents** (implementation details):
+  - Location: `docs/design/NNN-feature-name-technical-design.md`
+  - Focus: How to build it, architecture, implementation plan
+- **Pairing**: Each requirement document should have a corresponding technical design document with the same number
+- **Standards and templates**: Stored in `docs/standards/`
 
-**Example Document Naming**:
+**Example Document Structure**:
 ```
-docs/requirements/
-├── 001-ai-doc-driven-dev-base-features.md
-├── 001-ai-doc-driven-dev-technical-design.md
-├── 002-ai-doc-driven-dev-agents-commands.md
-├── 002-ai-doc-driven-dev-agents-commands-technical-design.md
-├── 003-js-framework-repository-analyzer.md
-├── 003-js-framework-repository-analyzer-technical-design.md
-└── ... (next would be 004-xxx.md)
+docs/
+├── requirements/
+│   ├── 001-ai-doc-driven-dev-base-features.md
+│   ├── 002-ai-doc-driven-dev-agents-commands.md
+│   ├── 003-js-framework-repository-analyzer.md
+│   └── ... (next would be 007-xxx.md)
+├── design/
+│   ├── 001-ai-doc-driven-dev-base-features-technical-design.md
+│   ├── 002-ai-doc-driven-dev-agents-commands-technical-design.md
+│   ├── 003-js-framework-repository-analyzer-technical-design.md
+│   └── ... (next would be 007-xxx-technical-design.md)
+└── standards/
+    ├── requirements-template.md
+    └── technical-design-template.md
 ```
 
 **AI Workflow for Creating New Documents**:
 1. **Scan existing documents**: Use `ls docs/requirements/` or `Glob` to list all existing requirement documents
-2. **Determine next number**: Find the highest number (e.g., 005) and increment by 1 (e.g., 006)
-3. **Create paired documents**: Create both requirement and technical design documents with the same number
+2. **Determine next number**: Find the highest number (e.g., 006) and increment by 1 (e.g., 007)
+3. **Create paired documents**:
+   - Requirement: `docs/requirements/NNN-feature-name.md`
+   - Technical design: `docs/design/NNN-feature-name-technical-design.md`
 4. **Follow templates**: Use the standard templates for consistent structure
 
 ### Skill Development Standards
