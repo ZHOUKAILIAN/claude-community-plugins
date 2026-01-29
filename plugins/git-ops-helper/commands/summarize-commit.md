@@ -17,7 +17,6 @@ Summarize current working tree changes and draft a commit message.
 
 ## Behavior
 
-- Ask for confirmation before running any git command.
 - Inspect `git status`, `git diff`, and `git diff --staged`.
 - Distinguish staged vs unstaged changes when summarizing.
 - Perform a code check on the diffs and surface issues before summarizing.
