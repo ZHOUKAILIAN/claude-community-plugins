@@ -1,77 +1,109 @@
 ---
 name: doc-detector
-description: |
-  Detect and analyze project documentation completeness for documentation-driven development.
-  Use when you need to "analyze project documentation", "check doc completeness", or "assess documentation status".
+description: This skill should be used when the user asks to "analyze project documentation",
+"check doc completeness", "assess documentation status", or discusses "documentation quality".
 allowed-tools: ["Read", "Glob", "Grep"]
 license: MIT
 ---
 
+# Documentation Detector
+
 ## Overview
 
-This skill empowers Claude to comprehensively analyze project documentation structure and completeness. It identifies existing documentation, detects missing critical documents, and provides recommendations for establishing a complete documentation-driven development workflow.
+Analyze project documentation completeness and quality for documentation-driven development.
 
-## How It Works
+## When This Skill Applies
 
-**Note**: This skill's scanning can be skipped based on user choice. When the `enforce-doc-workflow` command is invoked, users are asked whether to perform a scan. If skipped, this skill is not invoked, and the workflow proceeds without scan results.
+- User requests to assess documentation completeness
+- User wants to check documentation quality
+- User needs to identify missing critical documents
+- Pre-development documentation readiness check required
 
-When scanning is performed:
+## Workflow
 
-1. **Directory Scanning**: Systematically scans docs/ directory structure for existing documentation
-2. **Core Document Detection**: Identifies presence of essential documents (requirements, technical designs)
-3. **Project Type Analysis**: Determines project type (frontend/backend/fullstack) to tailor recommendations
-4. **Gap Analysis**: Compares current documentation against documentation-driven development standards
-5. **User Consultation**: Asks users about missing documentation rather than auto-generating
+### Phase 1: Discovery
 
-## When to Use This Skill
+**Goal**: Find and categorize all documentation
 
-This skill activates when you need to:
-- Assess current documentation completeness in a project
-- Identify missing critical documents for documentation-driven development
-- Understand project documentation structure before making changes
-- Get recommendations for documentation improvements
-- Prepare for documentation generation or updates
+**Actions**:
+1. Scan docs/ directory structure
+2. Identify documentation types
+3. List existing files
 
-## Examples
+---
 
-### Example 1: New Project Assessment
+### Phase 2: Numbering Analysis
 
-User request: "Analyze our project's documentation status"
+**Goal**: Verify numbering system integrity
 
-The skill will:
-1. Scan the entire docs/ directory structure
-2. Identify existing documentation by category (requirements, design, standards)
-3. Check for core documents needed for documentation-driven development
-4. Report current status and recommend missing documentation types
-5. Ask user which missing documents they'd like to generate
+**Actions**:
+1. Check sequence (001, 002, 003...)
+2. Detect conflicts and gaps
+3. Verify pairing (REQ ↔ DESIGN)
+4. Check filename-title consistency
 
-### Example 2: Documentation-Driven Readiness Check
+**Critical**: Report any numbering issues immediately.
 
-User request: "Check if our project is ready for documentation-driven development"
+---
 
-The skill will:
-1. Verify presence of essential documents (requirements and technical design)
-2. Analyze CLAUDE.md for documentation workflow enforcement
-3. Check docs/standards/ for project-specific standards
-4. Provide readiness score and specific recommendations for improvements
+### Phase 3: Quality Assessment
 
-### Example 3: Pre-Development Analysis
+**Goal**: Evaluate documentation quality
 
-User request: "What documentation do we need before starting development?"
+**Actions**:
+1. Score each document (A-F)
+2. Check section completeness
+3. Assess content quality
 
-The skill will:
-1. Analyze project type and scope based on existing code and configuration
-2. Recommend essential documentation based on project characteristics
-3. Suggest documentation priorities (must-have vs. nice-to-have)
-4. Provide specific templates and examples for missing document types
+**Scoring System**:
+- **A (90-100)**: Comprehensive, current
+- **B (70-89)**: Good coverage
+- **C (50-69)**: Basic info
+- **D (30-49)**: Sparse
+- **F (0-29)**: Inadequate
+
+---
+
+### Phase 4: Report Generation
+
+**Goal**: Present findings to user
+
+**Actions**:
+1. Summarize status
+2. List critical issues
+3. Provide recommendations
+4. **WAIT for user decision**
+
+---
+
+## Output Format
+
+```markdown
+# Documentation Analysis Report
+
+## Summary
+- Total Documents: 8
+- Average Score: 87/100 (Grade B)
+- Critical Issues: 1
+
+## Numbering Status
+✅ Sequential: 001-008
+⚠️  Missing Pairs: REQ-005 lacks DESIGN-005
+
+## Quality Scores
+| Document | Score | Grade |
+|----------|-------|-------|
+| REQ-001  | 95    | A     |
+| REQ-002  | 87    | B     |
+
+## Recommendations
+1. [ ] Create DESIGN-005
+2. [ ] Update REQ-002
+```
 
 ## Best Practices
 
-- **Non-Intrusive Analysis**: Only reads and analyzes, never automatically creates documentation
-- **User-Driven Decisions**: Always asks users about generating missing documentation
-- **Flexible Standards**: Adapts recommendations based on project type and existing structure
-- **Clear Reporting**: Provides actionable insights about documentation gaps and improvements
-
-## Integration
-
-This skill integrates with documentation generation tools and project analysis systems. It serves as a foundation for other documentation-related skills by providing comprehensive project documentation assessment capabilities.
+- Non-intrusive analysis (read-only)
+- Always ask before generating documents
+- Provide actionable insights
+- Focus on critical gaps first

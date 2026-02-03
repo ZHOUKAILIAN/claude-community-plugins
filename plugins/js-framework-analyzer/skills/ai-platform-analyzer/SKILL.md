@@ -1,143 +1,116 @@
 ---
 name: ai-platform-analyzer
-description: |
-  Analyze AI application platform source code to understand architecture and core functionality.
-  Use when analyzing Coze, Dify, FastGPT or other AI application platforms.
+description: This skill should be used when the user asks to "analyze AI platform",
+"understand platform architecture", "compare AI platforms", or discusses
+"Coze/Dify/FastGPT platform implementation".
 allowed-tools: ["Read", "Glob", "Grep", "Bash"]
 license: MIT
 status: disabled
 ---
 
-> **[NOT AVAILABLE]** This skill is not yet implemented
+# AI Platform Analyzer
 
 ## Overview
 
-This skill specializes in analyzing AI application platform source code to discover and explain the overall architecture and core functionality implementations. It explores the codebase systematically to identify modules, understand their interactions, and document the platform's design without making assumptions about specific implementations.
+Analyze AI application platform source code to understand architecture and core functionality.
 
-**MANDATORY OUTPUT FORMAT**: This skill MUST generate reports that strictly follow the predefined structure with ALL sections included:
-- Overall Structure (with PlantUML diagram)
-- Platform Information
-- Core Architecture
-- Core Modules
-- Data Flow
-- API Structure
-- Summary & Insights
+## When This Skill Applies
 
-Reports that omit any of these sections are considered incomplete and unacceptable.
+- User wants to understand AI platform architecture
+- User needs to compare AI platforms
+- User asks about platform implementations
+- User wants to document platform for learning
 
-## How It Works
+## Workflow
 
-1. **Platform Detection**: Identifies AI platforms through package.json, directory structure, and configuration files
-2. **Architecture Exploration**: Scans directory structure to identify major modules and their purposes
-3. **Core Module Analysis**: Analyzes key modules to understand their implementation and responsibilities
-4. **Interaction Mapping**: Documents how different modules interact with each other
-5. **Architecture Documentation**: Summarizes discovered architecture in clear language
-6. **Bilingual Report Generation**: Generates comprehensive analysis reports in both English and Chinese with PlantUML structure diagrams
+### Phase 1: Platform Detection
 
-**CRITICAL REQUIREMENT**: The generated reports MUST strictly follow the predefined format structure including:
-- **Overall Structure** section with PlantUML diagram
-- **Platform Information** section
-- **Core Architecture** section with frontend, backend, AI integration, and deployment architecture
-- **Core Modules** section with module names, locations, descriptions, and dependencies
-- **Data Flow** section with request flow, data processing, and response flow
-- **API Structure** section with endpoint patterns, authentication, and data format
-- **Summary & Insights** section with overall assessment, design patterns, and best practices
+**Goal**: Identify platform and version
 
-## When to Use This Skill
+**Actions**:
+1. Check package.json/requirements.txt
+2. Identify platform type
+3. Locate source directory
 
-This skill activates when you need to:
-- Understand the architecture of an AI application platform
-- Identify core modules and their responsibilities
-- Learn how different components interact in an AI platform
-- Document platform architecture for learning or sharing
+---
 
-## Examples
+### Phase 2: Architecture Discovery
 
-### Example 1: Analyzing Dify Architecture
+**Goal**: Find core components
 
-User request: "Analyze the architecture of Dify"
+**Actions**:
+1. Search keywords (agent, workflow, tool, plugin)
+2. Locate core files
+3. Identify entry points
 
-The skill will:
-1. Scan the directory structure to identify major modules (api, web, core, etc.)
-2. Analyze each module's purpose and implementation
-3. Identify key services and their interactions
-4. Document the overall architecture with module relationships
+---
 
-### Example 2: Understanding Core Functionality
+### Phase 3: Feature Analysis
 
-User request: "How does this AI platform implement chat functionality?"
+**Goal**: Understand implementation
 
-The skill will:
-1. Search for chat-related files and keywords
-2. Trace the implementation flow from API to backend
-3. Identify key components (message handling, LLM integration, streaming, etc.)
-4. Document the implementation with code examples
+**Actions**:
+1. Analyze workflow engine
+2. Analyze tool/plugin system
+3. Map dependencies
+4. Identify trade-offs
 
-### Example 3: Comprehensive Platform Analysis with Bilingual Reports
+---
 
-User request: "Analyze this AI platform comprehensively and generate reports in both languages"
+### Phase 4: Report Generation
 
-The skill will:
-1. Identify the tech stack from package.json and configuration
-2. Map out the overall architecture
-3. Analyze core features (chat, knowledge base, workflow, etc.)
-4. Document module interactions and data flow
-5. Generate comprehensive architecture reports in both English and Chinese
-6. Include PlantUML diagrams showing the overall report structure
-7. Provide summary & insights with overall assessment, design patterns, and best practices
+**Goal**: Create comprehensive report
 
-**Report Structure**:
-```plantuml
-@startuml
-!theme plain
-skinparam backgroundColor #FEFEFE
+**Actions**:
+1. Generate PlantUML diagram
+2. Document architecture
+3. Provide code examples
+4. Create bilingual report (EN/CN)
 
-title AI Platform Architecture Analysis Report Structure
+**CRITICAL**: Report MUST include all required sections.
 
-[Platform Information\n- Name\n- Version\n- Tech Stack\n- Directory Overview] as info
+---
 
-[Core Architecture\n- Frontend Architecture\n- Backend Architecture\n- AI Integration\n- Deployment Architecture] as arch
+## Required Report Structure
 
-[Core Modules\n- Module Name\n- Implementation Location\n- Description\n- Dependencies] as modules
+```markdown
+# [Platform] Architecture Analysis
 
-[Data Flow\n- Request Flow\n- Data Processing\n- Response Flow] as flow
+## 1. Overall Structure
+[PlantUML diagram]
 
-[API Structure\n- Endpoint Patterns\n- Authentication\n- Data Format] as api
+## 2. Platform Information
+- Name & Version
+- Architecture Model
+- Key Features
 
-[Summary & Insights\n- Overall Assessment\n- Design Patterns\n- Best Practices] as summary
+## 3. Core Components
+### Workflow Engine
+### Tool/Plugin System
+### Agent Management
+### Code Snippets
+### Trade-offs
 
-info --> arch
-arch --> modules
-modules --> flow
-flow --> api
-api --> summary
+## 4. Integration Mechanisms
+### API Design
+### Extension Points
+### Data Flow
 
-@enduml
+## 5. Summary & Insights
+### Overall Assessment
+### Comparison Points
+### Best Practices
 ```
 
-**Output Files**:
-- `architecture-report-en.md` (English version)
-- `architecture-report-zh.md` (Chinese version)
+## Output Format
+
+**English Version**: `[platform]-architecture-analysis-en.md`
+**Chinese Version**: `[platform]-architecture-analysis-zh.md`
 
 ## Best Practices
 
-- **Systematic Exploration**: Start with directory structure, then dive into specific modules
-- **Module-First Approach**: Identify modules before analyzing their implementation
-- **Interaction Focus**: Pay attention to how modules communicate and interact
-- **STRICT FORMAT ADHERENCE**: Always generate reports that include ALL required sections:
-  1. **Overall Structure** with PlantUML diagram (MANDATORY)
-  2. **Platform Information** section
-  3. **Core Architecture** section
-  4. **Core Modules** section
-  5. **Data Flow** section
-  6. **API Structure** section
-  7. **Summary & Insights** section
-- **Bilingual Documentation**: Generate reports in both English and Chinese with equivalent content
-- **PlantUML Diagrams**: Include PlantUML structure diagrams to visualize report organization
-- **Clear Documentation**: Use clear Chinese and English descriptions for architectural concepts
-- **Tech Stack Awareness**: Identify and document the technology stack used
-- **Complete Analysis**: Never skip sections or provide partial reports - all sections must be present
-
-## Integration
-
-This skill integrates with the `structure-explainer` skill to provide comprehensive codebase understanding and can be invoked through the `analyze-ai-platform` command.
+- Search thoroughly before analyzing
+- Use PlantUML for architecture
+- Include actual code snippets
+- Provide bilingual reports
+- Document extension points clearly
