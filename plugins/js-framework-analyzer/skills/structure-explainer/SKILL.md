@@ -1,73 +1,104 @@
 ---
 name: structure-explainer
-description: |
-  Explain codebase structure and organization to help understand project layout.
-  Use when you need to understand the overall structure of a JavaScript project.
+description: This skill should be used when the user asks to "explain codebase structure",
+"understand project layout", "show project organization", or discusses "directory structure".
 allowed-tools: ["Read", "Glob", "Grep", "Bash"]
 license: MIT
 status: enabled
 ---
 
+# Structure Explainer
+
 ## Overview
 
-This skill provides comprehensive explanations of codebase structure and organization. It helps users understand the layout of a JavaScript project, identify key directories and files, and explain the purpose of different components in the codebase.
+Explain codebase structure and organization to help understand project layout.
 
-## How It Works
+## When This Skill Applies
 
-1. **Directory Scanning**: Systematically scans the project directory structure
-2. **File Pattern Recognition**: Identifies common file patterns and their purposes
-3. **Module Identification**: Determines the purpose of different directories and files
-4. **Structure Documentation**: Explains the overall project organization
-5. **Navigation Guidance**: Provides guidance on how to navigate the codebase
+- User wants to understand codebase structure
+- User needs project organization overview
+- User asks to find specific file types
+- User wants navigation guidance
 
-## When to Use This Skill
+## Workflow
 
-This skill activates when you need to:
-- Understand the structure of a new codebase
-- Get an overview of project organization
-- Find specific types of files or modules
-- Explain the layout of a JavaScript project
+### Phase 1: Directory Scanning
 
-## Examples
+**Goal**: Map project structure
 
-### Example 1: Explaining Framework Structure
+**Actions**:
+1. Scan directory tree
+2. Identify key directories
+3. List important files
 
-User request: "Explain the structure of this framework"
+---
 
-The skill will:
-1. Scan the root directory and key subdirectories
-2. Identify the purpose of each major directory (src, tests, docs, etc.)
-3. Explain the organization pattern used
-4. Highlight key files and their purposes
+### Phase 2: Pattern Recognition
 
-### Example 2: Finding Specific Modules
+**Goal**: Identify common patterns
 
-User request: "Where is the reactivity system implemented?"
+**Actions**:
+1. Recognize file patterns
+2. Identify module types
+3. Detect framework conventions
 
-The skill will:
-1. Search for reactivity-related directories and files
-2. Identify the location of reactivity implementation
-3. Explain the organization of reactivity-related code
-4. Provide guidance on navigating to relevant files
+---
 
-### Example 3: Understanding Build Configuration
+### Phase 3: Structure Analysis
 
-User request: "How is this project built?"
+**Goal**: Understand organization
 
-The skill will:
-1. Identify build configuration files (webpack.config.js, vite.config.js, etc.)
-2. Analyze the build setup and scripts
-3. Explain the build process and output structure
-4. Document key build-related files
+**Actions**:
+1. Analyze directory purposes
+2. Map file relationships
+3. Identify entry points
+
+---
+
+### Phase 4: Documentation
+
+**Goal**: Explain structure
+
+**Actions**:
+1. Create structure diagram
+2. Explain each section
+3. Provide navigation tips
+
+---
+
+## Output Format
+
+```markdown
+# Project Structure Overview
+
+## Directory Tree
+```
+project/
+├── src/
+│   ├── components/
+│   ├── utils/
+│   └── index.js
+├── tests/
+└── package.json
+```
+
+## Key Directories
+- **src/**: Source code
+- **tests/**: Test files
+- **components/**: UI components
+
+## Entry Points
+- Main: src/index.js
+- Tests: tests/index.test.js
+
+## Navigation Tips
+- Components in src/components/
+- Utilities in src/utils/
+```
 
 ## Best Practices
 
-- **Top-Down Approach**: Start with high-level structure, then dive into details
-- **Purpose-Driven**: Explain why directories and files exist, not just what they are
-- **Pattern Recognition**: Identify and explain common patterns used
-- **Clear Documentation**: Use clear descriptions for each component
-- **Navigation Help**: Provide practical guidance on finding files
-
-## Integration
-
-This skill is a foundational component that supports other analysis skills (microfrontend-isolation-analyzer, ai-platform-analyzer, reactivity-system-analyzer) by providing structural context for deeper analysis.
+- Scan thoroughly before explaining
+- Use tree diagrams for clarity
+- Explain purpose of each directory
+- Provide navigation guidance

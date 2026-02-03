@@ -1,97 +1,108 @@
 ---
 name: claude-md-enforcer
-description: |
-  Enforce documentation-driven development workflow in CLAUDE.md files with MANDATORY docs-first process.
-  Use when you need to "setup doc-driven development", "enforce documentation workflow", or "initialize project standards".
-  CRITICAL: Ensures CLAUDE.md explicitly prohibits direct code implementation without prior documentation.
+description: This skill should be used when the user asks to "setup doc-driven development",
+"enforce documentation workflow", "initialize project standards", or discusses "CLAUDE.md configuration".
 allowed-tools: ["Read", "Write", "Edit", "Glob"]
 license: MIT
 ---
 
+# CLAUDE.md Enforcer
+
 ## Overview
 
-This skill empowers Claude to enforce MANDATORY documentation-driven development workflows in any project. It automatically detects existing CLAUDE.md files and ensures they contain STRICT documentation-first development processes with EXPLICIT prohibitions against direct code implementation, creating a consistent development standard across all projects using Claude Code CLI.
+Enforce documentation-driven development workflow in CLAUDE.md with mandatory docs-first process.
 
-**KEY ENFORCEMENT**: The skill MUST insert clear language that **PROHIBITS** any code implementation without prior requirements documentation and technical design approval.
+**Warning**: This skill can write to CLAUDE.md files. Always presents changes for user approval first.
 
-## How It Works
+## When This Skill Applies
 
-**Note**: This skill can work with or without a full repository scan. When users skip the scan in `enforce-doc-workflow` command, this skill focuses only on CLAUDE.md enforcement without comprehensive project analysis.
+- User requests to initialize documentation-driven development
+- User wants to enforce documentation workflow
+- User asks to update or improve CLAUDE.md
+- User mentions "documentation-first" or "docs-before-code"
+- Project needs documentation workflow enforcement
 
-Workflow steps:
+## Workflow
 
-1. **CLAUDE.md Detection**: Scans the project root for existing CLAUDE.md files
-2. **Content Analysis**: Analyzes current content to identify missing documentation workflow sections
-3. **Template Injection**: Inserts or updates documentation-driven development standards
-4. **Standards Synchronization**: (Optional, if full scan was performed) Ensures CLAUDE.md reflects current project standards from docs/standards/
-5. **Workflow Enforcement**: Establishes mandatory "docs-first, code-second" development process
-6. **Prohibition Insertion**: Adds explicit prohibitions against direct code implementation
-7. **Approval Gate Setup**: Creates mandatory documentation review and approval gates
+### Phase 1: Detection
 
-## When to Use This Skill
+**Goal**: Locate and analyze CLAUDE.md
 
-This skill activates when you need to:
-- Initialize documentation-driven development in a new project
-- Enforce consistent development workflows across team projects
-- Update CLAUDE.md when project standards change
-- Ensure all Claude Code CLI users follow documentation-first practices
-- Synchronize CLAUDE.md with evolving project standards
+**Actions**:
+1. Check for CLAUDE.md in project root
+2. Read current content (if exists)
+3. Identify missing workflow sections
 
-## Examples
+---
 
-### Example 1: New Project Setup
+### Phase 2: Content Preparation
 
-User request: "Setup this project for documentation-driven development"
+**Goal**: Prepare workflow rules
 
-The skill will:
-1. Check if CLAUDE.md exists in the project root
-2. Create a new CLAUDE.md with complete documentation-driven workflow if missing
-3. Insert mandatory development process sections emphasizing docs-first approach
-4. Add clear violations warnings and enforcement statements
+**Actions**:
+1. Create documentation workflow section
+2. Add numbering system rules
+3. Add AI automation instructions
+4. Preserve existing content
 
-### Example 2: Existing Project Enhancement
+**Critical**: Never overwrite project-specific content.
 
-User request: "Update our CLAUDE.md to enforce documentation standards"
+---
 
-The skill will:
-1. Read existing CLAUDE.md content to preserve project-specific information
-2. Identify missing documentation workflow sections
-3. Insert documentation-driven development requirements at appropriate locations
-4. Update any outdated workflow descriptions to match current standards
+### Phase 3: User Approval
 
-### Example 3: Standards Synchronization
+**Goal**: Get user confirmation
 
-User request: "Sync CLAUDE.md with our updated project standards"
+**Actions**:
+1. **Present proposed changes**
+2. **Show what will be added**
+3. **WAIT for user approval**
 
-The skill will:
-1. Scan docs/standards/ directory for updated templates and conventions
-2. Compare current CLAUDE.md content with latest standards
-3. Update relevant sections to reflect new standards
-4. Maintain consistency between project standards and CLAUDE.md directives
+**DO NOT proceed without approval.**
 
-### Example 4: Enforcement Enhancement
+---
 
-User request: "Make sure CLAUDE.md strongly enforces documentation-first development"
+### Phase 4: Application
 
-The skill will:
-1. Insert explicit PROHIBITION statements against direct code implementation
-2. Add mandatory approval gates for all development phases
-3. Include clear consequences for workflow violations
-4. Emphasize that ALL development MUST start with documentation
-5. Add templates and examples for required documentation types
+**Goal**: Update CLAUDE.md
+
+**Actions**:
+1. Apply approved changes
+2. Verify file integrity
+3. Report completion
+
+---
+
+## Workflow Rules Added
+
+```markdown
+## Documentation-Driven Development Workflow
+
+### Development Process
+1. Create requirement document (REQ-NNN)
+2. Create technical design (DESIGN-NNN)
+3. Get approval
+4. Implement code
+
+❌ PROHIBITED: Direct code implementation without documentation
+
+### Document Numbering System
+- File format: NNN-feature-name.md
+- Title format: # REQ-NNN: Feature Name
+- AI auto-assigns numbers by scanning docs/requirements/
+
+### AI Automation
+When creating documents, AI MUST:
+1. Scan existing numbers
+2. Calculate next number
+3. Create paired documents
+4. Verify consistency
+```
 
 ## Best Practices
 
-- **Preserve Existing Content**: Always read existing CLAUDE.md before making changes to preserve project-specific information
-- **MANDATORY ENFORCEMENT**: Use strong, unambiguous language with explicit PROHIBITIONS against direct code implementation
-- **Standards Alignment**: Regularly sync CLAUDE.md with evolving project standards
-- **Team Communication**: Ensure all team members understand the mandatory documentation workflow
-- **Approval Gates**: Insert clear approval requirements for all development phases
-- **Violation Consequences**: Include warnings about development process violations
-- **Documentation Templates**: Reference required documentation templates and formats
-
-## Integration
-
-This skill integrates seamlessly with other documentation tools and project management systems. It leverages standard file operations for maximum compatibility and can be combined with other Claude Code skills for comprehensive project setup and maintenance.
-
-**CRITICAL INTEGRATION**: This skill should be used FIRST in any project setup to establish the mandatory documentation-driven development foundation before any code implementation begins.
+- Always read existing CLAUDE.md first
+- Preserve project-specific information
+- Use clear, unambiguous language
+- Include explicit prohibitions
+- Add approval gates for all phases
