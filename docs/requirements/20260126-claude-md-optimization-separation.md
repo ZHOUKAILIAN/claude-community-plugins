@@ -1,7 +1,7 @@
-# 需求文档 007: CLAUDE.md 优化 - AI 开发指南与代码风格分离
+# 需求文档 20260126: CLAUDE.md 优化 - AI 开发指南与代码风格分离
 
 ## 文档信息
-- **编号**: REQ-007
+- **编号**: REQ-20260126
 - **标题**: CLAUDE.md 优化 - AI 开发指南与代码风格分离
 - **版本**: 1.0.0
 - **创建日期**: 2026-01-26
@@ -66,7 +66,7 @@
 
 **F5: 模板更新**
 - 更新 `doc-flow-initializer` 代理使用的 CLAUDE.md 模板
-- 更新 `claude-md-enforcer` 技能的内容生成逻辑
+- 更新 `doc-workflow-enforcer` 技能的内容生成逻辑
 
 ## 3. 技术需求
 
@@ -103,7 +103,7 @@ docs/standards/ (代码规范层)
 3. 强化 AI 协作流程和文档优先原则的表述
 
 **阶段 2: 技能逻辑更新**
-1. 更新 `claude-md-enforcer` 技能的内容生成逻辑
+1. 更新 `doc-workflow-enforcer` 技能的内容生成逻辑
 2. 修改生成 CLAUDE.md 时的内容策略：
    - 仅插入核心 AI 开发指南
    - 添加对 `docs/standards/` 的引用
@@ -157,7 +157,7 @@ docs/
 
 需要修改的文件：
 1. `plugins/ai-doc-driven-dev/agents/doc-flow-initializer.md` - 更新 CLAUDE.md 模板
-2. `plugins/ai-doc-driven-dev/skills/claude-md-enforcer/SKILL.md` - 更新内容生成策略
+2. `plugins/ai-doc-driven-dev/skills/doc-workflow-enforcer/SKILL.md` - 更新内容生成策略
 3. `plugins/ai-doc-driven-dev/commands/init-doc-driven-dev.md` - 更新命令描述（如需要）
 4. 可能需要添加新的示例模板文件
 
@@ -218,7 +218,7 @@ docs/
 
 1. **阶段 1**: 模板和技能更新（预计 2 小时）
    - 更新 CLAUDE.md 模板
-   - 修改 `claude-md-enforcer` 技能逻辑
+   - 修改 `doc-workflow-enforcer` 技能逻辑
 
 2. **阶段 2**: 测试和验证（预计 1 小时）
    - 在测试项目中验证新生成的文件

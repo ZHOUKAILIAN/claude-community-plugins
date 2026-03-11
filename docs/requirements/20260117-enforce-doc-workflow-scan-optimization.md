@@ -1,7 +1,7 @@
-# 需求文档 006: enforce-doc-workflow 命令扫描优化
+# 需求文档 20260117: enforce-doc-workflow 命令扫描优化
 
 ## 文档信息
-- **编号**: REQ-006
+- **编号**: REQ-20260117
 - **标题**: enforce-doc-workflow 命令扫描优化
 - **版本**: 1.0.0
 - **创建日期**: 2026-01-17
@@ -75,7 +75,7 @@
    - 在"How It Works"中说明可以被跳过
    - 说明跳过扫描时的行为
 
-3. `plugins/ai-doc-driven-dev/skills/claude-md-enforcer/SKILL.md`
+3. `plugins/ai-doc-driven-dev/skills/doc-workflow-enforcer/SKILL.md`
    - 说明可以在不扫描的情况下工作
 
 **实现逻辑** (伪代码):
@@ -176,8 +176,8 @@ $ claude enforce-doc-workflow --scan=no
 
 ```
 docs/requirements/
-├── 006-enforce-doc-workflow-scan-optimization.md (本文档)
-└── 006-enforce-doc-workflow-scan-optimization-technical-design.md (待创建)
+├── 20260117-enforce-doc-workflow-scan-optimization.md (本文档)
+└── 20260117-enforce-doc-workflow-scan-optimization-technical-design.md (待创建)
 ```
 
 ## 4. 风险评估

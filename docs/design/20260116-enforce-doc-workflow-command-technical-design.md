@@ -1,8 +1,8 @@
-# 技术方案 005: 强制文档驱动开发命令 - 技术设计
+# 技术方案 20260116: 强制文档驱动开发命令 - 技术设计
 
 ## 文档信息
 
-- **编号**: TECH-005
+- **编号**: TECH-20260116
 - **标题**: 强制文档驱动开发命令技术方案
 - **版本**: 1.0.0
 - **创建日期**: 2026-01-16
@@ -29,7 +29,7 @@ ai-doc-driven-dev/
 ├── skills/
 │   ├── doc-detector/
 │   ├── doc-generator/
-│   └── claude-md-enforcer/
+│   └── doc-workflow-enforcer/
 └── knowledge/templates/
 ```
 

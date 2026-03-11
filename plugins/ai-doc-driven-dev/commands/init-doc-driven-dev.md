@@ -57,9 +57,9 @@ project-root/
 ├── CLAUDE.md                    # Updated with doc-driven workflow
 ├── docs/
 │   ├── requirements/
-│   │   └── project-requirements.md
+│   │   └── YYYYMMDD-project-initial-requirements.md
 │   ├── design/
-│   │   └── technical-design.md
+│   │   └── YYYYMMDD-project-initial-requirements-technical-design.md
 │   ├── standards/
 │   │   ├── coding-standards.md
 │   │   └── project-conventions.md
@@ -67,6 +67,11 @@ project-root/
 │       └── project-analysis.md
 └── [existing project files]
 ```
+
+Document naming convention:
+- Requirement: `docs/requirements/YYYYMMDD-feature-name.md`
+- Design: `docs/design/YYYYMMDD-feature-name-technical-design.md`
+- Same-day same-name conflicts: append `-v2`, `-v3`
 
 ## Prerequisites
 

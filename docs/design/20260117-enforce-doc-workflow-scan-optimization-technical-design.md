@@ -1,13 +1,13 @@
-# 技术方案 006: enforce-doc-workflow 命令扫描优化 - 技术设计
+# 技术方案 20260117: enforce-doc-workflow 命令扫描优化 - 技术设计
 
 ## 文档信息
 
-- **编号**: TECH-006
+- **编号**: TECH-20260117
 - **标题**: enforce-doc-workflow 命令扫描优化
 - **版本**: 1.0.0
 - **创建日期**: 2026-01-17
 - **状态**: 待实现
-- **依赖**: REQ-006 (enforce-doc-workflow 命令扫描优化需求)
+- **依赖**: REQ-20260117 (enforce-doc-workflow 命令扫描优化需求)
 
 ## 1. 技术架构概述
 
@@ -31,7 +31,7 @@ plugins/ai-doc-driven-dev/
 ├── skills/
 │   ├── doc-detector/
 │   │   └── SKILL.md                     [修改] 说明可选扫描
-│   └── claude-md-enforcer/
+│   └── doc-workflow-enforcer/
 │       └── SKILL.md                     [修改] 说明可选扫描
 └── README.md                            [可选] 更新使用说明
 ```
@@ -146,7 +146,7 @@ When scanning is performed:
 5. **User Consultation**: Asks users about missing documentation rather than auto-generating
 ```
 
-### 2.3 claude-md-enforcer Skill 修改
+### 2.3 doc-workflow-enforcer Skill 修改
 
 **功能职责**:
 - 说明该 skill 的扫描是可选的
@@ -335,7 +335,7 @@ def perform_repository_scan():
     print("   ✓ Scanned docs/requirements/ (X files)")
     print("   ✓ Scanned docs/standards/ (Y files)")
 
-    # 调用 claude-md-enforcer skill
+    # 调用 doc-workflow-enforcer skill
     claude_md_status = analyze_claude_md()
     print("   ✓ Analyzed CLAUDE.md")
 
@@ -393,7 +393,7 @@ def enter_enforcement_mode(scan_results):
             ↓                           ↓
     调用 doc-detector                  │
             ↓                           │
-    调用 claude-md-enforcer            │
+    调用 doc-workflow-enforcer            │
             ↓                           │
     显示扫描完成                       │
             ↓                           │
@@ -410,7 +410,7 @@ def enter_enforcement_mode(scan_results):
 
 **有扫描结果时**:
 - 使用 `doc-detector` 的结果判断缺失文档
-- 使用 `claude-md-enforcer` 的结果判断 CLAUDE.md 状态
+- 使用 `doc-workflow-enforcer` 的结果判断 CLAUDE.md 状态
 - 基于扫描结果提供精确的指导
 
 **无扫描结果时**:
@@ -426,7 +426,7 @@ def enter_enforcement_mode(scan_results):
 |---------|---------|---------|
 | `plugins/ai-doc-driven-dev/commands/enforce-doc-workflow.md` | 内容增强 | 添加扫描询问说明、参数说明、新示例 |
 | `plugins/ai-doc-driven-dev/skills/doc-detector/SKILL.md` | 内容增强 | 说明可选扫描特性 |
-| `plugins/ai-doc-driven-dev/skills/claude-md-enforcer/SKILL.md` | 内容增强 | 说明可选扫描特性 |
+| `plugins/ai-doc-driven-dev/skills/doc-workflow-enforcer/SKILL.md` | 内容增强 | 说明可选扫描特性 |
 
 ### 6.2 可选修改的文件
 
@@ -519,7 +519,7 @@ claude enforce-doc-workflow --scan=no
 ### 阶段 1: 文档修改
 1. 修改 `enforce-doc-workflow.md` 命令定义
 2. 修改 `doc-detector/SKILL.md` 说明
-3. 修改 `claude-md-enforcer/SKILL.md` 说明
+3. 修改 `doc-workflow-enforcer/SKILL.md` 说明
 
 ### 阶段 2: 文档更新(可选)
 1. 更新 `README.md` 使用说明

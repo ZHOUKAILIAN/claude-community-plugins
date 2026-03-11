@@ -1,14 +1,14 @@
-# 技术方案 002: AI 文档驱动开发插件 - 核心 Agents 技术设计
+# 技术方案 20260110: AI 文档驱动开发插件 - 核心 Agents 技术设计
 
 ## 文档信息
 
-- **编号**: TECH-002
+- **编号**: TECH-20260110
 - **标题**: 核心 Agents 技术方案
 - **版本**: 2.0.0
 - **创建日期**: 2026-01-10
 - **更新日期**: 2026-01-10
 - **状态**: 已完成
-- **依赖**: TECH-001 (基础插件架构), REQ-002 (功能需求)
+- **依赖**: TECH-20260110 (基础插件架构), REQ-20260110 (功能需求)
 
 ## 1. 需求背景
 
@@ -37,7 +37,7 @@ ai-doc-driven-dev/
 ├── .claude-plugin/
 │   └── plugin.json                # 添加两个核心agents配置
 ├── skills/                        # 现有：4个核心技能
-│   ├── claude-md-enforcer/
+│   ├── doc-workflow-enforcer/
 │   ├── doc-detector/
 │   ├── pattern-extractor/
 │   └── doc-generator/

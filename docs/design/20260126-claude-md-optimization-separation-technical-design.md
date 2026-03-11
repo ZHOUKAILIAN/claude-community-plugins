@@ -1,13 +1,13 @@
-# 技术方案 007: CLAUDE.md 优化 - AI 开发指南与代码风格分离 - 技术设计
+# 技术方案 20260126: CLAUDE.md 优化 - AI 开发指南与代码风格分离 - 技术设计
 
 ## 文档信息
 
-- **编号**: TECH-007
+- **编号**: TECH-20260126
 - **标题**: CLAUDE.md 优化 - AI 开发指南与代码风格分离
 - **版本**: 1.0.0
 - **创建日期**: 2026-01-26
 - **状态**: 待实现
-- **依赖**: REQ-007 (CLAUDE.md 优化 - AI 开发指南与代码风格分离需求)
+- **依赖**: REQ-20260126 (CLAUDE.md 优化 - AI 开发指南与代码风格分离需求)
 
 ## 1. 技术架构概述
 
@@ -33,7 +33,7 @@ ai-doc-driven-dev/
 │   ├── doc-flow-initializer.md          [修改] 更新 CLAUDE.md 模板
 │   └── codebase-style-analyzer.md        [保持] 继续生成 coding-standards.md
 ├── skills/
-│   ├── claude-md-enforcer/
+│   ├── doc-workflow-enforcer/
 │   │   └── SKILL.md                      [修改] 更新内容生成策略
 │   ├── pattern-extractor/
 │   │   └── SKILL.md                      [保持] 继续提取代码模式
@@ -50,7 +50,7 @@ init-doc-driven-dev 命令
     ↓
 doc-flow-initializer 代理
     ↓
-├─→ claude-md-enforcer 技能 → 生成精简的 CLAUDE.md (引用模式)
+├─→ doc-workflow-enforcer 技能 → 生成精简的 CLAUDE.md (引用模式)
 └─→ codebase-style-analyzer 代理 → 生成完整的 docs/standards/coding-standards.md
 ```
 
@@ -104,7 +104,7 @@ doc-flow-initializer 代理
 - 必须包含引用章节
 - 引用链接使用相对路径
 
-### 2.2 claude-md-enforcer 技能更新
+### 2.2 doc-workflow-enforcer 技能更新
 
 **功能职责**：
 
@@ -114,7 +114,7 @@ doc-flow-initializer 代理
 
 **实现思路**：
 
-更新 `claude-md-enforcer/SKILL.md` 的描述和工作流程：
+更新 `doc-workflow-enforcer/SKILL.md` 的描述和工作流程：
 
 ```markdown
 ## How It Works (UPDATED)
@@ -171,7 +171,7 @@ When generating CLAUDE.md content:
 
 **实现思路**：
 
-在 `claude-md-enforcer` 技能中添加引用验证逻辑：
+在 `doc-workflow-enforcer` 技能中添加引用验证逻辑：
 
 ```markdown
 ## Reference Validation Logic
@@ -212,7 +212,7 @@ Before finalizing CLAUDE.md:
    → 分析代码模式
    → 生成 docs/standards/coding-standards.md (完整版)
     ↓
-4. 调用 claude-md-enforcer 技能
+4. 调用 doc-workflow-enforcer 技能
    → 读取现有 CLAUDE.md（如存在）
    → 应用新模板（精简版 + 引用）
    → 验证引用文件存在性
@@ -244,7 +244,7 @@ codebase-style-analyzer
     ↓ (输出)
 docs/standards/coding-standards.md
     ↓ (读取)
-claude-md-enforcer
+doc-workflow-enforcer
     ↓ (提取高层次原则)
 CLAUDE.md (Core Principles 章节)
     ↓ (引用链接)
@@ -438,7 +438,7 @@ This document defines the code style and formatting conventions for this project
    - 更新 "Enhanced CLAUDE.md Sections" 部分
    - 添加引用章节说明
 
-2. `plugins/ai-doc-driven-dev/skills/claude-md-enforcer/SKILL.md`
+2. `plugins/ai-doc-driven-dev/skills/doc-workflow-enforcer/SKILL.md`
    - 更新 "How It Works" 部分
    - 添加 "Content Generation Strategy" 章节
    - 添加 "Reference Validation Logic" 章节
@@ -573,7 +573,7 @@ This document defines the code style and formatting conventions for this project
 **实现**：
 
 ```markdown
-## Reference Validation in claude-md-enforcer
+## Reference Validation in doc-workflow-enforcer
 
 After generating CLAUDE.md content:
 
@@ -654,7 +654,7 @@ Add at the beginning of "Development Standards Reference" section:
 ### 🔧 技术变更
 
 - 更新 `doc-flow-initializer` 代理的 CLAUDE.md 模板
-- 优化 `claude-md-enforcer` 技能的内容生成策略
+- 优化 `doc-workflow-enforcer` 技能的内容生成策略
 - 添加引用验证机制
 
 ### 📚 文档更新

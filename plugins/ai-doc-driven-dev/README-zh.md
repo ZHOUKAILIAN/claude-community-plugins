@@ -8,14 +8,14 @@ AI文档驱动开发插件帮助团队建立和维护文档优先的开发工作
 
 ## 核心功能
 
-- **🔧 CLAUDE.md强制执行**: 自动确保CLAUDE.md包含强制性的文档驱动开发工作流程
+- **🔧 工作流指令强制执行**: 自动确保 `CLAUDE.md` 或 `AGENTS.md` 包含强制性的文档驱动开发工作流程
 - **📊 文档分析**: 全面评估项目文档完整性
 - **🎯 模式提取**: 自动提取项目特定的编码模式和约定
 - **📝 智能生成**: 基于项目分析和模板创建标准化文档
 
 ## 包含的技能
 
-### 1. claude-md-enforcer
+### 1. doc-workflow-enforcer
 在CLAUDE.md文件中强制执行文档驱动开发工作流程。此技能优先运行，为文档优先开发建立基础。
 
 **使用场景:**
@@ -86,7 +86,7 @@ claude enforce-doc-workflow --scan=no
 ## 开始使用
 
 1. **安装插件**: 将此插件添加到您的Claude Code环境
-2. **运行初始设置**: 使用claude-md-enforcer技能建立文档驱动开发工作流程
+2. **运行初始设置**: 使用doc-workflow-enforcer技能建立文档驱动开发工作流程
 3. **分析项目**: 使用doc-detector了解当前文档状态
 4. **提取模式**: 使用pattern-extractor记录现有编码约定
 5. **生成文档**: 使用doc-generator创建缺失的文档
@@ -115,7 +115,7 @@ docs/
 
 ## 最佳实践
 
-- **从CLAUDE.md开始**: 总是首先运行claude-md-enforcer以建立工作流程标准
+- **从指令文件开始**: 总是首先运行 doc-workflow-enforcer 以在 `CLAUDE.md` 或 `AGENTS.md` 中建立工作流程标准
 - **定期分析**: 定期运行doc-detector以维护文档完整性
 - **模式更新**: 当发生重大架构变更时重新运行pattern-extractor
 - **模板定制**: 将生成的文档模板适配到项目特定需求

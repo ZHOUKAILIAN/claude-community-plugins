@@ -28,7 +28,7 @@ claude-code-plugins/
 │       │   └── plugin.json               # Plugin metadata manifest
 │       ├── README.md                     # Plugin-specific documentation (bilingual)
 │       └── skills/
-│           └── claude-md-enforcer/
+│           └── doc-workflow-enforcer/
 │               └── SKILL.md              # Skill definition with frontmatter
 └── .git/                                  # Git repository
 ```
@@ -95,7 +95,7 @@ license: MIT
 | Plugin directory  | kebab-case    | `ai-doc-driven-dev/`     |
 | Markdown docs     | kebab-case.md | `directory-structure.md` |
 | Command files     | kebab-case.md | `plugin-a-action.md`     |
-| Skill directories | kebab-case/   | `claude-md-enforcer/`    |
+| Skill directories | kebab-case/   | `doc-workflow-enforcer/`    |
 | Skill files       | SKILL.md      | `SKILL.md`               |
 
 ## Documentation Standards
@@ -146,7 +146,7 @@ plugin-name/
   - Features: Complete agents and commands system with 2 core agents and 3 commands
   - Agents: doc-flow-initializer (文档流程初始化), codebase-style-analyzer (代码风格分析)
   - Commands: init-doc-driven-dev, analyze-docs, extract-patterns
-  - Skills: claude-md-enforcer, doc-detector, pattern-extractor, doc-generator
+  - Skills: doc-workflow-enforcer, doc-detector, pattern-extractor, doc-generator
   - Allowed tools: Read, Write, Edit, Glob, Grep, Bash, LSP
 - Core design documentation and standards
 - Bilingual README requirements and templates
@@ -205,48 +205,50 @@ The project explicitly aligns with **customplugin/plugins** reference implementa
 
 ### Documentation Structure
 
-**CRITICAL - Document Naming and Numbering**:
-- ✅ **REQUIRED**: All documents MUST follow the numbering convention: `NNN-feature-name.md`
-- ✅ **REQUIRED**: Document numbers MUST be sequential (001, 002, 003, etc.)
-- ✅ **REQUIRED**: AI MUST scan `docs/requirements/` directory to determine the next available number before creating new documents
-- ❌ **PROHIBITED**: Creating documents without proper numbering or reusing existing numbers
+**CRITICAL - Document Naming (Date-Based)**:
+- ✅ **REQUIRED**: All documents MUST follow date convention: `YYYYMMDD-feature-name.md`
+- ✅ **REQUIRED**: Requirement/Design titles must use date ID prefix (`REQ-YYYYMMDD` / `TECH-YYYYMMDD`)
+- ✅ **REQUIRED**: AI uses current date directly in filename (no sequence scan)
+- ✅ **REQUIRED**: If same-day same-name collision occurs, append `-v2`, `-v3`
+- ❌ **PROHIBITED**: Mixing legacy `NNN-` naming in new documents
 - ✅ **REQUIRED**: Use templates from `docs/standards/requirements-template.md` and `docs/standards/technical-design-template.md`
 
 **Document Organization**:
 - **Requirement documents** (functional requirements):
-  - Location: `docs/requirements/NNN-feature-name.md`
+  - Location: `docs/requirements/YYYYMMDD-feature-name.md`
   - Focus: What needs to be built, user stories, acceptance criteria
 - **Technical design documents** (implementation details):
-  - Location: `docs/design/NNN-feature-name-technical-design.md`
+  - Location: `docs/design/YYYYMMDD-feature-name-technical-design.md`
   - Focus: How to build it, architecture, implementation plan
-- **Pairing**: Each requirement document should have a corresponding technical design document with the same number
+- **Pairing**: Each requirement document should have a corresponding technical design document with the same date + feature slug
 - **Standards and templates**: Stored in `docs/standards/`
 
 **Example Document Structure**:
 ```
 docs/
 ├── requirements/
-│   ├── 001-ai-doc-driven-dev-base-features.md
-│   ├── 002-ai-doc-driven-dev-agents-commands.md
-│   ├── 003-js-framework-repository-analyzer.md
-│   └── ... (next would be 007-xxx.md)
+│   ├── 20260110-ai-doc-driven-dev-base-features.md
+│   ├── 20260110-ai-doc-driven-dev-agents-commands.md
+│   ├── 20260111-js-framework-repository-analyzer.md
+│   └── ... (new docs use today's YYYYMMDD prefix)
 ├── design/
-│   ├── 001-ai-doc-driven-dev-base-features-technical-design.md
-│   ├── 002-ai-doc-driven-dev-agents-commands-technical-design.md
-│   ├── 003-js-framework-repository-analyzer-technical-design.md
-│   └── ... (next would be 007-xxx-technical-design.md)
+│   ├── 20260110-ai-doc-driven-dev-technical-design.md
+│   ├── 20260110-ai-doc-driven-dev-agents-commands-technical-design.md
+│   ├── 20260111-js-framework-repository-analyzer-technical-design.md
+│   └── ... (new docs use today's YYYYMMDD prefix)
 └── standards/
     ├── requirements-template.md
     └── technical-design-template.md
 ```
 
 **AI Workflow for Creating New Documents**:
-1. **Scan existing documents**: Use `ls docs/requirements/` or `Glob` to list all existing requirement documents
-2. **Determine next number**: Find the highest number (e.g., 006) and increment by 1 (e.g., 007)
+1. **Get current date**: Format as `YYYYMMDD`
+2. **Generate base slug**: Convert feature name to kebab-case
 3. **Create paired documents**:
-   - Requirement: `docs/requirements/NNN-feature-name.md`
-   - Technical design: `docs/design/NNN-feature-name-technical-design.md`
-4. **Follow templates**: Use the standard templates for consistent structure
+   - Requirement: `docs/requirements/YYYYMMDD-feature-name.md`
+   - Technical design: `docs/design/YYYYMMDD-feature-name-technical-design.md`
+4. **Handle collisions**: If same-day same-name exists, append `-v2` / `-v3`
+5. **Follow templates**: Use the standard templates for consistent structure
 
 ### Skill Development Standards
 

@@ -2,9 +2,9 @@
 name: doc-workflow-transformer
 description: |
   Transforms projects into documentation-driven development workflows using doc-detector, doc-generator,
-  claude-md-enforcer, and pattern-extractor skills.
+  doc-workflow-enforcer, and pattern-extractor skills.
 system_prompt: |
-  You are a Documentation-Driven Development Transformation Expert. Transform projects to documentation-first workflows by orchestrating multiple skills: doc-detector for analysis, doc-generator for creation, claude-md-enforcer for enforcement, and pattern-extractor for understanding existing patterns.
+  You are a Documentation-Driven Development Transformation Expert. Transform projects to documentation-first workflows by orchestrating multiple skills: doc-detector for analysis, doc-generator for creation, doc-workflow-enforcer for enforcement, and pattern-extractor for understanding existing patterns.
 allowed-tools: ["Read", "Glob", "Grep", "LSP"]
 license: MIT
 ---
@@ -35,7 +35,7 @@ Transforms traditional development projects into documentation-first workflows, 
 4. Document best practices already in use
 5. Create pattern summary for template generation
 
-### Phase 3: CLAUDE.md Enforcement (claude-md-enforcer skill)
+### Phase 3: Instruction File Enforcement (doc-workflow-enforcer skill)
 **Goal**: Establish mandatory documentation-first development process
 
 1. Detect existing CLAUDE.md

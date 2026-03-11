@@ -1,4 +1,4 @@
-# REQ-009: 文档编号系统
+# REQ-20260203: 文档编号系统
 
 ## 1. 需求概述
 
@@ -51,7 +51,7 @@
 
 ### 1.5 需求合并说明
 
-本需求已合并原 `REQ-008: Commands 和 Skills 优化`，统一管理以下范围：
+本需求已合并原 `REQ-20260203: Commands 和 Skills 优化`，统一管理以下范围：
 
 **核心范围**：
 1. **文档编号系统**：编号分配、配对、模板、CLAUDE.md 规范
@@ -112,8 +112,8 @@ Commands 和 Skills 应遵循"说做什么，不说怎么做"的简洁原则：
 
 **示例**：
 ```
-docs/requirements/009-document-numbering-system.md
-docs/design/009-document-numbering-system-technical-design.md
+docs/requirements/20260203-document-numbering-system.md
+docs/design/20260203-document-numbering-system-technical-design.md
 ```
 
 #### 2.1.3 初始化模板更新
@@ -225,7 +225,7 @@ docs/design/009-document-numbering-system-technical-design.md
 
 对 4 个 Skills 进行优化，遵循官方最佳实践：
 
-#### 2.4.1 claude-md-enforcer 优化
+#### 2.4.1 doc-workflow-enforcer 优化
 
 **当前问题**：
 - Description 未使用引号包裹触发短语
@@ -352,7 +352,7 @@ docs/design/009-document-numbering-system-technical-design.md
 ### 5.1 功能验收 - 编号系统
 
 - [ ] 在新项目执行 `init-doc-driven-dev` 时，自动创建 `001-project-initial-requirements.md` 和 `001-project-initial-technical-design.md`
-- [ ] 文档标题包含编号：`# REQ-001: 项目初始化需求`
+- [ ] 文档标题包含编号：`# REQ-20260110: 项目初始化需求`
 - [ ] AI 创建新文档前自动扫描并分配正确的下一个编号
 - [ ] 生成的 CLAUDE.md 包含文档编号规范说明
 - [ ] 模板文件包含编号使用指导和占位符
@@ -386,7 +386,7 @@ docs/design/009-document-numbering-system-technical-design.md
 
 ### 5.3 功能验收 - Skills 优化
 
-- [ ] **claude-md-enforcer**：
+- [ ] **doc-workflow-enforcer**：
   - Description 使用引号包裹触发短语
   - 包含 "When This Skill Applies" 章节
   - 使用 Phase 结构划分工作流
@@ -465,9 +465,9 @@ docs/design/009-document-numbering-system-technical-design.md
 
 ### 7.1 需求和设计文档
 
-- `docs/requirements/008-commands-skills-optimization.md` - 命令和技能优化需求（已合并到本文档）
-- `docs/requirements/007-claude-md-optimization-separation.md` - CLAUDE.md 优化需求
-- `docs/design/009-document-numbering-system-technical-design.md` - 本需求的技术设计
+- `docs/requirements/20260203-commands-skills-optimization.md` - 命令和技能优化需求（已合并到本文档）
+- `docs/requirements/20260126-claude-md-optimization-separation.md` - CLAUDE.md 优化需求
+- `docs/design/20260203-document-numbering-system-technical-design.md` - 本需求的技术设计
 - `docs/analysis/skills-optimization-analysis.md` - Skills 优化分析报告
 
 ### 7.2 参考文档和标准
@@ -485,7 +485,7 @@ docs/design/009-document-numbering-system-technical-design.md
 - `plugins/ai-doc-driven-dev/commands/extract-patterns.md`
 
 **Skills**（4 个）：
-- `plugins/ai-doc-driven-dev/skills/claude-md-enforcer/SKILL.md`
+- `plugins/ai-doc-driven-dev/skills/doc-workflow-enforcer/SKILL.md`
 - `plugins/ai-doc-driven-dev/skills/doc-detector/SKILL.md`
 - `plugins/ai-doc-driven-dev/skills/doc-generator/SKILL.md`
 - `plugins/ai-doc-driven-dev/skills/pattern-extractor/SKILL.md`

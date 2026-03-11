@@ -17,7 +17,8 @@ This command provides detailed analysis of your project's documentation by:
 2. **Quality Analysis**: Assesses documentation clarity, accuracy, and usefulness
 3. **Gap Identification**: Identifies missing critical documents and outdated information
 4. **Compliance Check**: Verifies adherence to documentation-driven development standards
-5. **Improvement Recommendations**: Provides prioritized suggestions for enhancement
+5. **Naming Convention Audit**: Validates date-based filename and document ID consistency
+6. **Improvement Recommendations**: Provides prioritized suggestions for enhancement
 
 ## Usage
 
@@ -68,6 +69,12 @@ claude analyze-docs --format json --save docs-analysis.json
 - Development workflow documentation
 - Code review guidelines
 
+### 🏷️ Naming Convention Compliance
+- Detect legacy `NNN-feature-name.md` and `NNN-feature-name-technical-design.md` files
+- Validate date-based format: `YYYYMMDD-feature-name*.md`
+- Verify in-document IDs match filename prefix (`REQ-YYYYMMDD`, `TECH-YYYYMMDD`)
+- Detect same-day same-name conflicts and suggest `-v2`, `-v3` suffixes
+
 ### 🔍 Code Documentation
 - Inline code comments quality
 - API documentation coverage
@@ -82,6 +89,7 @@ The analysis report includes:
 - **Completeness Score**: Percentage of expected documentation present
 - **Quality Assessment**: Documentation quality ratings by category
 - **Gap Analysis**: Detailed list of missing or inadequate documentation
+- **Naming Compliance**: Date-format adoption status and legacy filename findings
 - **Action Items**: Prioritized recommendations with effort estimates
 
 ## Related Commands

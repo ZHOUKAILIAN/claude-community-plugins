@@ -1,13 +1,14 @@
 ---
 type: "requirement"
 version: "1.0.0"
+date: "{{DATE}}"
 lastUpdated: "{{DATE}}"
 author: "{{AUTHOR}}"
 status: "draft"
 relatedFiles: []
 ---
 
-# {{PROJECT_NAME}} - 需求文档
+# REQ-{{DATE}}: {{FEATURE_NAME}} - 需求文档
 
 ## 1. 项目概述
 

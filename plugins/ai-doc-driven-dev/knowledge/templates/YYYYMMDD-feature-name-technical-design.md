@@ -1,13 +1,15 @@
 ---
 type: "design"
 version: "1.0.0"
+date: "{{DATE}}"
 lastUpdated: "{{DATE}}"
 author: "{{AUTHOR}}"
 status: "draft"
+dependsOn: "REQ-{{DATE}}"
 relatedFiles: []
 ---
 
-# {{PROJECT_NAME}} - 技术方案设计
+# TECH-{{DATE}}: {{FEATURE_NAME}} - 技术方案设计
 
 ## 1. 技术架构概述
 
