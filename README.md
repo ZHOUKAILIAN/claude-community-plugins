@@ -15,7 +15,7 @@ The **Claude Code Plugin Marketplace** is both a repository and a distribution p
 
 | Plugin | Features | Description |
 |--------|----------|-------------|
-| **AI Documentation-Driven Development** | CLAUDE.md Enforcement, Documentation Analysis, Pattern Extraction, Smart Documentation Generation | Establishes documentation-first development workflows and maintains project documentation standards |
+| **AI Documentation-Driven Development** | Workflow Instruction Enforcement (`CLAUDE.md` / `AGENTS.md`), Documentation Analysis, Pattern Extraction, Smart Documentation Generation | Establishes documentation-first development workflows and maintains project documentation standards |
 | **Git Ops Helper** | Commit Summaries, Message Drafting, Conflict Resolution, Rebase Workflows | Provides safe, repeatable Git workflows with clear commands, change summaries, and expert guidance |
 | **JS Framework Analyzer** | Microfrontend Isolation Analysis ✅, AI Platform Architecture Analysis 🚧, Reactivity System Analysis ✅ | Analyzes JavaScript framework source code to understand core implementation mechanisms with bilingual reports and PlantUML diagrams |
 
@@ -27,12 +27,12 @@ The **Claude Code Plugin Marketplace** is both a repository and a distribution p
 **Purpose**: Transform any project into a documentation-driven development workflow with AI assistance
 
 **Key Capabilities**:
-- **🔧 CLAUDE.md Enforcement**: Automatically ensures CLAUDE.md contains mandatory documentation-driven development workflows
+- **🔧 Workflow Instruction Enforcement**: Automatically ensures `CLAUDE.md` or `AGENTS.md` contains mandatory documentation-driven development workflows
 - **📊 Documentation Analysis**: Comprehensive assessment of project documentation completeness
 - **🎯 Pattern Extraction**: Automatically extracts project-specific coding patterns and conventions
 - **📝 Smart Generation**: Creates standardized documentation based on project analysis and templates
 
-**Skills Included**: claude-md-enforcer, doc-detector, pattern-extractor, doc-generator
+**Skills Included**: doc-workflow-enforcer, doc-detector, pattern-extractor, doc-generator
 
 ### Git Ops Helper
 **Location**: `plugins/git-ops-helper/`
@@ -111,6 +111,22 @@ The **Claude Code Plugin Marketplace** is both a repository and a distribution p
 3. **Use the Plugin**
    - The plugin will be automatically loaded
    - All skills and commands will be available immediately
+
+### For Codex Users
+
+Codex typically works in an intent-driven way instead of `claude <command>` syntax.
+
+1. **Open the target plugin directory**
+   - Example: `plugins/ai-doc-driven-dev/`
+2. **Use intent-based requests**
+   - Example intents:
+     - "Initialize docs-first workflow for this project"
+     - "Analyze documentation gaps and naming compliance"
+     - "Generate requirement and technical design docs from templates"
+3. **Follow plugin docs as execution spec**
+   - Read `README.md` and command/skill docs under the plugin (`commands/`, `skills/`)
+4. **Apply the same workflow gates**
+   - Keep docs-before-code, requirement/design pairing, and verification steps consistent with plugin guidance
 
 ### For Plugin Developers
 

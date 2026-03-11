@@ -1,7 +1,7 @@
-# 需求文档 001: AI Documentation-Driven Development Plugin - 需求与技术规范
+# 需求文档 20260110: AI Documentation-Driven Development Plugin - 需求与技术规范
 
 ## 文档信息
-- **编号**: REQ-001
+- **编号**: REQ-20260110
 - **标题**: AI文档驱动开发插件基础功能
 - **版本**: 1.0.0
 - **创建日期**: 2026-01-10
@@ -164,7 +164,7 @@ ai-context-docs/
 - 输出：项目规范文档和代码模式总结
 - 工具权限：["Read", "Glob", "Grep", "LSP"]
 
-**技能 4: claude-md-enforcer**
+**技能 4: doc-workflow-enforcer**
 - 功能：强制集成文档驱动开发流程到CLAUDE.md
 - 输入：项目根目录和现有CLAUDE.md（如果存在）
 - 输出：包含文档驱动开发规范的CLAUDE.md文件

@@ -1,14 +1,14 @@
-# 需求文档 008: Commands 和 Skills 优化
+# 需求文档 20260203: Commands 和 Skills 优化
 
 ## 文档信息
-- **编号**: REQ-008
+- **编号**: REQ-20260203
 - **标题**: Commands 和 Skills 优化
 - **版本**: 1.0.0
 - **创建日期**: 2026-01-29
-- **状态**: 已合并（Merged into REQ-009）
+- **状态**: 已合并（Merged into REQ-20260203）
 
-> 说明：本需求已合并到 `REQ-009: 文档编号系统`，不再单独实施。
-> 合并原因：REQ-009 已包含 Commands/Skills 优化的范围与验收标准，并统一了文档编号与模板规范。
+> 说明：本需求已合并到 `REQ-20260203: 文档编号系统`，不再单独实施。
+> 合并原因：REQ-20260203 已包含 Commands/Skills 优化的范围与验收标准，并统一了文档编号与模板规范。
 
 ## 1. 需求背景
 
@@ -477,6 +477,6 @@ claude-community-plugins/
 
 ## 7. 合并记录
 
-- **合并目标**：`docs/requirements/009-document-numbering-system.md`
+- **合并目标**：`docs/requirements/20260203-document-numbering-system.md`
 - **合并日期**：2026-02-02
-- **处理方式**：保留本文件作为历史记录，统一需求与设计在 REQ-009 / DESIGN-009 中维护。
+- **处理方式**：保留本文件作为历史记录，统一需求与设计在 REQ-20260203 / TECH-20260203 中维护。

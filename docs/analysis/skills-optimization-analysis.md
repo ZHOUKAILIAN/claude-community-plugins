@@ -10,7 +10,7 @@
 
 | Skill | 主要功能 | Allowed Tools | 状态 |
 |-------|---------|--------------|------|
-| claude-md-enforcer | 强制执行文档驱动开发工作流 | Read, Write, Edit, Glob | ✅ 功能完整 |
+| doc-workflow-enforcer | 强制执行文档驱动开发工作流 | Read, Write, Edit, Glob | ✅ 功能完整 |
 | doc-detector | 检测和分析项目文档完整性 | Read, Glob, Grep | ✅ 功能完整 |
 | doc-generator | 生成标准化项目文档 | Read, Write, Glob, Grep, Bash | ⚠️ 需要增强 |
 | pattern-extractor | 提取代码模式和规范 | Read, Glob, Grep, LSP | ⚠️ 需要增强 |
@@ -19,7 +19,7 @@
 
 ## 2. 逐个 Skill 分析
 
-### 2.1 claude-md-enforcer
+### 2.1 doc-workflow-enforcer
 
 **当前功能**：
 - ✅ 检测和更新 CLAUDE.md
@@ -67,8 +67,8 @@
 ## 文档提交规范
 
 文档变更的 commit 格式：
-- docs(req): add REQ-009 document numbering system
-- docs(design): add DESIGN-009 technical design
+- docs(req): add REQ-20260203 document numbering system
+- docs(design): add TECH-20260203 technical design
 ```
 
 ---
@@ -121,9 +121,9 @@
 **示例输出**：
 ```
 文档质量报告：
-✅ REQ-009: 100% (所有章节完整)
-⚠️  REQ-008: 80% (缺少"用户故事"章节)
-❌ REQ-007: 50% (缺少多个必填章节)
+✅ REQ-20260203: 100% (所有章节完整)
+⚠️  REQ-20260203: 80% (缺少"用户故事"章节)
+❌ REQ-20260126: 50% (缺少多个必填章节)
 ```
 
 #### 2.2.3 文档覆盖率统计 🟢 低优先级
@@ -283,7 +283,7 @@ pattern-extractor 可以使用 LSP 工具进行深度代码分析：
    ↓ 检测文档完整性和编号问题
 3. doc-generator
    ↓ 生成缺失的文档（自动编号）
-4. claude-md-enforcer
+4. doc-workflow-enforcer
    ↓ 更新 CLAUDE.md，强制执行规范
 ```
 
@@ -360,10 +360,10 @@ pattern-extractor 可以使用 LSP 工具进行深度代码分析：
 # 文档索引
 
 ## 需求文档 (9)
-- [REQ-001: 项目初始化需求](docs/requirements/001-xxx.md) ✅
-- [REQ-002: 功能A](docs/requirements/002-xxx.md) ✅
+- [REQ-20260110: 项目初始化需求](docs/requirements/001-xxx.md) ✅
+- [REQ-20260110: 功能A](docs/requirements/002-xxx.md) ✅
 ...
-- [REQ-009: 文档编号系统](docs/requirements/009-xxx.md) ✅
+- [REQ-20260203: 文档编号系统](docs/requirements/009-xxx.md) ✅
 
 ## 配对状态
 - ✅ 已配对: 8/9 (89%)
@@ -378,7 +378,7 @@ pattern-extractor 可以使用 LSP 工具进行深度代码分析：
 
 1. **doc-generator**：添加编号自动分配逻辑
 2. **doc-generator**：添加占位符替换说明
-3. **claude-md-enforcer**：添加编号规范生成
+3. **doc-workflow-enforcer**：添加编号规范生成
 4. **doc-detector**：添加编号完整性检查
 5. **跨 Skill**：明确 skills 协作流程
 
@@ -386,7 +386,7 @@ pattern-extractor 可以使用 LSP 工具进行深度代码分析：
 
 6. **pattern-extractor**：添加 LSP 使用说明
 7. **doc-generator**：添加验证和反馈机制
-8. **claude-md-enforcer**：添加模板路径引用
+8. **doc-workflow-enforcer**：添加模板路径引用
 9. **doc-detector**：添加文档质量评分
 10. **跨 Skill**：统一错误处理格式
 
@@ -400,18 +400,18 @@ pattern-extractor 可以使用 LSP 工具进行深度代码分析：
 
 ---
 
-## 6. 与 REQ-009 的关联
+## 6. 与 REQ-20260203 的关联
 
-本次分析与 **REQ-009: 文档编号系统** 高度相关：
+本次分析与 **REQ-20260203: 文档编号系统** 高度相关：
 
 | 需求 | 相关 Skills | 优化建议 |
 |------|------------|----------|
 | 自动编号分配 | doc-generator | 添加编号分配流程（最高优先级） |
-| 编号规范文档化 | claude-md-enforcer | 生成编号规范章节（最高优先级） |
+| 编号规范文档化 | doc-workflow-enforcer | 生成编号规范章节（最高优先级） |
 | 编号冲突检测 | doc-detector | 添加完整性检查（高优先级） |
 | 配对关系验证 | doc-detector | 添加配对验证（高优先级） |
 
-**建议**：在实施 REQ-009 时，同步完成上述 skills 的优化。
+**建议**：在实施 REQ-20260203 时，同步完成上述 skills 的优化。
 
 ---
 
@@ -436,8 +436,8 @@ pattern-extractor 可以使用 LSP 工具进行深度代码分析：
 ---
 
 **下一步行动**：
-1. 实施 REQ-009 文档编号系统
-2. 同步更新相关 skills（doc-generator, claude-md-enforcer, doc-detector）
+1. 实施 REQ-20260203 文档编号系统
+2. 同步更新相关 skills（doc-generator, doc-workflow-enforcer, doc-detector）
 3. 测试完整的文档创建流程
 4. 根据测试结果迭代优化
 

@@ -34,15 +34,15 @@ Generate standardized project documentation using templates and project analysis
 
 ### Phase 2: Document Creation
 
-**Goal**: Generate numbered documents
+**Goal**: Generate date-based documents
 
 **Actions**:
-1. **Scan existing document numbers**
-2. **Calculate next number**
-3. Create paired documents
+1. **Get today date** in `YYYYMMDD` format
+2. Generate paired filenames from date + feature slug
+3. If same-day same-name exists, append `-v2` / `-v3`
 4. Populate using templates
 
-**Critical**: Ensure filename number matches title number.
+**Critical**: Ensure filename date matches title ID date.
 
 ---
 
@@ -51,7 +51,7 @@ Generate standardized project documentation using templates and project analysis
 **Goal**: Validate generated documents
 
 **Actions**:
-1. Verify numbering consistency
+1. Verify date consistency
 2. Verify pairing (requirement ↔ design)
 3. Check placeholders replaced
 4. Report to user
@@ -63,11 +63,11 @@ Generate standardized project documentation using templates and project analysis
 ```markdown
 ✅ Documents Created
 
-**Requirement**: docs/requirements/009-feature-name.md
-**Design**: docs/design/009-feature-name-technical-design.md
-**Number**: 009
+**Requirement**: docs/requirements/20260311-feature-name.md
+**Design**: docs/design/20260311-feature-name-technical-design.md
+**Date**: 20260311
 
-✅ Numbering verified
+✅ Date consistency verified
 ✅ Pairing verified
 ```
 
@@ -75,5 +75,5 @@ Generate standardized project documentation using templates and project analysis
 
 - Use standardized templates for consistency
 - Generate meaningful content, not placeholders
-- Ensure proper numbering and pairing
+- Ensure proper date naming and pairing
 - Integrate with existing documentation structure

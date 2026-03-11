@@ -1,8 +1,8 @@
-# 需求文档 004: Git Ops Helper - Git 操作 Skill
+# 需求文档 20260116: Git Ops Helper - Git 操作 Skill
 
 ## 文档信息
 
-- **编号**: REQ-004
+- **编号**: REQ-20260116
 - **标题**: Git Ops Helper - Git 操作 Skill
 - **版本**: 1.0.0
 - **创建日期**: 2026-01-16

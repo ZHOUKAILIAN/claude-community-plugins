@@ -1,4 +1,4 @@
-# DESIGN-009: 文档编号系统 - 技术设计
+# TECH-20260203: 文档编号系统 - 技术设计
 
 ## 1. 技术架构概述
 
@@ -62,7 +62,7 @@
 
 - ❌ 数据库：增加复杂度，违背轻量级原则
 - ❌ 配置文件：编号信息可从文件系统直接获取
-> 说明：本设计会新增脚手架、校验、迁移等脚本以满足 REQ-009 合并范围的工具链要求。
+> 说明：本设计会新增脚手架、校验、迁移等脚本以满足 REQ-20260203 合并范围的工具链要求。
 
 ## 3. 详细设计
 
@@ -75,13 +75,13 @@
 ls docs/requirements/ | grep -E '^[0-9]{3}-' | sort -r | head -1
 ```
 
-**输出示例**：`008-commands-skills-optimization.md`
+**输出示例**：`20260203-commands-skills-optimization.md`
 
 #### 3.1.2 编号提取
 
 ```bash
 # 提取编号部分
-echo "008-commands-skills-optimization.md" | cut -d'-' -f1
+echo "20260203-commands-skills-optimization.md" | cut -d'-' -f1
 # 输出: 008
 ```
 
@@ -105,7 +105,7 @@ AI 在创建新文档前自动执行：
 3. 计算下一个编号（009）
 4. 创建配对文档：
    - 文件名：009-feature-name.md
-   - 标题：# REQ-009: 功能名称
+   - 标题：# REQ-20260203: 功能名称
 ```
 
 ### 3.2 CLAUDE.md 编号规范模板
@@ -135,12 +135,12 @@ AI 在创建新文档前自动执行：
 **示例**：
 ```
 文件名：
-docs/requirements/009-document-numbering-system.md
-docs/design/009-document-numbering-system-technical-design.md
+docs/requirements/20260203-document-numbering-system.md
+docs/design/20260203-document-numbering-system-technical-design.md
 
 文档标题：
-# REQ-009: 文档编号系统
-# DESIGN-009: 文档编号系统 - 技术设计
+# REQ-20260203: 文档编号系统
+# TECH-20260203: 文档编号系统 - 技术设计
 ```
 
 ### 编号分配流程
@@ -165,7 +165,7 @@ docs/design/009-document-numbering-system-technical-design.md
 
 4. **创建配对文档**：
    - 文件名：`009-new-feature.md` 和 `009-new-feature-technical-design.md`
-   - 标题：`# REQ-009: 新功能` 和 `# DESIGN-009: 新功能 - 技术设计`
+   - 标题：`# REQ-20260203: 新功能` 和 `# TECH-20260203: 新功能 - 技术设计`
 
 ### 编号规则
 
@@ -180,7 +180,7 @@ docs/design/009-document-numbering-system-technical-design.md
 
 执行 `init-doc-driven-dev` 时自动创建：
 - 文件：`docs/requirements/001-project-initial-requirements.md`
-- 标题：`# REQ-001: 项目初始化需求`
+- 标题：`# REQ-20260110: 项目初始化需求`
 - 文件：`docs/design/001-project-initial-technical-design.md`
 - 标题：`# DESIGN-001: 项目初始化需求 - 技术设计`
 ```
@@ -212,9 +212,9 @@ docs/design/009-document-numbering-system-technical-design.md
 - {{AUTHOR}}：作者信息（从 git config 获取）
 
 示例：
-- 文件名：docs/requirements/009-document-numbering-system.md
-- 标题：# REQ-009: 文档编号系统
-- 配对文档：docs/design/009-document-numbering-system-technical-design.md
+- 文件名：docs/requirements/20260203-document-numbering-system.md
+- 标题：# REQ-20260203: 文档编号系统
+- 配对文档：docs/design/20260203-document-numbering-system-technical-design.md
 -->
 
 ---
@@ -330,9 +330,9 @@ AI 自动处理：
 - {{AUTHOR}}：作者信息
 
 示例：
-- 文件名：docs/design/009-document-numbering-system-technical-design.md
-- 标题：# DESIGN-009: 文档编号系统 - 技术设计
-- 配对文档：docs/requirements/009-document-numbering-system.md
+- 文件名：docs/design/20260203-document-numbering-system-technical-design.md
+- 标题：# TECH-20260203: 文档编号系统 - 技术设计
+- 配对文档：docs/requirements/20260203-document-numbering-system.md
 -->
 
 ---
@@ -444,8 +444,8 @@ paired_requirement_doc: "docs/requirements/{{DOC_NUMBER}}-{{FEATURE_NAME}}.md"
 
 **编号在文档中的使用**：
 
-1. **文件名**：`{{DOC_NUMBER}}-{{FEATURE_NAME}}.md` → `009-document-numbering-system.md`
-2. **标题**：`# REQ-{{DOC_NUMBER}}: {{FEATURE_NAME_TITLE}}` → `# REQ-009: 文档编号系统`
+1. **文件名**：`{{DOC_NUMBER}}-{{FEATURE_NAME}}.md` → `20260203-document-numbering-system.md`
+2. **标题**：`# REQ-{{DOC_NUMBER}}: {{FEATURE_NAME_TITLE}}` → `# REQ-20260203: 文档编号系统`
 3. **Frontmatter**：`document_number: "{{DOC_NUMBER}}"` → `document_number: "009"`
 
 ### 3.4 init-doc-driven-dev 命令更新
@@ -465,7 +465,7 @@ project-root/
 ├── docs/
 │   ├── requirements/
 │   │   └── 001-project-initial-requirements.md      # Auto-numbered initial doc
-│   │       Title: # REQ-001: 项目初始化需求
+│   │       Title: # REQ-20260110: 项目初始化需求
 │   ├── design/
 │   │   └── 001-project-initial-technical-design.md  # Paired with same number
 │   │       Title: # DESIGN-001: 项目初始化需求 - 技术设计
@@ -479,11 +479,11 @@ project-root/
 
 **Document Numbering System**:
 - **File names**: Initial documents start with `001-project-initial-requirements.md`
-- **Document titles**: Include number prefix (e.g., `# REQ-001: 项目初始化需求`)
+- **Document titles**: Include number prefix (e.g., `# REQ-20260110: 项目初始化需求`)
 - **Auto-assignment**: AI automatically assigns next available number for new documents
 - **Paired documents**: Requirements and technical design use matching numbers
   - File: `009-feature.md` ↔ `009-feature-technical-design.md`
-  - Title: `# REQ-009: 功能` ↔ `# DESIGN-009: 功能 - 技术设计`
+  - Title: `# REQ-20260203: 功能` ↔ `# TECH-20260203: 功能 - 技术设计`
 - **Embedded rules**: Numbering rules and automation workflow in generated CLAUDE.md
 - **Template placeholders**: `{{DOC_NUMBER}}` for automatic number injection in both filename and title
 ```
@@ -503,7 +503,7 @@ AI 在执行 `init-doc-driven-dev` 时的逻辑：
 
 3. 创建初始文档（使用模板并替换占位符）：
    文件：docs/requirements/001-project-initial-requirements.md
-   标题：# REQ-001: 项目初始化需求
+   标题：# REQ-20260110: 项目初始化需求
 
    文件：docs/design/001-project-initial-technical-design.md
    标题：# DESIGN-001: 项目初始化需求 - 技术设计
@@ -552,9 +552,9 @@ printf "%03d" $next_num  # 输出: 009
 
 ### 步骤 4：创建配对文档
 - 需求文档文件名：`docs/requirements/009-feature-name.md`
-- 需求文档标题：`# REQ-009: 功能名称`
+- 需求文档标题：`# REQ-20260203: 功能名称`
 - 技术设计文件名：`docs/design/009-feature-name-technical-design.md`
-- 技术设计标题：`# DESIGN-009: 功能名称 - 技术设计`
+- 技术设计标题：`# TECH-20260203: 功能名称 - 技术设计`
 
 ### 步骤 5：替换模板占位符
 读取模板文件并替换所有占位符：
@@ -582,7 +582,7 @@ printf "%03d" $next_num  # 输出: 009
 3. ✅ 需求文档和技术设计文档使用相同编号
 ```
 
-#### 3.5.2 claude-md-enforcer 技能更新
+#### 3.5.2 doc-workflow-enforcer 技能更新
 
 **SKILL.md 更新要点**：
 
@@ -614,7 +614,7 @@ printf "%03d" $next_num  # 输出: 009
 此章节应位于"开发流程要求"之后，确保 AI 在创建任何文档前都能读取并遵循编号规范。
 ```
 
-### 3.6 工具链与标准化设计（合并 REQ-008）
+### 3.6 工具链与标准化设计（合并 REQ-20260203）
 
 #### 3.6.1 模板与规范
 
@@ -850,7 +850,7 @@ test_filename_placeholder() {
 test_title_placeholder() {
   template="# REQ-{{DOC_NUMBER}}: {{FEATURE_NAME_TITLE}}"
   result=$(echo "$template" | sed "s/{{DOC_NUMBER}}/009/g" | sed "s/{{FEATURE_NAME_TITLE}}/测试功能/g")
-  expected="# REQ-009: 测试功能"
+  expected="# REQ-20260203: 测试功能"
   [ "$result" = "$expected" ] && echo "✅ PASS" || echo "❌ FAIL"
 }
 ```
@@ -860,12 +860,12 @@ test_title_placeholder() {
 测试完整流程：
 1. 在空项目中执行 `init-doc-driven-dev`
 2. 验证生成文件：`001-project-initial-requirements.md`
-3. 验证文件标题：`# REQ-001: 项目初始化需求`
+3. 验证文件标题：`# REQ-20260110: 项目初始化需求`
 4. 验证 frontmatter：`document_number: "001"`
 5. 请求 AI 创建新需求文档
 6. 验证 AI 自动分配 `002` 编号
 7. 验证文件名：`002-xxx.md`
-8. 验证标题：`# REQ-002: xxx`
+8. 验证标题：`# REQ-20260110: xxx`
 9. 验证配对的技术设计文档也使用 `002`
 10. 验证所有占位符都已正确替换
 
@@ -904,7 +904,7 @@ test_title_placeholder() {
   - 包含文件名和标题格式说明
   - 包含完整的 AI 自动化流程
   - 包含验证步骤
-- [ ] 在 `claude-md-enforcer` 技能中集成编号规范
+- [ ] 在 `doc-workflow-enforcer` 技能中集成编号规范
 - [ ] 测试 CLAUDE.md 生成
 
 **Phase 4: init-doc-driven-dev 命令更新**
@@ -912,7 +912,7 @@ test_title_placeholder() {
   - 体现文件名和标题的编号格式
 - [ ] 实现初始化逻辑
   - 创建 `001-project-initial-requirements.md`
-  - 标题：`# REQ-001: 项目初始化需求`
+  - 标题：`# REQ-20260110: 项目初始化需求`
 - [ ] 实现占位符替换逻辑（文件名 + 标题）
 - [ ] 测试初始化流程
 
@@ -956,7 +956,7 @@ test_title_placeholder() {
 | `plugins/ai-doc-driven-dev/knowledge/templates/requirements-template.md` | 修改 | 标题改为 `# REQ-{{DOC_NUMBER}}: {{FEATURE_NAME_TITLE}}`；添加编号说明 |
 | `plugins/ai-doc-driven-dev/knowledge/templates/technical-design-template.md` | 修改 | 标题改为 `# DESIGN-{{DOC_NUMBER}}: {{FEATURE_NAME_TITLE}} - 技术设计`；添加编号说明 |
 | `plugins/ai-doc-driven-dev/commands/init-doc-driven-dev.md` | 修改 | 更新输出说明，体现文件名和标题的编号格式 |
-| `plugins/ai-doc-driven-dev/skills/claude-md-enforcer/SKILL.md` | 修改 | 添加编号规范生成逻辑（包含文件名和标题格式） |
+| `plugins/ai-doc-driven-dev/skills/doc-workflow-enforcer/SKILL.md` | 修改 | 添加编号规范生成逻辑（包含文件名和标题格式） |
 | `plugins/ai-doc-driven-dev/skills/doc-generator/SKILL.md` | 修改 | 添加编号分配流程和一致性验证说明 |
 | `plugins/ai-doc-driven-dev/README.md` | 修改 | 添加编号系统说明 |
 
@@ -984,9 +984,9 @@ test_title_placeholder() {
 
 ## 10. 相关文档
 
-- `docs/requirements/009-document-numbering-system.md` - 需求文档
+- `docs/requirements/20260203-document-numbering-system.md` - 需求文档
 - `plugins/ai-doc-driven-dev/commands/init-doc-driven-dev.md` - 初始化命令
-- `plugins/ai-doc-driven-dev/skills/claude-md-enforcer/SKILL.md` - CLAUDE.md 强制技能
+- `plugins/ai-doc-driven-dev/skills/doc-workflow-enforcer/SKILL.md` - CLAUDE.md 强制技能
 - `plugins/ai-doc-driven-dev/skills/doc-generator/SKILL.md` - 文档生成技能
 - `plugins/ai-doc-driven-dev/knowledge/templates/requirements-template.md` - 需求文档模板
 - `plugins/ai-doc-driven-dev/knowledge/templates/technical-design-template.md` - 技术设计模板
@@ -1106,7 +1106,7 @@ description: This skill should be used when the user asks to "generate project d
 
 | Skill | 主要优化点 | 参考模板 |
 |-------|-----------|---------|
-| claude-md-enforcer | Description、When、Phase | 模板 5（工作流式） |
+| doc-workflow-enforcer | Description、When、Phase | 模板 5（工作流式） |
 | doc-detector | 表格、评分、简洁步骤 | 模板 5（工作流式） |
 | doc-generator | 编号流程、占位符、验证 | 模板 5（工作流式） |
 | pattern-extractor | LSP、优先级、条件 | 模板 5（工作流式） |
@@ -1158,7 +1158,7 @@ description: This skill should be used when the user asks to "generate project d
 - 参考：`claude-plugins-official/official-patterns-analysis.md`
 
 **Phase 5: CLAUDE.md 规范** 🟡 中优先级
-- 在 claude-md-enforcer 中添加编号规范生成
+- 在 doc-workflow-enforcer 中添加编号规范生成
 - 添加 Commands/Skills 写作规范
 
 **Phase 6: 测试验证** 🟢 中优先级
@@ -1198,14 +1198,14 @@ description: This skill should be used when the user asks to "generate project d
 
 ### 13.3 Skills（4 个）
 
-- `plugins/ai-doc-driven-dev/skills/claude-md-enforcer/SKILL.md`
+- `plugins/ai-doc-driven-dev/skills/doc-workflow-enforcer/SKILL.md`
 - `plugins/ai-doc-driven-dev/skills/doc-detector/SKILL.md`
 - `plugins/ai-doc-driven-dev/skills/doc-generator/SKILL.md`
 - `plugins/ai-doc-driven-dev/skills/pattern-extractor/SKILL.md`
 
 ## 14. 相关文档
 
-- `docs/requirements/009-document-numbering-system.md` - 需求文档
+- `docs/requirements/20260203-document-numbering-system.md` - 需求文档
 - `docs/analysis/skills-optimization-analysis.md` - Skills 优化分析
 - `/Users/zhoukailian/Desktop/mySelf/claude-plugins-official/official-patterns-analysis.md` - 官方最佳实践
 

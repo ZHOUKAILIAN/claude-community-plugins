@@ -1,13 +1,13 @@
-# 技术方案 001: AI Documentation-Driven Development Plugin - 基础架构技术设计
+# 技术方案 20260110: AI Documentation-Driven Development Plugin - 基础架构技术设计
 
 ## 文档信息
 
-- **编号**: TECH-001
+- **编号**: TECH-20260110
 - **标题**: AI文档驱动开发插件基础架构
 - **版本**: 1.0.0
 - **创建日期**: 2026-01-10
 - **状态**: 已实现
-- **依赖**: REQ-001 (基础功能需求)
+- **依赖**: REQ-20260110 (基础功能需求)
 
 ## 1. 技术架构概述
 
@@ -27,7 +27,7 @@ ai-doc-driven-dev/
 ├── .claude-plugin/
 │   └── plugin.json              # 插件元数据和配置
 ├── skills/                      # 核心技能模块
-│   ├── claude-md-enforcer/      # CLAUDE.md强制集成技能（优先执行）
+│   ├── doc-workflow-enforcer/      # CLAUDE.md强制集成技能（优先执行）
 │   │   └── SKILL.md
 │   ├── doc-detector/            # 文档检测技能
 │   │   └── SKILL.md
@@ -190,7 +190,7 @@ templates/
 4. 生成最终文档
 5. 添加frontmatter元数据
 
-### 2.4 claude-md-enforcer (CLAUDE.md强制集成技能)
+### 2.4 doc-workflow-enforcer (CLAUDE.md强制集成技能)
 
 **功能职责**：
 - 检测现有CLAUDE.md文件
@@ -253,7 +253,7 @@ graph TD
 ### 3.2 技能调用策略
 
 **顺序执行**：
-1. `claude-md-enforcer` → 强制集成CLAUDE.md（优先执行）
+1. `doc-workflow-enforcer` → 强制集成CLAUDE.md（优先执行）
 2. `doc-detector` → 分析现状
 3. `pattern-extractor` → 提炼规范
 4. `doc-generator` → 按需生成文档

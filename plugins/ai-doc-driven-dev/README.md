@@ -8,15 +8,15 @@ The AI Documentation-Driven Development Plugin helps teams establish and maintai
 
 ## Key Features
 
-- **🔧 CLAUDE.md Enforcement**: Automatically ensures CLAUDE.md contains mandatory documentation-driven development workflows
+- **🔧 Workflow Instruction Enforcement**: Ensures `CLAUDE.md` or `AGENTS.md` contains mandatory documentation-driven development workflows
 - **📊 Documentation Analysis**: Comprehensive assessment of project documentation completeness
 - **🎯 Pattern Extraction**: Automatically extracts project-specific coding patterns and conventions
 - **📝 Smart Generation**: Creates standardized documentation based on project analysis and templates
 
 ## Skills Included
 
-### 1. claude-md-enforcer
-Enforces documentation-driven development workflow in CLAUDE.md files. This skill runs first to establish the foundation for documentation-first development.
+### 1. doc-workflow-enforcer
+Enforces documentation-driven development workflow in instruction files (`CLAUDE.md` / `AGENTS.md`). This skill runs first to establish the foundation for documentation-first development.
 
 **Use cases:**
 - Initialize documentation-driven development in new projects
@@ -86,7 +86,7 @@ claude enforce-doc-workflow --scan=no
 ## Getting Started
 
 1. **Install the Plugin**: Add this plugin to your Claude Code environment
-2. **Run Initial Setup**: Use the claude-md-enforcer skill to establish documentation-driven development workflow
+2. **Run Initial Setup**: Use the doc-workflow-enforcer skill to establish documentation-driven development workflow
 3. **Analyze Your Project**: Use doc-detector to understand current documentation status
 4. **Extract Patterns**: Use pattern-extractor to document existing coding conventions
 5. **Generate Documentation**: Use doc-generator to create missing documentation
@@ -115,7 +115,7 @@ This plugin integrates seamlessly with existing development workflows:
 
 ## Best Practices
 
-- **Start with CLAUDE.md**: Always run claude-md-enforcer first to establish workflow standards
+- **Start with Instruction Files**: Always run doc-workflow-enforcer first to establish workflow standards in `CLAUDE.md` or `AGENTS.md`
 - **Regular Analysis**: Periodically run doc-detector to maintain documentation completeness
 - **Pattern Updates**: Re-run pattern-extractor when significant architectural changes occur
 - **Template Customization**: Adapt generated documentation templates to project-specific needs
