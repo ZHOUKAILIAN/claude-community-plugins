@@ -35,34 +35,32 @@ This plugin is part of the Claude Code Plugin Marketplace. To install:
 cd your-project
 
 # Install the plugin (when marketplace is available)
-claude plugin install js-framework-analyzer
+plugin install js-framework-analyzer
 ```
 
-## Usage
-
-### Commands
+## Commands
 
 #### Analyze Microfrontend Isolation
 ```bash
-claude analyze-mf-isolation
-claude analyze-mf-isolation --focus js
-claude analyze-mf-isolation --detailed --save report.md
+analyze-mf-isolation
+analyze-mf-isolation --focus js
+analyze-mf-isolation --detailed --save report.md
 ```
 
 #### Analyze AI Platform Architecture
 ```bash
-claude analyze-ai-platform
-claude analyze-ai-platform --module chat
-claude analyze-ai-platform --detailed --save report.md
+analyze-ai-platform
+analyze-ai-platform --module chat
+analyze-ai-platform --detailed --save report.md
 ```
 
 #### Analyze Reactivity System
 ```bash
-claude analyze-reactivity
-claude analyze-reactivity --detailed --save report.md
+analyze-reactivity
+analyze-reactivity --detailed --save report.md
 ```
 
-### Skills
+## Skills
 
 The plugin includes four specialized skills:
 

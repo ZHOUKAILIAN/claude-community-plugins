@@ -90,7 +90,7 @@ After scan decision:
 
 ```bash
 # Command prompts for scan decision
-claude enforce-doc-workflow
+enforce-doc-workflow
 
 # Output:
 # 📋 Documentation Scan
@@ -111,14 +111,14 @@ claude enforce-doc-workflow
 
 ```bash
 # Skip prompt and scan automatically
-claude enforce-doc-workflow --scan=yes
+enforce-doc-workflow --scan=yes
 ```
 
 ### Example 3: Skip Scan Mode
 
 ```bash
 # Skip prompt and don't scan
-claude enforce-doc-workflow --scan=no
+enforce-doc-workflow --scan=no
 ```
 ```
 
@@ -365,7 +365,7 @@ def enter_enforcement_mode(scan_results):
 ### 5.1 完整执行流程图
 
 ```
-用户执行命令: claude enforce-doc-workflow [--scan=yes|no]
+用户执行命令: enforce-doc-workflow [--scan=yes|no]
                           ↓
                   检查 --scan 参数
                           ↓
@@ -453,16 +453,16 @@ def enter_enforcement_mode(scan_results):
 **对于习惯旧行为的用户**:
 ```bash
 # 方式 1: 每次使用参数
-claude enforce-doc-workflow --scan=yes
+enforce-doc-workflow --scan=yes
 
 # 方式 2: 创建 alias
-alias edw='claude enforce-doc-workflow --scan=yes'
+alias edw='enforce-doc-workflow --scan=yes'
 ```
 
 **对于希望更快执行的用户**:
 ```bash
 # 跳过扫描,直接进入
-claude enforce-doc-workflow --scan=no
+enforce-doc-workflow --scan=no
 ```
 
 ## 8. 质量保证

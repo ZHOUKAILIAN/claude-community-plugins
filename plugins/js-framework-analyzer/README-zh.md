@@ -35,34 +35,32 @@
 cd your-project
 
 # 安装插件（当市场可用时）
-claude plugin install js-framework-analyzer
+plugin install js-framework-analyzer
 ```
 
-## 使用
-
-### 命令
+## 命令
 
 #### 分析微前端隔离机制
 ```bash
-claude analyze-mf-isolation
-claude analyze-mf-isolation --focus js
-claude analyze-mf-isolation --detailed --save report.md
+analyze-mf-isolation
+analyze-mf-isolation --focus js
+analyze-mf-isolation --detailed --save report.md
 ```
 
 #### 分析AI平台架构
 ```bash
-claude analyze-ai-platform
-claude analyze-ai-platform --module chat
-claude analyze-ai-platform --detailed --save report.md
+analyze-ai-platform
+analyze-ai-platform --module chat
+analyze-ai-platform --detailed --save report.md
 ```
 
 #### 分析响应式系统
 ```bash
-claude analyze-reactivity
-claude analyze-reactivity --detailed --save report.md
+analyze-reactivity
+analyze-reactivity --detailed --save report.md
 ```
 
-### 技能
+## 技能
 
 插件包含四个专门的技能：
 

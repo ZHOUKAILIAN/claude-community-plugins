@@ -14,12 +14,6 @@ Analyze the reactivity system implementation in frontend frameworks such as Vue,
 
 This command performs deep analysis of frontend framework source code to discover and explain how the reactivity system is implemented. It explores the codebase without making assumptions, identifying the actual implementation strategies for reactive programming.
 
-## Usage
-
-```bash
-claude analyze-reactivity [options]
-```
-
 ## Options
 
 - `--detailed` - Include detailed code snippets and analysis
@@ -31,19 +25,19 @@ claude analyze-reactivity [options]
 
 ```bash
 # Analyze reactivity system (bilingual reports)
-claude analyze-reactivity
+analyze-reactivity
 
 # Generate detailed analysis report (both languages)
-claude analyze-reactivity --detailed --save reactivity-report
+analyze-reactivity --detailed --save reactivity-report
 
 # Generate English report only
-claude analyze-reactivity --language en --save reactivity-report-en.md
+analyze-reactivity --language en --save reactivity-report-en.md
 
 # Generate Chinese report only
-claude analyze-reactivity --language zh --save reactivity-report-zh.md
+analyze-reactivity --language zh --save reactivity-report-zh.md
 
 # Output as JSON
-claude analyze-reactivity --format json --save reactivity.json
+analyze-reactivity --format json --save reactivity.json
 ```
 
 ## Analysis Process

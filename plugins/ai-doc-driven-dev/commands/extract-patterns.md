@@ -19,12 +19,6 @@ This command analyzes your codebase to extract and document:
 4. **Error Handling**: Exception handling and error response patterns
 5. **Code Style**: Formatting, commenting, and documentation patterns
 
-## Usage
-
-```bash
-claude extract-patterns [options]
-```
-
 ## Options
 
 - `--type <frontend|backend|fullstack>` - Specify project type for targeted analysis
@@ -47,16 +41,16 @@ claude extract-patterns [options]
 
 ```bash
 # Extract all patterns from codebase
-claude extract-patterns
+extract-patterns
 
 # Extract only naming and API patterns for frontend
-claude extract-patterns --type frontend --include naming,api
+extract-patterns --type frontend --include naming,api
 
 # Save patterns to specific file in JSON format
-claude extract-patterns --format json --output project-patterns.json
+extract-patterns --format json --output project-patterns.json
 
 # Extract patterns excluding test-related patterns
-claude extract-patterns --exclude testing
+extract-patterns --exclude testing
 ```
 
 ## Frontend-Specific Patterns

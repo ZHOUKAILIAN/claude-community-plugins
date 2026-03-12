@@ -53,11 +53,6 @@ Generates standardized project documentation using intelligent templates and pro
 
 Enable documentation-first workflow enforcement for code change requests.
 
-**Usage:**
-```bash
-claude enforce-doc-workflow [--scan=yes|no]
-```
-
 **Features:**
 - **Interactive Scan Prompt**: Asks whether to scan repository before entering enforcement mode
 - **Flexible Scanning**: Choose to scan or skip based on your needs
@@ -74,13 +69,33 @@ claude enforce-doc-workflow [--scan=yes|no]
 **Example workflow:**
 ```bash
 # Interactive mode (default) - asks whether to scan
-claude enforce-doc-workflow
+enforce-doc-workflow
 
 # Auto-scan mode - skips prompt and scans
-claude enforce-doc-workflow --scan=yes
+enforce-doc-workflow --scan=yes
 
 # Skip scan mode - skips prompt and scan
-claude enforce-doc-workflow --scan=no
+enforce-doc-workflow --scan=no
+```
+
+### update-standards
+
+Check whether local `docs/` files and instruction files have drifted from the plugin's latest standards.
+
+**Features:**
+- **Full Docs Tree Coverage**: Compare all `docs/**/*.md` files and workflow files against the latest plugin standards
+- **Instruction File Coverage**: Review `CLAUDE.md`, `AGENTS.md`, and `GEMINI.md` when present
+- **Approval-First Updates**: Present proposed changes before updating local files
+
+**What it does:**
+1. Scans all local `docs/**/*.md` files and instruction files for outdated standards
+2. Highlights missing principles such as the "Visual-First Design Principles"
+3. Proposes synchronization updates across the full `docs/` tree and applies them only after user approval
+
+**Example workflow:**
+```bash
+# Review and synchronize all local docs and workflow files
+update-standards
 ```
 
 ## Getting Started

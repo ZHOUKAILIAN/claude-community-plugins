@@ -19,12 +19,6 @@ This command initializes a comprehensive documentation-driven development setup 
 4. **Standards Extraction**: Documents existing coding conventions and patterns
 5. **Template Generation**: Creates project-specific documentation templates
 
-## Usage
-
-```bash
-claude init-doc-driven-dev [options]
-```
-
 ## Options
 
 - `--force` - Overwrite existing documentation files
@@ -36,16 +30,16 @@ claude init-doc-driven-dev [options]
 
 ```bash
 # Basic initialization
-claude init-doc-driven-dev
+init-doc-driven-dev
 
 # Force overwrite existing files
-claude init-doc-driven-dev --force
+init-doc-driven-dev --force
 
 # Initialize with specific template
-claude init-doc-driven-dev --template frontend
+init-doc-driven-dev --template frontend
 
 # Analyze project without creating files
-claude init-doc-driven-dev --analyze-only
+init-doc-driven-dev --analyze-only
 ```
 
 ## Output

@@ -16,12 +16,6 @@ Analyze the architecture and core functionality of AI application platforms such
 
 This command performs comprehensive analysis of AI application platform source code to discover and explain the overall architecture and core functionality. It explores the codebase systematically to identify modules, understand their interactions, and document the platform's design.
 
-## Usage
-
-```bash
-claude analyze-ai-platform [options]
-```
-
 ## Options
 
 - `--module <name>` - Focus on specific module
@@ -34,22 +28,22 @@ claude analyze-ai-platform [options]
 
 ```bash
 # Analyze entire platform architecture (bilingual reports)
-claude analyze-ai-platform
+analyze-ai-platform
 
 # Focus on specific module
-claude analyze-ai-platform --module chat
+analyze-ai-platform --module chat
 
 # Generate detailed analysis report (both languages)
-claude analyze-ai-platform --detailed --save architecture-report
+analyze-ai-platform --detailed --save architecture-report
 
 # Generate English report only
-claude analyze-ai-platform --language en --save architecture-report-en.md
+analyze-ai-platform --language en --save architecture-report-en.md
 
 # Generate Chinese report only
-claude analyze-ai-platform --language zh --save architecture-report-zh.md
+analyze-ai-platform --language zh --save architecture-report-zh.md
 
 # Output as JSON
-claude analyze-ai-platform --format json --save architecture.json
+analyze-ai-platform --format json --save architecture.json
 ```
 
 ## Analysis Process

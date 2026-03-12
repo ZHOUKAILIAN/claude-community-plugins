@@ -102,6 +102,13 @@ When creating documents, AI MUST:
 2. Check same-day same-name collision
 3. Create paired documents
 4. Verify consistency
+
+### Visual-First Design Principles
+- ✅ **REQUIRED**: Technical designs and requirements MUST prioritize visual representations over long text descriptions.
+- ✅ **REQUIRED**: System architectures, data flows, and state transitions MUST be represented using Mermaid diagrams (`flowchart`, `sequenceDiagram`, `classDiagram`, etc.).
+- ✅ **REQUIRED**: Database schemas and entity relationships MUST be represented using Mermaid ER diagrams (`erDiagram`).
+- ✅ **REQUIRED**: Data structures, API parameters, and configuration enumerations MUST use Markdown Tables, not lists.
+- ✅ **REQUIRED**: When documenting technical modifications, differences MUST be shown inline within the same diagram or table (e.g., using `~~strikethrough~~` or HTML tags in tables, or `style`/`classDef` node coloring in Mermaid). Do not create separate "Before" and "After" views.
 ```
 
 ## Best Practices
