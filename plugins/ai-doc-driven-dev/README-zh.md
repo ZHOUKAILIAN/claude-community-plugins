@@ -53,11 +53,6 @@ AI文档驱动开发插件帮助团队建立和维护文档优先的开发工作
 
 为代码变更请求启用文档优先工作流程强制执行。
 
-**用法:**
-```bash
-claude enforce-doc-workflow [--scan=yes|no]
-```
-
 **功能特性:**
 - **交互式扫描提示**: 在进入强制模式前询问是否扫描仓库
 - **灵活扫描**: 根据需要选择扫描或跳过
@@ -74,13 +69,33 @@ claude enforce-doc-workflow [--scan=yes|no]
 **示例工作流程:**
 ```bash
 # 交互模式(默认) - 询问是否扫描
-claude enforce-doc-workflow
+enforce-doc-workflow
 
 # 自动扫描模式 - 跳过提示并扫描
-claude enforce-doc-workflow --scan=yes
+enforce-doc-workflow --scan=yes
 
 # 跳过扫描模式 - 跳过提示和扫描
-claude enforce-doc-workflow --scan=no
+enforce-doc-workflow --scan=no
+```
+
+### update-standards
+
+检查本地 `docs/` 下所有文档和指令文件是否落后于插件的最新标准。
+
+**功能特性:**
+- **全量 docs 覆盖**: 对比所有 `docs/**/*.md` 文件和工作流文件与插件最新标准的差异
+- **指令文件覆盖**: 在存在时检查 `CLAUDE.md`、`AGENTS.md` 和 `GEMINI.md`
+- **确认后更新**: 先展示拟议改动, 再更新本地文件
+
+**功能说明:**
+1. 扫描所有本地 `docs/**/*.md` 和指令文件中的过期标准
+2. 标出缺失的原则, 例如 "Visual-First Design Principles"
+3. 提出覆盖整个 `docs/` 目录的同步更新建议, 并仅在用户确认后应用
+
+**示例工作流程:**
+```bash
+# 检查并同步全部本地文档和工作流文件
+update-standards
 ```
 
 ## 开始使用

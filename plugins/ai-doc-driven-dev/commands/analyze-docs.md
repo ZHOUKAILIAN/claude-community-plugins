@@ -20,12 +20,6 @@ This command provides detailed analysis of your project's documentation by:
 5. **Naming Convention Audit**: Validates date-based filename and document ID consistency
 6. **Improvement Recommendations**: Provides prioritized suggestions for enhancement
 
-## Usage
-
-```bash
-claude analyze-docs [options]
-```
-
 ## Options
 
 - `--detailed` - Generate detailed analysis report
@@ -37,16 +31,16 @@ claude analyze-docs [options]
 
 ```bash
 # Basic documentation analysis
-claude analyze-docs
+analyze-docs
 
 # Detailed analysis with HTML report
-claude analyze-docs --detailed --format html --save analysis-report.html
+analyze-docs --detailed --format html --save analysis-report.html
 
 # Focus on requirements documentation only
-claude analyze-docs --focus requirements
+analyze-docs --focus requirements
 
 # Generate JSON output for integration
-claude analyze-docs --format json --save docs-analysis.json
+analyze-docs --format json --save docs-analysis.json
 ```
 
 ## Analysis Areas

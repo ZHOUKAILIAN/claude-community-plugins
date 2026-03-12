@@ -100,7 +100,7 @@ def enforce_doc_workflow(scan_param=None):
 
 **场景 1: 无参数,询问用户**
 ```bash
-$ claude enforce-doc-workflow
+$ enforce-doc-workflow
 
 📋 Documentation Scan
 
@@ -119,12 +119,12 @@ Your choice [Y/n]:
 **场景 2: 使用参数跳过询问**
 ```bash
 # 直接扫描
-$ claude enforce-doc-workflow --scan=yes
+$ enforce-doc-workflow --scan=yes
 🔍 Scanning repository...
 ✅ Entering enforcement mode...
 
 # 跳过扫描
-$ claude enforce-doc-workflow --scan=no
+$ enforce-doc-workflow --scan=no
 ⚡ Skipping scan
 ✅ Entering enforcement mode...
 ```

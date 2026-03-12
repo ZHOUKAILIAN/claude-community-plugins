@@ -14,12 +14,6 @@ Analyze JavaScript and CSS isolation mechanisms in microfrontend frameworks such
 
 This command performs deep analysis of microfrontend framework source code to discover and explain how isolation is implemented. It explores the codebase without making assumptions, identifying the actual implementation strategies for both JavaScript and CSS isolation.
 
-## Usage
-
-```bash
-claude analyze-mf-isolation [options]
-```
-
 ## Options
 
 - `--focus <type>` - Focus on specific isolation type (js/css/all)
@@ -32,22 +26,22 @@ claude analyze-mf-isolation [options]
 
 ```bash
 # Analyze both JS and CSS isolation (bilingual reports)
-claude analyze-mf-isolation
+analyze-mf-isolation
 
 # Focus only on JavaScript isolation
-claude analyze-mf-isolation --focus js
+analyze-mf-isolation --focus js
 
 # Generate detailed analysis report (both languages)
-claude analyze-mf-isolation --detailed --save isolation-report
+analyze-mf-isolation --detailed --save isolation-report
 
 # Generate English report only
-claude analyze-mf-isolation --language en --save isolation-report-en.md
+analyze-mf-isolation --language en --save isolation-report-en.md
 
 # Generate Chinese report only
-claude analyze-mf-isolation --language zh --save isolation-report-zh.md
+analyze-mf-isolation --language zh --save isolation-report-zh.md
 
 # Output as JSON
-claude analyze-mf-isolation --format json --save isolation.json
+analyze-mf-isolation --format json --save isolation.json
 ```
 
 ## Analysis Process

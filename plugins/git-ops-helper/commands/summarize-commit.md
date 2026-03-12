@@ -9,12 +9,6 @@ model: inherit
 
 Summarize current working tree changes and draft a commit message.
 
-## Usage
-
-```bash
-/summarize-commit
-```
-
 ## Behavior
 
 - Inspect `git status`, `git diff`, and `git diff --staged`.

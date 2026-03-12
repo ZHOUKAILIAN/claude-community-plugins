@@ -246,11 +246,6 @@ shortcut: "xx"
 ## Description
 详细的功能描述
 
-## Usage
-```bash
-claude command-name [options]
-````
-
 ## Options
 
 参数说明
@@ -287,7 +282,7 @@ claude command-name [options]
 **参数设计**:
 
 ```bash
-claude init-doc-driven-dev [options]
+init-doc-driven-dev [options]
   --force           # 强制覆盖现有文件
   --template <type> # 指定模板类型 (frontend/backend/fullstack)
   --minimal         # 创建最小化文档结构
@@ -309,7 +304,7 @@ claude init-doc-driven-dev [options]
 **参数设计**:
 
 ```bash
-claude analyze-docs [options]
+analyze-docs [options]
   --detailed        # 生成详细分析报告
   --format <type>   # 输出格式 (markdown/json/html)
   --save <file>     # 保存报告到文件
@@ -331,7 +326,7 @@ claude analyze-docs [options]
 **参数设计**:
 
 ```bash
-claude extract-patterns [options]
+extract-patterns [options]
   --type <project>     # 项目类型 (frontend/backend/fullstack)
   --output <file>      # 保存结果到文件
   --format <format>    # 输出格式 (markdown/json/yaml)

@@ -17,12 +17,6 @@ This command enforces the workflow:
 2. Code changes must align with the technical design
 3. If plans and changes diverge, update the documents first
 
-## Usage
-
-```bash
-claude enforce-doc-workflow
-```
-
 ## Behavior
 
 ### Scan Confirmation
@@ -36,10 +30,12 @@ Before entering enforcement mode, the command will ask if you want to scan the r
   - `CLAUDE.md` - Workflow enforcement configuration
 
 **User Options**:
+
 - **Yes**: Perform full repository scan (recommended if docs changed)
 - **No**: Skip scan and enter enforcement mode directly (faster if docs unchanged)
 
 **Command Line Parameter**:
+
 - `--scan=yes`: Skip prompt and scan automatically
 - `--scan=no`: Skip prompt and don't scan
 - No parameter: Ask user (default)
@@ -47,9 +43,6 @@ Before entering enforcement mode, the command will ask if you want to scan the r
 ### Enforcement Workflow
 
 After scan decision:
-- **Template Synchronization & Update**:
-  - Compare local project files (`docs/*`) and instruction files (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`) against the plugin's latest standards.
-  - If local versions lack new principles (e.g., the "Visual-First Design Principles"), proactively prompt the user and update the local files to synchronize with the latest marketplace templates.
 - Enter enforcement mode and intercept code change requests
 - Detect intent (feature/bugfix/refactor) and required documents
 - If scan was performed: Use scan results to check for missing docs
@@ -66,7 +59,7 @@ After scan decision:
 
 ```bash
 # Command prompts for scan decision
-claude enforce-doc-workflow
+enforce-doc-workflow
 
 # Output:
 # 📋 Documentation Scan
@@ -87,18 +80,19 @@ claude enforce-doc-workflow
 
 ```bash
 # Skip prompt and scan automatically
-claude enforce-doc-workflow --scan=yes
+enforce-doc-workflow --scan=yes
 ```
 
 ### Example 3: Skip Scan Mode
 
 ```bash
 # Skip prompt and don't scan
-claude enforce-doc-workflow --scan=no
+enforce-doc-workflow --scan=no
 ```
 
 ## Related Commands
 
 - `init-doc-driven-dev` - Initialize documentation structure and templates
+- `update-standards` - Check and synchronize local documentation standards
 - `analyze-docs` - Analyze documentation completeness
 - `extract-patterns` - Extract coding patterns from codebase

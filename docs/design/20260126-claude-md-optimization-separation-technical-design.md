@@ -198,7 +198,7 @@ Before finalizing CLAUDE.md:
 ### 3.1 init-doc-driven-dev 命令执行流程
 
 ```text
-用户执行: claude init-doc-driven-dev
+用户执行: init-doc-driven-dev
     ↓
 1. 检测项目类型和现有文档结构
     ↓
@@ -474,7 +474,7 @@ This document defines the code style and formatting conventions for this project
 
    ```bash
    cd /tmp/test-project
-   claude init-doc-driven-dev
+   init-doc-driven-dev
    ```
 
    - 验证 CLAUDE.md 精简且包含引用
@@ -484,7 +484,7 @@ This document defines the code style and formatting conventions for this project
 
    ```bash
    cd /existing-project
-   claude init-doc-driven-dev --force
+   init-doc-driven-dev --force
    ```
 
    - 验证保留现有内容

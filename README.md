@@ -185,7 +185,7 @@ This comprehensive tutorial shows you how to use the AI Documentation-Driven Dev
 cd your-project
 
 # Initialize complete documentation workflow
-claude init-doc-driven-dev
+init-doc-driven-dev
 ```
 
 This command will:
@@ -201,16 +201,16 @@ This command will:
 **Basic Usage:**
 ```bash
 # Standard initialization
-claude init-doc-driven-dev
+init-doc-driven-dev
 
 # With specific project template
-claude init-doc-driven-dev --template frontend
+init-doc-driven-dev --template frontend
 
 # Force overwrite existing files
-claude init-doc-driven-dev --force
+init-doc-driven-dev --force
 
 # Analyze only, don't create files
-claude init-doc-driven-dev --analyze-only
+init-doc-driven-dev --analyze-only
 ```
 
 **What it creates:**
@@ -235,19 +235,19 @@ your-project/
 **Basic Usage:**
 ```bash
 # Quick documentation analysis
-claude analyze-docs
+analyze-docs
 
 # Detailed analysis with report
-claude analyze-docs --detailed --save analysis-report.md
+analyze-docs --detailed --save analysis-report.md
 
 # Focus on specific areas
-claude analyze-docs --focus requirements
-claude analyze-docs --focus design
-claude analyze-docs --focus standards
+analyze-docs --focus requirements
+analyze-docs --focus design
+analyze-docs --focus standards
 
 # Export in different formats
-claude analyze-docs --format json --save docs-analysis.json
-claude analyze-docs --format html --save report.html
+analyze-docs --format json --save docs-analysis.json
+analyze-docs --format html --save report.html
 ```
 
 **What it analyzes:**
@@ -261,19 +261,19 @@ claude analyze-docs --format html --save report.html
 **Basic Usage:**
 ```bash
 # Extract all patterns
-claude extract-patterns
+extract-patterns
 
 # Project-specific extraction
-claude extract-patterns --type frontend
-claude extract-patterns --type backend
-claude extract-patterns --type fullstack
+extract-patterns --type frontend
+extract-patterns --type backend
+extract-patterns --type fullstack
 
 # Selective pattern extraction
-claude extract-patterns --include naming,api,architecture
-claude extract-patterns --exclude testing,database
+extract-patterns --include naming,api,architecture
+extract-patterns --exclude testing,database
 
 # Export patterns
-claude extract-patterns --format json --output patterns.json
+extract-patterns --format json --output patterns.json
 ```
 
 **Pattern Types:**
@@ -290,10 +290,10 @@ claude extract-patterns --format json --output patterns.json
 ##### Frontend Projects (React, Vue, Angular)
 ```bash
 # Initialize with frontend template
-claude init-doc-driven-dev --template frontend
+init-doc-driven-dev --template frontend
 
 # Extract frontend-specific patterns
-claude extract-patterns --type frontend --include naming,api,styling
+extract-patterns --type frontend --include naming,api,styling
 ```
 
 **Frontend patterns include:**
@@ -306,10 +306,10 @@ claude extract-patterns --type frontend --include naming,api,styling
 ##### Backend Projects (Node.js, Python, Java)
 ```bash
 # Initialize with backend template
-claude init-doc-driven-dev --template backend
+init-doc-driven-dev --template backend
 
 # Extract backend-specific patterns
-claude extract-patterns --type backend --include api,database,error-handling
+extract-patterns --type backend --include api,database,error-handling
 ```
 
 **Backend patterns include:**
@@ -322,10 +322,10 @@ claude extract-patterns --type backend --include api,database,error-handling
 ##### Full-Stack Projects
 ```bash
 # Initialize with full-stack template
-claude init-doc-driven-dev --template fullstack
+init-doc-driven-dev --template fullstack
 
 # Comprehensive pattern extraction
-claude extract-patterns --type fullstack
+extract-patterns --type fullstack
 ```
 
 #### 🔄 Typical Workflow
@@ -333,28 +333,28 @@ claude extract-patterns --type fullstack
 **For New Projects:**
 ```bash
 # 1. Initialize documentation structure
-claude init-doc-driven-dev
+init-doc-driven-dev
 
 # 2. Start developing with documentation-first approach
 # (Write requirements and design docs first)
 
 # 3. Extract patterns as code grows
-claude extract-patterns
+extract-patterns
 
 # 4. Regularly analyze documentation quality
-claude analyze-docs --detailed
+analyze-docs --detailed
 ```
 
 **For Existing Projects:**
 ```bash
 # 1. Analyze current documentation state
-claude analyze-docs --detailed --save current-state.md
+analyze-docs --detailed --save current-state.md
 
 # 2. Extract existing patterns
-claude extract-patterns --output existing-patterns.md
+extract-patterns --output existing-patterns.md
 
 # 3. Initialize documentation structure
-claude init-doc-driven-dev --force
+init-doc-driven-dev --force
 
 # 4. Integrate extracted patterns into new structure
 # (Manual step - review and merge patterns)
@@ -367,25 +367,25 @@ claude init-doc-driven-dev --force
 **1. Start with Analysis**
 ```bash
 # Always understand current state first
-claude analyze-docs --detailed
-claude extract-patterns --format json --output current-patterns.json
+analyze-docs --detailed
+extract-patterns --format json --output current-patterns.json
 ```
 
 **2. Use Project-Specific Templates**
 ```bash
 # Choose appropriate template for better defaults
-claude init-doc-driven-dev --template frontend    # For React/Vue/Angular
-claude init-doc-driven-dev --template backend     # For APIs/servers
-claude init-doc-driven-dev --template fullstack   # For complete applications
+init-doc-driven-dev --template frontend    # For React/Vue/Angular
+init-doc-driven-dev --template backend     # For APIs/servers
+init-doc-driven-dev --template fullstack   # For complete applications
 ```
 
 **3. Regular Documentation Maintenance**
 ```bash
 # Weekly documentation health check
-claude analyze-docs --focus all --save weekly-check.md
+analyze-docs --focus all --save weekly-check.md
 
 # Monthly pattern updates
-claude extract-patterns --output updated-patterns.md
+extract-patterns --output updated-patterns.md
 ```
 
 **4. Integration with Development Workflow**
@@ -399,25 +399,25 @@ claude extract-patterns --output updated-patterns.md
 **Custom Analysis Focus:**
 ```bash
 # Deep dive into specific areas
-claude analyze-docs --focus requirements --detailed
-claude analyze-docs --focus design --format html --save design-analysis.html
+analyze-docs --focus requirements --detailed
+analyze-docs --focus design --format html --save design-analysis.html
 ```
 
 **Selective Pattern Extraction:**
 ```bash
 # Only naming and API patterns
-claude extract-patterns --include naming,api --output core-patterns.md
+extract-patterns --include naming,api --output core-patterns.md
 
 # Everything except testing patterns
-claude extract-patterns --exclude testing --format yaml
+extract-patterns --exclude testing --format yaml
 ```
 
 **Batch Operations:**
 ```bash
 # Complete project setup in one go
-claude init-doc-driven-dev --template frontend && \
-claude extract-patterns --type frontend && \
-claude analyze-docs --detailed --save initial-analysis.md
+init-doc-driven-dev --template frontend && \
+extract-patterns --type frontend && \
+analyze-docs --detailed --save initial-analysis.md
 ```
 
 #### 🔍 Troubleshooting
@@ -428,28 +428,28 @@ claude analyze-docs --detailed --save initial-analysis.md
    ```bash
    # Initialize Git first
    git init
-   claude init-doc-driven-dev
+   init-doc-driven-dev
    ```
 
 2. **"Existing docs/ conflicts"**
    ```bash
    # Backup existing docs and force initialization
    mv docs docs-backup
-   claude init-doc-driven-dev --force
+   init-doc-driven-dev --force
    # Then manually merge important content
    ```
 
 3. **"No patterns found"**
    ```bash
    # Ensure you're in project root with source code
-   claude extract-patterns --type frontend --include naming
+   extract-patterns --type frontend --include naming
    ```
 
 4. **"Analysis shows 0% completeness"**
    ```bash
    # Start with initialization first
-   claude init-doc-driven-dev
-   claude analyze-docs
+   init-doc-driven-dev
+   analyze-docs
    ```
 
 This tutorial covers the complete workflow for implementing documentation-driven development in your projects. For more advanced features and customization options, refer to the individual command documentation.
