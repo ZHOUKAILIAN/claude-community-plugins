@@ -47,6 +47,9 @@ Before entering enforcement mode, the command will ask if you want to scan the r
 ### Enforcement Workflow
 
 After scan decision:
+- **Template Synchronization & Update**:
+  - Compare local project templates (`docs/standards/*.md`) and instruction files (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`) against the plugin's latest standards.
+  - If local versions lack new principles (e.g., the "Visual-First Design Principles"), proactively prompt the user and update the local files to synchronize with the latest marketplace templates.
 - Enter enforcement mode and intercept code change requests
 - Detect intent (feature/bugfix/refactor) and required documents
 - If scan was performed: Use scan results to check for missing docs
