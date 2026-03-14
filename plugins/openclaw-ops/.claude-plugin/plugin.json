@@ -1,0 +1,20 @@
+{
+  "name": "openclaw-ops",
+  "version": "1.0.0",
+  "description": "OpenClaw server operations toolkit for diagnostics and token management",
+  "author": {
+    "name": "Claude Community",
+    "email": "community@claude.ai"
+  },
+  "keywords": [
+    "openclaw",
+    "devops",
+    "diagnostics",
+    "telegram-bot",
+    "server-monitoring",
+    "token-management",
+    "ssh",
+    "systemd"
+  ],
+  "license": "MIT"
+}
