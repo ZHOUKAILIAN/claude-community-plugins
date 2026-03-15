@@ -19,6 +19,11 @@
       "name": "git-ops-helper",
       "source": "./plugins/git-ops-helper",
       "description": "Git operations helper with commit summaries, pre-commit code checks, commit message drafting, and expert guidance for conflict resolution and rebase workflows."
+    },
+    {
+      "name": "openclaw-ops",
+      "source": "./plugins/openclaw-ops",
+      "description": "OpenClaw server operations toolkit for diagnostics and token management."
     }
   ]
 }
