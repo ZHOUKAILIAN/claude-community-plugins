@@ -20,10 +20,10 @@ Establishes AI documentation-driven development infrastructure while intelligent
 - Check existing CLAUDE.md and docs/ directory
 - Identify project type (frontend/backend/fullstack)
 
-### Step 2: CLAUDE.md Foundation
+### Step 2: CLAUDE.md and AGENTS.md Foundation
 - **First**: Run `/init` command to create base CLAUDE.md
-- **Then**: Enhance it with documentation-driven development workflows
-- Add AI collaboration guidelines and development standards
+- **Then**: Enhance CLAUDE.md to focus on workflow logic. Move all specific project structures, coding principles, and testing rules out to their own markdown files inside `docs/` and add simple markdown links to them within `CLAUDE.md`.
+- **Next**: Generate `AGENTS.md` simultaneously with `CLAUDE.md`. This file should guide AI agent capabilities and runtime rules.
 
 ### Step 3: Handle docs/ Directory
 - **If missing**: Create standard structure directly
@@ -56,9 +56,15 @@ docs/
 # Development Workflow
   ## Documentation-First Process
 # AI Collaboration Guidelines
-# Documentation Standards
-# Code Style Requirements (for style analyzer)
+# Repository Documentation Index
+  - [Project Structure Analysis](docs/analysis/project-analysis.md)
+  - [Coding Standards](docs/standards/coding-standards.md)
+  - [Testing Standards](docs/standards/testing-standards.md)
 ```
+
+## AGENTS.md Output
+- Define what agents are supported in the project.
+- Give guidelines for AI agents to follow.
 
 ## Use Cases
 - New projects needing documentation-driven setup
