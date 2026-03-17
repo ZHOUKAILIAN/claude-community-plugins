@@ -49,62 +49,142 @@ AI文档驱动开发插件帮助团队建立和维护文档优先的开发工作
 
 ## 命令
 
-### enforce-doc-workflow
+### init-doc-driven-dev
 
-为代码变更请求启用文档优先工作流程强制执行。
+从头开始在您的项目中初始化文档驱动开发工作流程。
 
 **功能特性:**
-- **交互式扫描提示**: 在进入强制模式前询问是否扫描仓库
-- **灵活扫描**: 根据需要选择扫描或跳过
-  - 扫描: 检查文档完整性(如果文档有变更,推荐使用)
-  - 跳过: 更快启动(如果文档未变更,可使用)
-- **参数支持**: 使用 `--scan=yes` 自动扫描或 `--scan=no` 跳过提示
+- **CLAUDE.md 设置**: 创建轻量级工作流和指针型 CLAUDE.md
+- **AGENTS.md 生成**: 在独立文件中建立 AI 智能体行为规则
+- **文档结构**: 设置标准 docs/ 目录层次结构
+- **项目分析**: 分析当前项目类型和模式
+- **标准提取**: 记录现有编码约定和架构
+
+**选项:**
+- `--force` - 覆盖现有文档文件
+- `--template <type>` - 使用特定模板（frontend/backend/fullstack）
+- `--minimal` - 仅创建最小文档结构
+- `--analyze-only` - 仅分析项目而不创建文件
 
 **功能说明:**
-1. 可选择扫描 `docs/requirements/`、`docs/standards/` 和 `CLAUDE.md`
-2. 进入强制模式拦截代码变更请求
-3. 确保所有代码变更都有适当的文档支持
-4. 引导您创建缺失的需求和技术设计文档
+1. 分析项目结构和技术栈
+2. 创建 CLAUDE.md（轻量级工作流 + 指针）
+3. 创建 AGENTS.md（AI 智能体规则）
+4. 建立 docs/ 目录结构（requirements/、design/、standards/、analysis/）
+5. 生成初始项目分析和编码标准
 
 **示例工作流程:**
 ```bash
-# 交互模式(默认) - 询问是否扫描
-enforce-doc-workflow
+# 基本初始化
+init-doc-driven-dev
 
-# 自动扫描模式 - 跳过提示并扫描
-enforce-doc-workflow --scan=yes
+# 强制覆盖现有文件
+init-doc-driven-dev --force
 
-# 跳过扫描模式 - 跳过提示和扫描
-enforce-doc-workflow --scan=no
+# 使用特定模板初始化
+init-doc-driven-dev --template frontend
+
+# 仅分析项目不创建文件
+init-doc-driven-dev --analyze-only
+```
+
+### update-doc-driven-dev
+
+更新现有文档以匹配最新技能版本和标准，无需破坏性重新初始化。
+
+**功能特性:**
+- **智能合并**: 在应用新标准的同时保留用户内容
+- **解耦检测**: 识别并重构臃肿的 CLAUDE.md
+- **内容迁移**: 将详细标准提取到适当的 docs/ 文件中
+- **标准同步**: 更新工作流规则和命名约定
+- **安全更新**: 修改前自动备份
+
+**选项:**
+- `--dry-run` - 预览更改而不修改文件
+- `--force-decouple` - 自动提取单体 CLAUDE.md 内容
+- `--backup` - 创建带时间戳的备份（默认: true）
+- `--skip-backup` - 跳过备份创建
+- `--verbose` - 显示详细合并操作
+
+**功能说明:**
+1. 创建现有文档的自动备份
+2. 分析当前 CLAUDE.md 和 AGENTS.md 的反模式
+3. 检测应该解耦的单体内容
+4. 将最新标准与现有用户内容合并
+5. 如需要，将详细内容提取到 docs/standards/
+6. 将命名约定更新为基于日期的格式
+
+**示例工作流程:**
+```bash
+# 带预览的更新
+update-doc-driven-dev --dry-run
+
+# 更新并自动解耦臃肿的 CLAUDE.md
+update-doc-driven-dev --force-decouple
+
+# 不备份更新（不推荐）
+update-doc-driven-dev --skip-backup
+```
+
+**何时使用:**
+- 将 ai-doc-driven-dev 插件更新到新版本后
+- 当 CLAUDE.md 变得臃肿且充满详细标准时
+- 将混合的 AI 规则分离到 AGENTS.md
+- 采用最新文档约定
+- 当技能提示词已改进时（版本 A → B）
+
+**完整升级工作流:**
+```bash
+# 步骤 1: 更新结构（本命令）
+update-doc-driven-dev
+
+# 步骤 2: 同步内容标准（独立命令）
+update-standards
 ```
 
 ### update-standards
 
-检查本地 `docs/` 下所有文档和指令文件是否落后于插件的最新标准。
+将文档内容与最新模板和标准同步。
 
 **功能特性:**
-- **全量 docs 覆盖**: 对比所有 `docs/**/*.md` 文件和工作流文件与插件最新标准的差异
-- **指令文件覆盖**: 在存在时检查 `CLAUDE.md`、`AGENTS.md` 和 `GEMINI.md`
-- **确认后更新**: 先展示拟议改动, 再更新本地文件
+- **模板合规性检查**: 检测现有文档是否匹配最新模板
+- **新原则检测**: 识别缺失的章节或更新的要求
+- **全量文档覆盖**: 检查所有 `docs/**/*.md` 文件
+- **指令文件审查**: 验证 CLAUDE.md/AGENTS.md 是否有最新工作流规则
 
 **功能说明:**
-1. 扫描所有本地 `docs/**/*.md` 和指令文件中的过期标准
-2. 标出缺失的原则, 例如 "Visual-First Design Principles"
-3. 提出覆盖整个 `docs/` 目录的同步更新建议, 并仅在用户确认后应用
+1. 将本地文档与插件的最新模板对比
+2. 标出缺失的章节（例如新增的"性能考虑"要求）
+3. 检测过时的原则（例如缺少 Visual-First 图表）
+4. 提出内容更新建议供用户批准
+5. 在所有文档中应用已批准的更改
 
 **示例工作流程:**
 ```bash
-# 检查并同步全部本地文档和工作流文件
+# 检查并同步所有文档标准
 update-standards
 ```
 
+**使用案例示例:**
+- 您更新了 `technical-design-template.md` 以要求"安全考虑"章节
+- 运行 `update-standards` 检测哪些现有设计文档缺少此章节
+- 审查并批准向旧文档添加该章节
+
 ## 开始使用
 
-1. **安装插件**: 将此插件添加到您的Claude Code环境
-2. **运行初始设置**: 使用doc-workflow-enforcer技能建立文档驱动开发工作流程
-3. **分析项目**: 使用doc-detector了解当前文档状态
-4. **提取模式**: 使用pattern-extractor记录现有编码约定
-5. **生成文档**: 使用doc-generator创建缺失的文档
+### 对于新项目
+1. **安装插件**: 将此插件添加到您的 Claude Code 环境
+2. **初始化工作流**: 运行 `init-doc-driven-dev` 设置文档基础设施
+3. **检查生成的文档**: 检查 CLAUDE.md、AGENTS.md 和 docs/ 结构
+4. **定制标准**: 将生成的标准适配到您的项目需求
+5. **开始开发**: 遵循文档优先工作流程
+
+### 对于现有项目
+1. **安装插件**: 将此插件添加到您的 Claude Code 环境
+2. **更新基础设施**: 运行 `update-doc-driven-dev` 现代化现有文档
+3. **检查更改**: 查看迁移报告并验证内容已保留
+4. **细化设置**: 根据需要调整任何提取的标准文件
+5. **继续开发**: 享受改进的轻量级文档结构
 
 ## 文档结构
 
