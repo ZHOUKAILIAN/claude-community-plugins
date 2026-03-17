@@ -60,16 +60,17 @@ Updates existing AI documentation-driven development infrastructure to align wit
 
 **Actions**:
 1. **Prepare new CLAUDE.md**:
-   - Start with latest lightweight template (workflow + pointers)
+   - Use template from `knowledge/templates/claude-md-template.md`
    - Inject preserved user-specific content
-   - Replace outdated rules with new versions
-   - Add links to external docs for detailed content
-   - Keep total length minimal (<200 lines if possible)
+   - Replace outdated rules with new workflow standards
+   - Add links to detailed docs in `docs/` directory
+   - Keep total length minimal (<200 lines)
 
 2. **Prepare AGENTS.md**:
-   - If missing: Create from scratch with latest standards
-   - If exists: Update rules while preserving custom AI instructions
-   - Extract AI-related rules from `CLAUDE.md` if found there
+   - Use template from `knowledge/templates/agents-md-template.md`
+   - If exists: Merge with template while preserving custom rules
+   - Extract AI workflow rules from `CLAUDE.md` if found there
+   - Ensure all AI-specific instructions are in AGENTS.md, not CLAUDE.md
 
 3. **Prepare docs/ extraction**:
    - If monolithic pattern detected: Prepare to extract detailed sections
@@ -156,14 +157,12 @@ Updates existing AI documentation-driven development infrastructure to align wit
 ## Update Rules to Apply
 
 ### CLAUDE.md Decoupling Standards
-```markdown
-## Instruction File Standards (Latest Version)
 
-**CLAUDE.md should be lightweight**:
-- ✅ Acts as workflow entry point and document pointer hub
-- ✅ Contains only high-level project overview and workflow rules
-- ✅ References detailed content via links to `docs/` subdirectories
-- ❌ Should NOT contain detailed coding standards, architecture descriptions, or testing guidelines inline
+**CLAUDE.md Template**: Use `knowledge/templates/claude-md-template.md`
+- Acts as workflow entry point with document links
+- Contains only high-level project overview and workflow rules
+- References detailed content via links to `docs/` subdirectories
+- Should NOT contain detailed coding standards, architecture, or testing guidelines inline
 
 **Sections to extract if found inline**:
 - Project Structure (>50 lines) → `docs/analysis/project-structure.md`
@@ -171,11 +170,10 @@ Updates existing AI documentation-driven development infrastructure to align wit
 - Architecture Details (>50 lines) → `docs/standards/architecture.md`
 - Testing Guidelines (>50 lines) → `docs/standards/testing-standards.md`
 
-**AGENTS.md manages AI behavior**:
-- ✅ Dedicated file for AI agent instructions and system prompts
-- ✅ Separate from development workflow concerns
-- ❌ AI rules should NOT be mixed into CLAUDE.md
-```
+**AGENTS.md Template**: Use `knowledge/templates/agents-md-template.md`
+- Dedicated file for AI workflow process and mandatory rules
+- Separate from project development concerns
+- AI workflow rules should NOT be in CLAUDE.md
 
 ### Document Naming Conventions (Latest)
 ```markdown

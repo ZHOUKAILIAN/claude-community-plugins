@@ -15,10 +15,10 @@ This command intelligently updates existing documentation-driven development set
 
 1. **Reading Current State**: Scans existing CLAUDE.md, AGENTS.md, and docs/ structure
 2. **Extracting Context**: Preserves user-customized content and project-specific information
-3. **Applying New Rules**: Merges latest skill version requirements with existing content
-4. **Intelligent Merging**: Combines old valuable context with new structural standards
-5. **Decoupling Check**: Detects monolithic CLAUDE.md patterns and suggests refactoring
-6. **Standards Sync**: Updates workflow rules, naming conventions, and best practices
+3. **Applying Templates**: Uses latest English templates for CLAUDE.md and AGENTS.md
+4. **Intelligent Merging**: Combines preserved content with new workflow standards
+5. **Decoupling Check**: Detects monolithic patterns and extracts to docs/ directory
+6. **Standards Sync**: Updates to date-based naming and Visual-First principles
 
 **Key Difference from init**: This command preserves your existing content and customizations while upgrading the documentation infrastructure. It's designed for projects that already have documentation but need to adopt newer standards or fix structural issues.
 
@@ -96,14 +96,16 @@ project-root/
 │   ├── CLAUDE.md
 │   ├── AGENTS.md
 │   └── docs/
-├── CLAUDE.md                      # Updated with latest standards (lightweight)
-├── AGENTS.md                      # Updated or created with AI rules
+├── CLAUDE.md                      # Updated using English template (lightweight)
+├── AGENTS.md                      # Updated using English template (AI workflow)
 ├── docs/
 │   ├── requirements/              # Preserved existing docs
 │   ├── design/                    # Preserved existing docs
 │   ├── standards/
-│   │   ├── coding-standards.md   # Extracted from CLAUDE.md if bloated
-│   │   └── architecture.md       # Extracted from CLAUDE.md if bloated
+│   │   ├── requirements-template.md
+│   │   ├── technical-design-template.md
+│   │   ├── coding-standards.md   # Extracted from CLAUDE.md if needed
+│   │   └── architecture.md       # Extracted from CLAUDE.md if needed
 │   └── analysis/
 └── [existing project files]
 ```
@@ -189,11 +191,13 @@ project-root/
 **After update** (Version B - Decoupled structure):
 ```
 project-root/
-├── CLAUDE.md (50 lines, workflow + pointers)
-├── AGENTS.md (AI rules extracted)
+├── CLAUDE.md (English, lightweight workflow + doc links)
+├── AGENTS.md (English, AI workflow process)
 ├── docs/
 │   ├── requirements/
 │   ├── standards/
+│   │   ├── requirements-template.md
+│   │   ├── technical-design-template.md
 │   │   ├── coding-standards.md (extracted from CLAUDE.md)
 │   │   └── architecture.md (extracted from CLAUDE.md)
 └── [All original content preserved and reorganized]
