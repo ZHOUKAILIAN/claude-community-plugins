@@ -22,8 +22,14 @@ Establishes AI documentation-driven development infrastructure while intelligent
 
 ### Step 2: CLAUDE.md and AGENTS.md Foundation
 - **First**: Run `/init` command to create base CLAUDE.md
-- **Then**: Enhance CLAUDE.md to focus on workflow logic. Move all specific project structures, coding principles, and testing rules out to their own markdown files inside `docs/` and add simple markdown links to them within `CLAUDE.md`.
-- **Next**: Generate `AGENTS.md` simultaneously with `CLAUDE.md`. This file should guide AI agent capabilities and runtime rules.
+- **Then**: Create `CLAUDE.md` using template from `knowledge/templates/claude-md-template.md`
+  - Focus on workflow rules and document structure
+  - Link to detailed standards in `docs/` directory
+  - Keep file lightweight (<200 lines)
+- **Next**: Create `AGENTS.md` using template from `knowledge/templates/agents-md-template.md`
+  - Define mandatory AI workflow process
+  - Specify documentation standards and naming conventions
+  - Include prohibited actions and required practices
 
 ### Step 3: Handle docs/ Directory
 - **If missing**: Create standard structure directly
@@ -50,21 +56,13 @@ docs/
 └── analysis/        # Project analysis reports
 ```
 
-## Enhanced CLAUDE.md Sections
-```markdown
-# Project Overview (from /init)
-# Development Workflow
-  ## Documentation-First Process
-# AI Collaboration Guidelines
-# Repository Documentation Index
-  - [Project Structure Analysis](docs/analysis/project-analysis.md)
-  - [Coding Standards](docs/standards/coding-standards.md)
-  - [Testing Standards](docs/standards/testing-standards.md)
-```
+## Template Files
 
-## AGENTS.md Output
-- Define what agents are supported in the project.
-- Give guidelines for AI agents to follow.
+Use these templates for generating instruction files:
+- **CLAUDE.md**: `knowledge/templates/claude-md-template.md`
+- **AGENTS.md**: `knowledge/templates/agents-md-template.md`
+
+Both templates are in English and follow a direct, process-oriented approach.
 
 ## Use Cases
 - New projects needing documentation-driven setup

@@ -13,9 +13,9 @@ Quickly set up a complete documentation-driven development workflow in any proje
 
 This command initializes a comprehensive documentation-driven development setup by:
 
-1. **CLAUDE.md Setup**: Creates or updates CLAUDE.md with a focus on workflow and rules. It links out to detailed docs rather than embedding them.
-2. **AGENTS.md Setup**: Generates AGENTS.md in the root directory to guide AI capabilities and runtime rules.
-3. **Documentation Structure**: Establishes standard docs/ directory structure for deep analysis and standards.
+1. **CLAUDE.md Setup**: Creates CLAUDE.md (English) with workflow rules and documentation structure. Links to detailed docs in `docs/` directory.
+2. **AGENTS.md Setup**: Creates AGENTS.md (English) with mandatory AI workflow process and documentation standards.
+3. **Documentation Structure**: Establishes standard docs/ directory structure (requirements/, design/, standards/, analysis/).
 4. **Project Analysis**: Analyzes current project type and existing patterns.
 5. **Standards Extraction**: Documents existing coding conventions, testing patterns, and architectural specifics.
 6. **Template Generation**: Creates project-specific documentation templates.
@@ -49,14 +49,16 @@ The command creates the following structure:
 
 ```
 project-root/
-├── CLAUDE.md                    # Workflow logic and links to detailed docs
-├── AGENTS.md                    # AI agent capabilities and runtime rules
+├── CLAUDE.md                    # Workflow rules and doc structure (English)
+├── AGENTS.md                    # AI workflow process and standards (English)
 ├── docs/
 │   ├── requirements/
 │   │   └── YYYYMMDD-project-initial-requirements.md
 │   ├── design/
 │   │   └── YYYYMMDD-project-initial-requirements-technical-design.md
 │   ├── standards/
+│   │   ├── requirements-template.md
+│   │   ├── technical-design-template.md
 │   │   ├── coding-standards.md
 │   │   └── testing-standards.md
 │   └── analysis/
