@@ -62,8 +62,30 @@ Proposed updates
 - Keep unchanged files untouched
 ```
 
+## Relationship with update-doc-driven-dev
+
+These two commands serve different purposes:
+
+| Command | Focus | What it updates |
+|---------|-------|-----------------|
+| `update-doc-driven-dev` | **Structure** | CLAUDE.md/AGENTS.md organization, file naming conventions, directory layout |
+| `update-standards` (this) | **Content** | Template compliance, missing sections, new principles in existing docs |
+
+### Recommended Workflow After Plugin Upgrade
+
+```bash
+# Step 1: Update infrastructure and structure
+update-doc-driven-dev
+
+# Step 2: Sync content with latest templates and standards
+update-standards
+```
+
+**Example**: If you updated your technical design template to require a new "Security Considerations" section:
+- `update-doc-driven-dev` won't detect this (structural focus)
+- `update-standards` **will detect** and suggest adding the section to existing design docs
+
 ## Related Commands
 
-- `enforce-doc-workflow` - Enforce requirement → technical design → coding before code changes
-- `init-doc-driven-dev` - Initialize documentation structure and workflow files
-- `analyze-docs` - Analyze current documentation completeness
+- `update-doc-driven-dev` - Update documentation infrastructure and structure (run this first)
+- `init-doc-driven-dev` - Initialize documentation structure and workflow files (for new projects)

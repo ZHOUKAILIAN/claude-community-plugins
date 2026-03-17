@@ -76,6 +76,5 @@ Document naming convention:
 
 ## Related Commands
 
-- `analyze-docs` - Analyze existing documentation
-- `extract-patterns` - Extract coding patterns only
-- `update-standards` - Update project standards
+- `update-doc-driven-dev` - Update existing documentation to latest standards
+- `update-standards` - Sync with marketplace plugin standards

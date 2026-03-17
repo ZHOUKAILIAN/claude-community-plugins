@@ -1,7 +1,7 @@
 {
   "name": "ai-doc-driven-dev",
   "description": "Transform projects into documentation-driven development workflows with AI assistance. Automatically detects, generates, and maintains project documentation standards.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": {
     "name": "zhoukailian",
     "email": "2415699291@qq.com"
