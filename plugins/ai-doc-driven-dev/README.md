@@ -9,43 +9,43 @@ The AI Documentation-Driven Development Plugin helps teams establish and maintai
 ## Key Features
 
 - **🔧 Workflow Instruction Enforcement**: Ensures `CLAUDE.md` or `AGENTS.md` contains mandatory documentation-driven development workflows
-- **📊 Documentation Analysis**: Comprehensive assessment of project documentation completeness
-- **🎯 Pattern Extraction**: Automatically extracts project-specific coding patterns and conventions
-- **📝 Smart Generation**: Creates standardized documentation based on project analysis and templates
+- **📊 Documentation Analysis**: Assesses docs coverage, date-based naming, and requirement/design pairing
+- **🎯 Pattern Extraction**: Distills dominant codebase patterns into reusable project standards
+- **📝 Smart Generation**: Creates paired requirement and technical design docs from active templates
 
 ## Skills Included
 
 ### 1. doc-workflow-enforcer
-Enforces documentation-driven development workflow in instruction files (`CLAUDE.md` / `AGENTS.md`). This skill runs first to establish the foundation for documentation-first development.
+Establishes the docs-first workflow entry rules in `CLAUDE.md` and `AGENTS.md`, with clear file responsibilities, approval gates, and lightweight instruction-file structure.
 
 **Use cases:**
 - Initialize documentation-driven development in new projects
-- Update existing projects to follow documentation standards
-- Synchronize CLAUDE.md with evolving project standards
+- Separate workflow rules from AI behavior rules
+- Repair or modernize existing instruction files
 
 ### 2. doc-detector
-Analyzes project documentation completeness and identifies missing critical documents.
+Analyzes whether project documentation is ready for docs-first development, with emphasis on date-based naming, requirement/design pairing, and the highest-priority gaps.
 
 **Use cases:**
 - Assess current documentation status
-- Identify gaps in documentation coverage
-- Prepare recommendations for documentation improvements
+- Identify missing or inconsistent requirement/design pairs
+- Prepare actionable next steps before implementation
 
 ### 3. pattern-extractor
-Extracts project-specific coding patterns, conventions, and standards from existing codebase.
+Extracts dominant coding patterns, architectural conventions, and notable exceptions from the existing codebase so they can become reusable standards.
 
 **Use cases:**
 - Document existing project coding standards
-- Create guidelines for new team members
-- Ensure AI code generation follows established patterns
+- Build `docs/standards/` guidance from real code
+- Ensure AI code generation follows the dominant project patterns
 
 ### 4. doc-generator
-Generates standardized project documentation using intelligent templates and project analysis.
+Generates paired requirement and technical design documents using the plugin's active templates and the project's current docs-first rules.
 
 **Use cases:**
-- Create missing documentation identified by doc-detector
-- Establish comprehensive documentation structure
-- Generate project-specific standards based on extracted patterns
+- Create missing requirement/design pairs identified by doc-detector
+- Establish a reviewable docs-first baseline for new features
+- Generate template-aligned documents with date-based naming
 
 ## Commands
 
@@ -210,10 +210,10 @@ This plugin integrates seamlessly with existing development workflows:
 
 ## Best Practices
 
-- **Start with Instruction Files**: Always run doc-workflow-enforcer first to establish workflow standards in `CLAUDE.md` or `AGENTS.md`
-- **Regular Analysis**: Periodically run doc-detector to maintain documentation completeness
-- **Pattern Updates**: Re-run pattern-extractor when significant architectural changes occur
-- **Template Customization**: Adapt generated documentation templates to project-specific needs
+- **Start with Instruction Files**: Always run doc-workflow-enforcer first to establish lightweight workflow entry rules in `CLAUDE.md` and AI behavior rules in `AGENTS.md`
+- **Regular Analysis**: Periodically run doc-detector to catch missing pairs, naming drift, and incomplete docs
+- **Pattern Updates**: Re-run pattern-extractor when major architectural or convention changes land
+- **Template Customization**: Adapt generated documentation templates to project-specific needs without breaking pairing and naming rules
 
 ## Benefits
 

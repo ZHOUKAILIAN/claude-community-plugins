@@ -131,42 +131,44 @@ plugin-name/
 
 | Capability          | Purpose                         | Implementation            |
 | ------------------- | ------------------------------- | ------------------------- |
-| Plugin Discovery    | Search/browse available plugins | `docs/design/workflow.md` |
-| Plugin Installation | Install from marketplace        | `scripts/scaffold.sh`     |
-| Plugin Management   | List, update, uninstall         | `scripts/` collection     |
-| Plugin Publishing   | Publish new plugins             | `scripts/publish.sh`      |
+| Plugin Discovery    | Search/browse available plugins | `README.md` + `plugins/` |
+| Plugin Installation | Install a specific plugin       | Manual copy from `plugins/<name>/` plus each plugin's `README.md` |
+| Plugin Management   | Inspect current plugin inventory | `plugins/*/.claude-plugin/plugin.json` |
+| Plugin Publishing   | Contribute new plugins          | Documentation + pull request workflow |
 
 ## Current Implementation Status
 
 **Implemented**:
 
 - Project structure and documentation design
-- One example plugin: `ai-doc-driven-dev` (AI Documentation-Driven Development Plugin)
-  - Provides: Documentation-driven development workflow enforcement, project analysis, pattern extraction
-  - Features: Complete agents and commands system with 2 core agents and 3 commands
-  - Agents: doc-flow-initializer (文档流程初始化), codebase-style-analyzer (代码风格分析)
-  - Commands: init-doc-driven-dev, analyze-docs, extract-patterns
-  - Skills: doc-workflow-enforcer, doc-detector, pattern-extractor, doc-generator
-  - Allowed tools: Read, Write, Edit, Glob, Grep, Bash, LSP
+- Four plugins are currently present in `plugins/`: `ai-doc-driven-dev`, `git-ops-helper`, `js-framework-analyzer`, `openclaw-ops`
+- `ai-doc-driven-dev`
+  - Commands currently present: `init-doc-driven-dev`, `update-doc-driven-dev`, `update-standards`
+  - Skills currently present: `doc-workflow-enforcer`, `doc-detector`, `doc-generator`, `pattern-extractor`
+- `git-ops-helper`
+  - Command currently present: `summarize-commit`
+- `js-framework-analyzer`
+  - Commands currently present: `analyze-mf-isolation`, `analyze-reactivity`
+  - Disabled command still documented: `analyze-ai-platform`
+- `openclaw-ops`
+  - Commands currently present: `openclaw-diagnose`, `openclaw-update-token`
 - Core design documentation and standards
 - Bilingual README requirements and templates
 
 **Planned but Not Yet Implemented**:
 
 - `.gitignore` file
-- Additional design docs: `architecture.md`, `workflow.md`, `capability-list.md`, `interaction-protocol.md`
-- Requirement documents
+- Additional standalone architecture/workflow reference docs
 - Convention documents (lint, format, structure, naming)
 - Reference documentation
 - Example plugins (minimal, standard, advanced)
-- Management scripts (validate.sh, format.sh, lint.sh, scaffold.sh, sync.sh, publish.sh)
+- Repository-level management scripts (validate, format, lint, scaffold, sync, publish)
 
 ## Design Alignment
 
 The project explicitly aligns with **customplugin/plugins** reference implementation:
 
 - ✅ Plugin metadata structure (`.claude-plugin/plugin.json`)
-- ✅ MCP configuration (`.mcp.json`)
 - ✅ Command definitions (`commands/*.md`)
 - ✅ Skill definitions (`skills/*/SKILL.md`)
 - ✅ Agent definitions (`agents/*.md`)

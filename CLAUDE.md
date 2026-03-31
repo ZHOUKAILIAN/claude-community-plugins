@@ -131,42 +131,44 @@ plugin-name/
 
 | Capability          | Purpose                         | Implementation            |
 | ------------------- | ------------------------------- | ------------------------- |
-| Plugin Discovery    | Search/browse available plugins | `docs/design/workflow.md` |
-| Plugin Installation | Install from marketplace        | `scripts/scaffold.sh`     |
-| Plugin Management   | List, update, uninstall         | `scripts/` collection     |
-| Plugin Publishing   | Publish new plugins             | `scripts/publish.sh`      |
+| Plugin Discovery    | Search/browse available plugins | `README.md` + `plugins/` |
+| Plugin Installation | Install a specific plugin       | Manual copy from `plugins/<name>/` plus each plugin's `README.md` |
+| Plugin Management   | Inspect current plugin inventory | `plugins/*/.claude-plugin/plugin.json` |
+| Plugin Publishing   | Contribute new plugins          | Documentation + pull request workflow |
 
 ## Current Implementation Status
 
 **Implemented**:
 
 - Project structure and documentation design
-- One example plugin: `ai-doc-driven-dev` (AI Documentation-Driven Development Plugin)
-  - Provides: Documentation-driven development workflow enforcement, project analysis, pattern extraction
-  - Features: Complete agents and commands system with 2 core agents and 3 commands
-  - Agents: doc-flow-initializer (文档流程初始化), codebase-style-analyzer (代码风格分析)
-  - Commands: init-doc-driven-dev, analyze-docs, extract-patterns
-  - Skills: doc-workflow-enforcer, doc-detector, pattern-extractor, doc-generator
-  - Allowed tools: Read, Write, Edit, Glob, Grep, Bash, LSP
+- Four plugins are currently present in `plugins/`: `ai-doc-driven-dev`, `git-ops-helper`, `js-framework-analyzer`, `openclaw-ops`
+- `ai-doc-driven-dev`
+  - Commands currently present: `init-doc-driven-dev`, `update-doc-driven-dev`, `update-standards`
+  - Skills currently present: `doc-workflow-enforcer`, `doc-detector`, `doc-generator`, `pattern-extractor`
+- `git-ops-helper`
+  - Command currently present: `summarize-commit`
+- `js-framework-analyzer`
+  - Commands currently present: `analyze-mf-isolation`, `analyze-reactivity`
+  - Disabled command still documented: `analyze-ai-platform`
+- `openclaw-ops`
+  - Commands currently present: `openclaw-diagnose`, `openclaw-update-token`
 - Core design documentation and standards
 - Bilingual README requirements and templates
 
 **Planned but Not Yet Implemented**:
 
 - `.gitignore` file
-- Additional design docs: `architecture.md`, `workflow.md`, `capability-list.md`, `interaction-protocol.md`
-- Requirement documents
+- Additional standalone architecture/workflow reference docs
 - Convention documents (lint, format, structure, naming)
 - Reference documentation
 - Example plugins (minimal, standard, advanced)
-- Management scripts (validate.sh, format.sh, lint.sh, scaffold.sh, sync.sh, publish.sh)
+- Repository-level management scripts (validate, format, lint, scaffold, sync, publish)
 
 ## Design Alignment
 
 The project explicitly aligns with **customplugin/plugins** reference implementation:
 
 - ✅ Plugin metadata structure (`.claude-plugin/plugin.json`)
-- ✅ MCP configuration (`.mcp.json`)
 - ✅ Command definitions (`commands/*.md`)
 - ✅ Skill definitions (`skills/*/SKILL.md`)
 - ✅ Agent definitions (`agents/*.md`)
@@ -185,84 +187,48 @@ The project explicitly aligns with **customplugin/plugins** reference implementa
 
 ## Development Process Requirements
 
-**CRITICAL**: All future development MUST follow this AI-driven documentation workflow:
+**CRITICAL**: All future development MUST follow this documentation-driven workflow.
 
 ### Development Workflow
 
-1. **User Request**: User provides requirements or feature requests
-2. **AI Documentation**: AI creates comprehensive documentation:
-   - Requirement document in `docs/requirements/`
-   - Technical design document in `docs/design/`
-3. **User Review & Alignment**: User reviews and approves the documentation
-4. **AI Implementation**: Only after approval, AI implements changes to `plugins/` based on the approved documentation
+See **[AGENTS.md](AGENTS.md)** for complete AI workflow rules and development process.
+
+**Quick Summary**:
+1. **Documentation First**: Create requirements and technical design docs
+2. **User Approval**: Get approval before implementation
+3. **Implementation**: Code based on approved documentation
+
+### Documentation Standards
+
+**Document Naming (Date-Based)**:
+- Requirements: `docs/requirements/YYYYMMDD-feature-name.md`
+- Technical Design: `docs/design/YYYYMMDD-feature-name-technical-design.md`
+- Same-day conflicts: append `-v2`, `-v3`
+
+**Document Organization**:
+```
+docs/
+├── requirements/        # Feature requirements (REQ-YYYYMMDD)
+├── design/             # Technical designs (TECH-YYYYMMDD)
+├── standards/          # Templates and conventions
+└── analysis/           # Project analysis and patterns
+```
+
+**Templates**:
+- [Requirements Template](docs/standards/requirements-template.md)
+- [Technical Design Template](docs/standards/technical-design-template.md)
+- [Skill Documentation Template](docs/standards/skill-documentation-template.md)
+
+### Visual-First Principle
+
+- Use Mermaid diagrams for architecture, data flows, and state transitions
+- Use Markdown tables for data structures, API parameters, and configurations
+- Show modifications inline within diagrams/tables (no separate Before/After sections)
 
 ### Key Principles
 
-- ❌ **PROHIBITED**: Direct modification of `plugins/` content without prior documentation and alignment
-- ✅ **REQUIRED**: User → AI writes docs → User approval → AI implements via docs
-- ✅ **REQUIRED**: All requirements and technical specifications must be documented before implementation
-- 📋 **DOCUMENTATION-DRIVEN**: AI must reference and follow approved documentation when making any plugin changes
+- ❌ **PROHIBITED**: Direct code changes without prior documentation
+- ✅ **REQUIRED**: Documentation → User approval → Implementation
+- 📋 **DOCUMENTATION-DRIVEN**: All changes must reference approved documentation
 
-### Visual-First Design Principles
-
-- ✅ **REQUIRED**: Technical designs and requirements MUST prioritize visual representations over long text descriptions.
-- ✅ **REQUIRED**: System architectures, data flows, and state transitions MUST be represented using Mermaid diagrams (`flowchart`, `sequenceDiagram`, `classDiagram`, etc.).
-- ✅ **REQUIRED**: Database schemas and entity relationships MUST be represented using Mermaid ER diagrams (`erDiagram`).
-- ✅ **REQUIRED**: Data structures, API parameters, and configuration enumerations MUST use Markdown Tables, not lists.
-- ✅ **REQUIRED**: When documenting technical modifications, differences MUST be shown inline within the same diagram or table (e.g., using `~~strikethrough~~` or HTML tags in tables, or `style`/`classDef` node coloring in Mermaid). Do not create separate "Before" and "After" views.
-
-### Documentation Structure
-
-**CRITICAL - Document Naming (Date-Based)**:
-- ✅ **REQUIRED**: All documents MUST follow date convention: `YYYYMMDD-feature-name.md`
-- ✅ **REQUIRED**: Requirement/Design titles must use date ID prefix (`REQ-YYYYMMDD` / `TECH-YYYYMMDD`)
-- ✅ **REQUIRED**: AI uses current date directly in filename (no sequence scan)
-- ✅ **REQUIRED**: If same-day same-name collision occurs, append `-v2`, `-v3`
-- ❌ **PROHIBITED**: Mixing legacy `NNN-` naming in new documents
-- ✅ **REQUIRED**: Use templates from `docs/standards/requirements-template.md` and `docs/standards/technical-design-template.md`
-
-**Document Organization**:
-- **Requirement documents** (functional requirements):
-  - Location: `docs/requirements/YYYYMMDD-feature-name.md`
-  - Focus: What needs to be built, user stories, acceptance criteria
-- **Technical design documents** (implementation details):
-  - Location: `docs/design/YYYYMMDD-feature-name-technical-design.md`
-  - Focus: How to build it, architecture, implementation plan
-- **Pairing**: Each requirement document should have a corresponding technical design document with the same date + feature slug
-- **Standards and templates**: Stored in `docs/standards/`
-
-**Example Document Structure**:
-```
-docs/
-├── requirements/
-│   ├── 20260110-ai-doc-driven-dev-base-features.md
-│   ├── 20260110-ai-doc-driven-dev-agents-commands.md
-│   ├── 20260111-js-framework-repository-analyzer.md
-│   └── ... (new docs use today's YYYYMMDD prefix)
-├── design/
-│   ├── 20260110-ai-doc-driven-dev-technical-design.md
-│   ├── 20260110-ai-doc-driven-dev-agents-commands-technical-design.md
-│   ├── 20260111-js-framework-repository-analyzer-technical-design.md
-│   └── ... (new docs use today's YYYYMMDD prefix)
-└── standards/
-    ├── requirements-template.md
-    └── technical-design-template.md
-```
-
-**AI Workflow for Creating New Documents**:
-1. **Get current date**: Format as `YYYYMMDD`
-2. **Generate base slug**: Convert feature name to kebab-case
-3. **Create paired documents**:
-   - Requirement: `docs/requirements/YYYYMMDD-feature-name.md`
-   - Technical design: `docs/design/YYYYMMDD-feature-name-technical-design.md`
-4. **Handle collisions**: If same-day same-name exists, append `-v2` / `-v3`
-5. **Follow templates**: Use the standard templates for consistent structure
-
-### Skill Development Standards
-
-- All skill documentation MUST follow the template in `docs/standards/skill-documentation-template.md`
-- Required sections: Overview, How It Works, When to Use This Skill, Examples
-- Optional sections: Best Practices, Integration
-- Consistent frontmatter format with name, description, allowed-tools, and license
-
-This ensures proper planning, maintains consistency, and establishes clear approval gates for all marketplace development.
+For detailed AI workflow rules, see **[AGENTS.md](AGENTS.md)**.

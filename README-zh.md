@@ -18,6 +18,7 @@
 | ------------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | **AI 文档驱动开发** | 工作流指令强制执行（`CLAUDE.md` / `AGENTS.md`）、文档分析、模式提取、智能文档生成     | 建立文档优先的开发工作流并维护项目文档标准                                           |
 | **Git 操作助手**     | 提交摘要、消息起草、冲突解决、变基工作流             | 提供安全、可重复的 Git 工作流，包含清晰的命令、变更摘要和专家指导                               |
+| **OpenClaw 运维工具** | 远程诊断 ✅、Token 同步 ✅ | 通过 SSH 诊断和维护 OpenClaw Telegram bot gateway 服务器 |
 | **JS 框架分析器**   | 微前端隔离分析 ✅、AI 平台架构分析 🚧、响应式系统分析 ✅ | 通过探索式代码分析理解 JavaScript 框架核心实现机制，支持中英文双语报告和 PlantUML 图 |
 
 ## 📦 插件详情
@@ -60,6 +61,18 @@
 - 在请求确认前始终显示确切命令
 - 在 main/master 上提交前建议创建新分支
 - 为重置 --hard 等风险操作提供清晰警告
+
+### OpenClaw 运维工具
+
+**位置**: `plugins/openclaw-ops/`
+
+**目的**: 诊断并维护 OpenClaw Telegram bot gateway 服务
+
+**核心能力**:
+
+- **🔍 远程诊断**: 通过 SSH 检查服务状态、Token 过期时间、日志、内存占用和端口监听
+- **🔄 Token 同步**: 上传本地认证文件、更新远程配置、重启服务并校验结果
+- **🛡️ 运维说明**: 将环境变量要求和故障排查信息与命令文档保持在一起
 
 ### JS 框架分析器
 
@@ -114,13 +127,17 @@ _更多插件即将推出..._
 2. **安装插件**
 
    ```bash
-   # 将插件复制到你的 Claude Code 插件目录
-   cp -r plugins/ai-doc-driven-dev ~/.claude-code/plugins/
+   # 克隆仓库
+   git clone git@github.com:ZHOUKAILIAN/claude-community-plugins.git
+   cd claude-community-plugins
+
+   # 将目标插件目录复制到你的 Claude 插件目录
+   cp -R plugins/ai-doc-driven-dev <你的-Claude-插件目录>/ai-doc-driven-dev
    ```
 
 3. **使用插件**
-   - 重启 Claude Code
-   - 插件的技能和命令将自动可用
+   - 复制后重启或重新加载 Claude Code
+   - 具体命令、技能和环境变量要求以各插件自己的 `README.md` 为准
 
 ### Codex 用户
 
@@ -143,8 +160,8 @@ Codex 通常采用“意图驱动”交互，而不是 `claude <command>` 命令
 1. **创建新插件**
 
    ```bash
-   # 使用插件模板（即将推出）
-   ./scripts/scaffold.sh my-awesome-plugin
+   # 在 plugins/ 下手动创建插件目录
+   mkdir -p plugins/my-awesome-plugin
    ```
 
 2. **遵循插件结构**
@@ -163,35 +180,36 @@ Codex 通常采用“意图驱动”交互，而不是 `claude <command>` 命令
 3. **测试和验证**
 
    ```bash
-   # 验证你的插件结构
-   ./scripts/validate.sh plugins/my-awesome-plugin
+   # 对照现有插件结构和目录设计文档进行检查
+   ls plugins/my-awesome-plugin
    ```
 
 4. **发布到市场**
 
    ```bash
-   # 提交你的插件进行审核
-   ./scripts/publish.sh my-awesome-plugin
+   # 通过 Pull Request 提交插件和文档
+   git status
    ```
 
 ## 📚 文档
 
 ### 用户文档
 
-- [插件安装指南](docs/user-guide/installation.md) _（即将推出）_
-- [插件管理](docs/user-guide/management.md) _（即将推出）_
+- 优先阅读根级 `README.md` 与各插件自己的 `README.md`
+- 可直接浏览 `plugins/` 目录查看当前库存
 
 ### 开发者文档
 
-- [插件开发指南](docs/developer-guide/getting-started.md) _（即将推出）_
 - [技能文档模板](docs/standards/skill-documentation-template.md)
+- [需求文档模板](docs/standards/requirements-template.md)
+- [技术方案模板](docs/standards/technical-design-template.md)
 - [插件结构参考](docs/design/directory-structure.md)
 
 ### 架构与设计
 
-- [市场架构](docs/design/architecture.md) _（即将推出）_
-- [插件标准](docs/standards/)
-- [开发工作流](docs/design/workflow.md) _（即将推出）_
+- 参考 `docs/design/` 下的技术方案文档
+- 参考 `docs/requirements/` 下的需求文档
+- 参考 `docs/standards/` 下的共享规范与模板
 
 ## 🏗️ 项目结构
 
@@ -200,12 +218,14 @@ claude-code-plugins/
 ├── README.md                    # 英文版本
 ├── README-zh.md                 # 中文版本（本文件）
 ├── plugins/                     # 插件集合（市场库存）
-│   └── ai-doc-driven-dev/      # 示例插件
+│   ├── ai-doc-driven-dev/
+│   ├── git-ops-helper/
+│   ├── js-framework-analyzer/
+│   └── openclaw-ops/
 ├── docs/                        # 文档和设计规范
 │   ├── design/                  # 架构和设计文档
 │   ├── standards/               # 开发标准和模板
 │   └── requirements/            # 项目需求
-└── scripts/                     # 管理和自动化脚本
 ```
 
 ## 🤝 参与贡献
