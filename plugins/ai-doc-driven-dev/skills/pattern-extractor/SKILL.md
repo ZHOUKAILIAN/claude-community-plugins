@@ -10,111 +10,90 @@ license: MIT
 
 ## Overview
 
-Extract project-specific coding patterns, conventions, and standards from existing codebase.
+Extract the dominant coding and architectural patterns from an existing codebase so they can be turned into usable standards. Focus on the patterns the team should keep repeating, the exceptions that matter, and the guidance that belongs in `docs/standards/`.
 
 ## When This Skill Applies
 
-- User requests to document existing coding standards
-- User wants to extract patterns from codebase
-- User needs project-specific development guidelines
-- AI code generation needs to follow established patterns
+- User wants to document current coding conventions
+- User wants standards extracted from an existing codebase
+- User wants AI-generated changes to follow established patterns
+- A docs-first workflow needs project-specific standards
 
 ## Workflow
 
-### Phase 1: Codebase Analysis
+### Phase 1: Codebase Shape
 
-**Goal**: Understand project structure and type
+**Goal**: Understand the system being sampled
 
 **Actions**:
-1. Detect project type (frontend/backend/fullstack)
-2. Identify frameworks and libraries
-3. Scan file organization
+1. Identify project type
+2. Identify key frameworks
+3. Identify important directories
 
 ---
 
-### Phase 2: Pattern Extraction
+### Phase 2: Dominant Patterns
 
-**Goal**: Identify common patterns
+**Goal**: Find what the codebase consistently does
 
 **Actions**:
-1. Extract naming conventions
-2. Identify architectural patterns
-3. Analyze API design patterns
-4. Document error handling
+1. Extract naming patterns
+2. Extract structure patterns
+3. Extract API and error patterns
+4. Note meaningful exceptions
 
-**Tools**: Use LSP for deep code analysis when available.
+**Available Assets**:
+- Use repository files as the primary evidence source.
+- Use LSP when it helps confirm signatures, types, or structural relationships.
 
 ---
 
-### Phase 3: Frequency Analysis
+### Phase 3: Standards Synthesis
 
-**Goal**: Prioritize dominant patterns
+**Goal**: Turn findings into reusable guidance
 
 **Actions**:
-1. Count pattern occurrences
-2. Calculate percentages
-3. Rank by frequency
-
-**Example**:
-- camelCase: 127 (85%) ← Recommend
-- snake_case: 18 (12%)
-- PascalCase: 5 (3%)
+1. Prioritize dominant conventions
+2. Separate standards from outliers
+3. Add concrete examples
+4. Target `docs/standards/`
 
 ---
 
-### Phase 4: Documentation Generation
+### Phase 4: Output
 
-**Goal**: Create standards document
+**Goal**: Produce guidance the team can follow
 
 **Actions**:
-1. Generate coding standards
-2. Include code examples
-3. Provide usage statistics
-4. Save to docs/standards/
-
----
-
-## LSP Tool Usage
-
-When available, use LSP for:
-
-**TypeScript/JavaScript**:
-- Type definitions extraction
-- Interface pattern recognition
-- Import/export analysis
-
-**Python**:
-- Class/function signatures
-- Type annotation patterns
-- Decorator usage
-
-**Go**:
-- Interface patterns
-- Error handling conventions
-- Package structure
+1. Summarize recommended standards
+2. Show representative examples
+3. Explain notable exceptions
+4. Highlight adoption priorities
 
 ## Output Format
 
 ```markdown
 # Project Coding Standards
 
-## Naming Conventions
-- **Variables**: camelCase (85% usage)
-- **Functions**: camelCase (90% usage)
-- **Classes**: PascalCase (100% usage)
+## Dominant Conventions
+| Area | Recommended Standard | Evidence |
+| --- | --- | --- |
+| Naming | camelCase for functions and variables | dominant usage across core modules |
+| Files | kebab-case | repeated across feature directories |
+| Architecture | service-oriented API layer | shared pattern in main entry points |
 
-## Architectural Patterns
-- **Component Structure**: Flat organization
-- **State Management**: Context API (primary)
-- **API Communication**: Axios with interceptors
+## Exceptions to Handle Carefully
+- Legacy modules still use a different naming scheme
+- Test helpers use a flatter structure than production code
 
-## Examples
-[Code examples from codebase]
+## Representative Examples
+- `src/api/user-service.ts`
+- `src/features/order-history/`
 ```
 
 ## Best Practices
 
-- Prioritize patterns by frequency (>70% usage)
-- Consider framework conventions
-- Include concrete code examples
-- Document rationale for recommendations
+- Prefer dominant patterns over one-off examples
+- Treat exceptions as migration notes, not default standards
+- Keep standards output usable for future documentation and AI guidance
+- Use LSP to confirm structure when plain text search is not enough

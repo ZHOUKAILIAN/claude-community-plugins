@@ -10,70 +10,83 @@ license: MIT
 
 ## Overview
 
-Generate standardized project documentation using templates and project analysis.
+Create requirement and technical design documents that match the project's current docs-first standard. Focus on producing correctly named, correctly paired, template-aligned documents that are ready for review instead of placeholder scaffolds.
 
 ## When This Skill Applies
 
-- User requests to generate missing documentation
-- User wants to create documentation structure for new projects
-- User needs to update documentation to follow current standards
-- Documentation-driven development setup requires initial documents
+- User requests missing requirement or design docs
+- User wants to create a docs-first structure in a new project
+- User wants to generate paired documents from current templates
+- Documentation analysis found concrete gaps to fill
 
 ## Workflow
 
-### Phase 1: Analysis
+### Phase 1: Generation Scope
 
-**Goal**: Understand project and documentation needs
+**Goal**: Decide what must be created
 
 **Actions**:
-1. Determine project type
-2. Identify missing documents
-3. Select appropriate templates
+1. Confirm the target feature
+2. Identify required document types
+3. Check existing paired docs
 
 ---
 
-### Phase 2: Document Creation
+### Phase 2: Template Alignment
 
-**Goal**: Generate date-based documents
+**Goal**: Use the current project shapes
 
 **Actions**:
-1. **Get today date** in `YYYYMMDD` format
-2. Generate paired filenames from date + feature slug
-3. If same-day same-name exists, append `-v2` / `-v3`
-4. Populate using templates
+1. Read active templates
+2. Reuse project naming rules
+3. Reuse project-specific context
 
-**Critical**: Ensure filename date matches title ID date.
+**Reference Assets**:
+- Requirement and technical design templates live in the plugin's `knowledge/templates/` directory.
+- Project-specific standards usually live under `docs/standards/`.
 
 ---
 
-### Phase 3: Verification
+### Phase 3: Document Creation
 
-**Goal**: Validate generated documents
+**Goal**: Produce correct paired documents
 
 **Actions**:
-1. Verify date consistency
-2. Verify pairing (requirement ↔ design)
-3. Check placeholders replaced
-4. Report to user
+1. Use current date naming
+2. Create requirement/design pair
+3. Apply same-day suffixes when needed
+4. Replace placeholders with real content
+
+**Critical**: The generated filenames, document IDs, and paired relationship must agree with each other.
 
 ---
+
+### Phase 4: Validation
+
+**Goal**: Confirm the output is reviewable
+
+**Actions**:
+1. Verify naming consistency
+2. Verify pairing consistency
+3. Verify template completion
+4. Report created files
 
 ## Output Format
 
 ```markdown
 ✅ Documents Created
 
-**Requirement**: docs/requirements/20260311-feature-name.md
-**Design**: docs/design/20260311-feature-name-technical-design.md
-**Date**: 20260311
+**Requirement**: docs/requirements/20260331-feature-name.md
+**Design**: docs/design/20260331-feature-name-technical-design.md
+**Naming Rule**: date-based
+**Pairing**: verified
 
-✅ Date consistency verified
-✅ Pairing verified
+Next step: review and approve the documents before implementation.
 ```
 
 ## Best Practices
 
-- Use standardized templates for consistency
-- Generate meaningful content, not placeholders
-- Ensure proper date naming and pairing
-- Integrate with existing documentation structure
+- Generate requirement and technical design docs together unless the user requests otherwise
+- Use date-based naming by default: `YYYYMMDD-feature-name.md`
+- Treat `-v2` / `-v3` as same-day conflict handling, not as a versioning shortcut
+- Prefer meaningful project-specific content over empty scaffolds

@@ -10,141 +10,102 @@ license: MIT
 
 ## Overview
 
-Enforce documentation-driven development workflow in instruction files with mandatory docs-first process.
+Establish or repair the instruction-file rules that make docs-first development enforceable. The core outcome is a lightweight `CLAUDE.md` for project workflow, a separate `AGENTS.md` for AI behavior rules, clear approval gates, and document naming that follows the current date-based convention.
 
-**Warning**: This skill can write to `CLAUDE.md` and `AGENTS.md`. Always presents changes for user approval first.
+**Warning**: This skill can write to `CLAUDE.md` and `AGENTS.md`. Always present the proposed changes and wait for explicit approval before writing.
 
 ## When This Skill Applies
 
-- User requests to initialize documentation-driven development
-- User wants to enforce documentation workflow
-- User asks to update or improve CLAUDE.md / AGENTS.md
-- User mentions "documentation-first" or "docs-before-code"
-- Project needs documentation workflow enforcement
+- User wants to initialize docs-first development
+- User wants to improve `CLAUDE.md` or `AGENTS.md`
+- User wants to enforce documentation workflow rules
+- User wants to separate workflow rules from AI behavior rules
+- Project instructions need to align with current docs-first standards
 
 ## Workflow
 
-### Phase 1: Detection
+### Phase 1: Instruction Surface
 
-**Goal**: Locate and analyze workflow instruction files
+**Goal**: Understand the current entry files
 
 **Actions**:
-1. Check for `CLAUDE.md` and `AGENTS.md` in project root
-2. Read existing file(s), if present
-3. Identify whether documentation-driven workflow already exists
-4. **Check for monolithic anti-pattern**: Detect if `CLAUDE.md` contains detailed coding standards, project structure descriptions, or testing guidelines (indicators of bloated single-file design)
-5. **Validate responsibility separation**: Verify that `CLAUDE.md` serves as lightweight workflow entry point with document pointers, while `AGENTS.md` (if exists) manages AI agent behavior rules
+1. Check root instruction files
+2. Read existing workflow rules
+3. Detect mixed responsibilities
+4. Detect monolithic instruction files
 
 ---
 
-### Phase 2: Content Preparation
+### Phase 2: Rule Alignment
 
-**Goal**: Prepare workflow rules and identify necessary refactoring
+**Goal**: Prepare the right workflow structure
 
 **Actions**:
-1. Reuse existing workflow content when already present
-2. Add missing workflow sections when absent
-3. Add date-based naming system rules
-4. Add AI automation instructions
-5. Preserve existing project-specific content
-6. **If monolithic pattern detected**: Prepare recommendations to extract detailed content (coding standards, architecture details, testing guidelines) into separate files under `docs/standards/` or `docs/analysis/`, leaving only pointers in `CLAUDE.md`
-7. **If AGENTS.md missing but AI rules exist in CLAUDE.md**: Prepare to split AI-specific instructions into separate `AGENTS.md`
+1. Keep valid project-specific rules
+2. Add missing docs-first gates
+3. Enforce CLAUDE/AGENTS separation
+4. Apply date-based naming guidance
 
-**Critical**: Never overwrite project-specific content. When suggesting decoupling, preserve all information by moving (not deleting) content to appropriate locations.
+**Core Rules**:
+- `CLAUDE.md` is the lightweight workflow entry point and document pointer hub.
+- `AGENTS.md` holds AI-specific execution rules and behavior constraints.
+- Requirement and technical design docs use date-based filenames.
+- Documentation and approval happen before implementation.
 
 ---
 
-### Phase 3: User Approval
+### Phase 3: Approval Gate
 
-**Goal**: Get user confirmation
+**Goal**: Get consent before modifying instruction files
 
 **Actions**:
-1. **Present proposed changes**
-2. **Show what will be added**
-3. **WAIT for user approval**
-
-**DO NOT proceed without approval.**
+1. Show proposed changes
+2. Show file responsibility changes
+3. Explain extracted or moved content
+4. **WAIT for user approval**
 
 ---
 
-### Phase 4: Application
+### Phase 4: Apply and Verify
 
-**Goal**: Update instruction file(s) with modern lightweight standards
+**Goal**: Write a maintainable instruction setup
 
 **Actions**:
-1. If either file already contains valid workflow, keep and reuse it
-2. If missing, add workflow rules to available file(s)
-3. If both missing, create one instruction file and add rules
-4. **Apply decoupling recommendations**:
-   - If `CLAUDE.md` is bloated with detailed standards, suggest or execute extraction to `docs/standards/coding-conventions.md`, `docs/standards/architecture.md`, etc.
-   - Update `CLAUDE.md` to reference these external documents via links
-   - Ensure `CLAUDE.md` remains as a lightweight "workflow entry point and document pointer hub"
-5. **Enforce AGENTS.md separation**:
-   - If AI agent rules are mixed into `CLAUDE.md`, extract them to `AGENTS.md`
-   - Ensure clear responsibility: `CLAUDE.md` for development workflow, `AGENTS.md` for AI behavior
-6. Verify file integrity
-7. Report completion with summary of decoupling actions taken
-
----
+1. Update or create `CLAUDE.md`
+2. Update or create `AGENTS.md`
+3. Preserve project-specific content
+4. Verify workflow clarity
 
 ## Workflow Rules Added
 
 ```markdown
 ## Documentation-Driven Development Workflow
 
-### Instruction File Standards (Decoupling Principle)
+### Instruction File Responsibilities
 
-**CLAUDE.md should be lightweight**:
-- ✅ Acts as workflow entry point and document pointer hub
-- ✅ Contains only high-level project overview and workflow rules
-- ✅ References detailed content via links to `docs/` subdirectories
-- ❌ Should NOT contain detailed coding standards, architecture descriptions, or testing guidelines inline
-
-**AGENTS.md manages AI behavior**:
-- ✅ Dedicated file for AI agent instructions and system prompts
-- ✅ Separate from development workflow concerns
-- ❌ AI rules should NOT be mixed into CLAUDE.md
-
-**Anti-pattern detection**:
-If `CLAUDE.md` contains sections like "Project Structure", "Coding Standards", "Testing Guidelines" with detailed content (>100 lines), this is a **monolithic anti-pattern** requiring refactoring:
-1. Extract detailed content to `docs/standards/` or `docs/analysis/`
-2. Replace with pointers: "See [Coding Standards](docs/standards/coding-conventions.md)"
-3. Keep `CLAUDE.md` focused on workflow and navigation
+- `CLAUDE.md`: workflow entry point, project navigation, document links, high-level development rules
+- `AGENTS.md`: AI behavior rules, execution constraints, approval gates, agent-specific instructions
 
 ### Development Process
-1. Create requirement document (REQ-YYYYMMDD)
-2. Create technical design (TECH-YYYYMMDD)
-3. Get approval
-4. Implement code
+1. Create or update `docs/requirements/YYYYMMDD-feature-name.md`
+2. Create or update `docs/design/YYYYMMDD-feature-name-technical-design.md`
+3. Get approval on the documentation
+4. Implement the change
 
-❌ PROHIBITED: Direct code implementation without documentation
+### Naming Guidance
+- Use date-based filenames: `YYYYMMDD-feature-name.md`
+- Handle same-day conflicts with `-v2`, `-v3`
+- Keep requirement and design documents paired
 
-### Document Naming System (Date-Based)
-- Requirement: docs/requirements/YYYYMMDD-feature-name.md
-- Design: docs/design/YYYYMMDD-feature-name-technical-design.md
-- Title format: # REQ-YYYYMMDD / # TECH-YYYYMMDD
-- AI uses current date directly; no sequence scan required
-- Same-day same-name conflicts: append -v2 / -v3
-
-### AI Automation
-When creating documents, AI MUST:
-1. Use current date in YYYYMMDD format
-2. Check same-day same-name collision
-3. Create paired documents
-4. Verify consistency
-
-### Visual-First Design Principles
-- ✅ **REQUIRED**: Technical designs and requirements MUST prioritize visual representations over long text descriptions.
-- ✅ **REQUIRED**: System architectures, data flows, and state transitions MUST be represented using Mermaid diagrams (`flowchart`, `sequenceDiagram`, `classDiagram`, etc.).
-- ✅ **REQUIRED**: Database schemas and entity relationships MUST be represented using Mermaid ER diagrams (`erDiagram`).
-- ✅ **REQUIRED**: Data structures, API parameters, and configuration enumerations MUST use Markdown Tables, not lists.
-- ✅ **REQUIRED**: When documenting technical modifications, differences MUST be shown inline within the same diagram or table (e.g., using `~~strikethrough~~` or HTML tags in tables, or `style`/`classDef` node coloring in Mermaid). Do not create separate "Before" and "After" views.
+### Visual-First Principle
+- Use Mermaid for architecture, flow, and state diagrams
+- Use Markdown tables for structured fields and configurations
+- Show modifications inline in the same diagram or table
 ```
 
 ## Best Practices
 
-- Always read existing `CLAUDE.md` and `AGENTS.md` first
-- Preserve project-specific information
-- Use clear, unambiguous language
-- Include explicit prohibitions
-- Add approval gates for all phases
+- Read both `CLAUDE.md` and `AGENTS.md` before proposing changes
+- Treat approval-before-write as a hard gate
+- Preserve project-specific rules unless they directly conflict with current standards
+- Keep `CLAUDE.md` small enough to stay readable as the main workflow entry
