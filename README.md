@@ -19,6 +19,7 @@ The **Claude Code Plugin Marketplace** is both a repository and a distribution p
 | **Git Ops Helper** | Commit Summaries, Message Drafting, Conflict Resolution, Rebase Workflows | Provides safe, repeatable Git workflows with clear commands, change summaries, and expert guidance |
 | **OpenClaw Operations Toolkit** | Remote Diagnostics ✅, Token Synchronization ✅ | Manages OpenClaw Telegram bot gateway servers with SSH-based diagnostics and token update workflows |
 | **JS Framework Analyzer** | Microfrontend Isolation Analysis ✅, AI Platform Architecture Analysis 🚧, Reactivity System Analysis ✅ | Analyzes JavaScript framework source code to understand core implementation mechanisms with bilingual reports and PlantUML diagrams |
+| **Hermes Tweet** | X/Twitter Search, Launch Monitoring, Publishing Previews, Approval-Gated Actions | Routes X/Twitter workflows through the native Hermes Agent Hermes Tweet plugin |
 
 ## 📦 Plugin Details
 
@@ -67,6 +68,24 @@ The **Claude Code Plugin Marketplace** is both a repository and a distribution p
 - **🛡️ Operational Guidance**: Keeps environment-variable requirements and troubleshooting guidance close to the commands
 
 **Commands Included**: `openclaw-diagnose`, `openclaw-update-token`
+
+### Hermes Tweet
+**Location**: `plugins/hermes-tweet/`
+
+**Purpose**: Route X/Twitter work to the native Hermes Agent Hermes Tweet
+plugin maintained by Xquik.
+
+**Key Capabilities**:
+- **Search and Research**: Discover tweet, profile, trend, and community
+  endpoints through `tweet_explore`
+- **Read-First Workflows**: Use `tweet_read` for public and authenticated
+  read-only routes after endpoint discovery
+- **Approval-Gated Actions**: Use `tweet_action` only after the endpoint,
+  payload, and side effect are approved
+- **Operational Safety**: Keep API keys in the Hermes runtime environment and
+  keep write-capable actions disabled by default
+
+**Skills Included**: hermes-tweet
 
 ### JS Framework Analyzer
 **Location**: `plugins/js-framework-analyzer/`

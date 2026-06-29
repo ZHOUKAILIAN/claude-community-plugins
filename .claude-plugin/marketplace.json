@@ -24,6 +24,11 @@
       "name": "openclaw-ops",
       "source": "./plugins/openclaw-ops",
       "description": "OpenClaw server operations toolkit for diagnostics and token management."
+    },
+    {
+      "name": "hermes-tweet",
+      "source": "./plugins/hermes-tweet",
+      "description": "Hermes Agent X/Twitter automation guidance for Xquik-powered search, monitoring, publishing previews, and approval-gated account actions."
     }
   ]
 }
