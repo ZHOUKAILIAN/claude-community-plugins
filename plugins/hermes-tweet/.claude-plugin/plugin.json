@@ -1,0 +1,17 @@
+{
+  "name": "hermes-tweet",
+  "description": "Hermes Agent X/Twitter automation guidance for Xquik-powered search, monitoring, publishing previews, and approval-gated account actions.",
+  "version": "0.1.6",
+  "author": {
+    "name": "Xquik",
+    "url": "https://github.com/Xquik-dev"
+  },
+  "keywords": [
+    "hermes-agent",
+    "xquik",
+    "twitter",
+    "x",
+    "social-media",
+    "automation"
+  ]
+}
